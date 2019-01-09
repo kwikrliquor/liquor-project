@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<!--<div th:fragment="head (title)" >-->
+<!--<title><span th:text="${title}"></span></title>-->
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>-->
+<!--</div>-->
+<head th:fragment="head(title)">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/local.css" th:href="@{/css/local.css}" />
+</head>
+<body>
+
+<div th:fragment="header">
+    <header>
+        Header
+    </header>
+</div>
+<nav th:fragment="navbar">
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/hello">Hello</a></li>
+        <li class="nav-item"><a class="nav-link" href="/quotes">Quotes</a></li>
+        <li class="nav-item"><a class="nav-link" href="/quotes/random">Random Quote</a></li>
+    </ul>
+</nav>
+
+<div th:fragment="footer">
+    <footer class="footer">
+        Footer
+    </footer>
+</div>
+<div th:fragment="scripts">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+</div>
+
+</body>
+
+</html>
