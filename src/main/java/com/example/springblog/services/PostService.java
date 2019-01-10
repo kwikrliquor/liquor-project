@@ -25,6 +25,19 @@ public class PostService {
         return post;
     }
 
+    public Post save(Post post) {
+        post.setId(posts.size() + 1);
+        posts.add(post);
+        return post;
+    }
+
+    public Post edit(Post post) {
+        Post pp = posts.get(post.getId() - 1);
+        pp.setTitle(post.getTitle());
+        pp.setBody(post.getBody());
+        return pp;
+    }
+
     public Post findOne(int id) {
         return posts.get(id - 1);
     }

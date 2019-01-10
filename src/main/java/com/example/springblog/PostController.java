@@ -3,16 +3,10 @@ package com.example.springblog;
 import com.example.springblog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
-    private List<Post> posts;
     private PostService postService;
 
     public PostController (PostService ps) {
@@ -22,19 +16,38 @@ public class PostController {
     @GetMapping("/posts")
     public String show(Model model) {
         model.addAttribute("posts", postService.getAll());
-        return "/posts/index";
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String postid(@PathVariable int id, Model model) {
         model.addAttribute("post", postService.findOne(id));
         model.addAttribute("id", id);
-        return "/posts/show";
+        return "posts/show";
     }
 
-    @GetMapping("/posts/create/{title}/{body}")
-    @ResponseBody
-    public String postsCreate(@PathVariable String title, @PathVariable String body, Model model) {
-        return "kkkjkj";
+    @GetMapping("/posts/create")
+    public String showCreateForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
+    }
+
+    @PostMapping("/posts/create")
+    public String create(@ModelAttribute Post post) {
+        postService.save(post);
+        return "redirect:/posts";
+        // save the ad...
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String edit(@PathVariable int id, Model model) {
+        model.addAttribute("post", postService.findOne(id));
+        return "posts/edit";
+    }
+    @PostMapping("/posts/{id}/edit")
+    public String edit(@ModelAttribute Post post) {
+        postService.edit(post);
+        return "redirect:/posts";
+        // save the ad...
     }
 }

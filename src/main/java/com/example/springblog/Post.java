@@ -5,6 +5,15 @@ public class Post {
     private String body;
     private int id;
 
+    public Post() {
+
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
     public int getId() {
         return id;
     }
@@ -13,10 +22,6 @@ public class Post {
         this.id = id;
     }
 
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
 
     public String getTitle() {
         return title;
