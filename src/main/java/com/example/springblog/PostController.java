@@ -34,7 +34,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String create(@ModelAttribute Post post) {
-        postService.save(post);
+        postService.create(post);
         return "redirect:/posts";
         // save the ad...
     }
@@ -44,6 +44,14 @@ public class PostController {
         model.addAttribute("post", postService.findOne(id));
         return "posts/edit";
     }
+
+    @GetMapping("/posts/{id}/delete")
+    public String delete(@PathVariable int id, Model model) {
+        model.addAttribute("post", postService.findOne(id));
+        postService.delete(postService.findOne(id));
+        return "redirect:/posts";
+    }
+
     @PostMapping("/posts/{id}/edit")
     public String edit(@ModelAttribute Post post) {
         postService.edit(post);

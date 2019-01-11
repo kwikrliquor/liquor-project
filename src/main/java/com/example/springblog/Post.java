@@ -1,9 +1,16 @@
 package com.example.springblog;
+import javax.persistence.*;
 
+@Entity
 public class Post {
-    private String title;
-    private String body;
+    @Id @GeneratedValue
     private int id;
+
+    @Column(nullable = false, length = 100)
+    private String title;
+
+    @Column(nullable = false)
+    private String body;
 
     public Post() {
 

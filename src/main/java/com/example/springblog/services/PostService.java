@@ -1,49 +1,43 @@
 package com.example.springblog.services;
 
 import com.example.springblog.Post;
+import com.example.springblog.PostRepository;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PostService {
-    private List<Post> posts;
+    private final PostRepository postsdao;
 
-    public PostService() {
-        posts = new ArrayList<>();
-        createPosts();
+//    private List<Post> posts;
+
+    public PostService(PostRepository postsdao) {
+        this.postsdao = postsdao;
     }
 
     public List<Post> getAll() {
-        return posts;
+        return (List<Post>) postsdao.findAll();
+    }
+
+    public Post findOne(int id) {
+        return postsdao.findOne(id);
     }
 
     public Post create(Post post) {
-        post.setId(posts.size() + 1);
-        posts.add(post);
+        postsdao.save(post);
         return post;
     }
 
-    public Post save(Post post) {
-        post.setId(posts.size() + 1);
-        posts.add(post);
+    public Post delete(Post post) {
+        postsdao.delete(post);
         return post;
     }
 
     public Post edit(Post post) {
-        Post pp = posts.get(post.getId() - 1);
-        pp.setTitle(post.getTitle());
-        pp.setBody(post.getBody());
-        return pp;
-    }
-
-    public Post findOne(int id) {
-        return posts.get(id - 1);
-    }
-
-    private void createPosts() {
-        create(new Post("New Post 1", "alright 1"));
-        create(new Post("New Post 2", "alright 2"));
+        postsdao.save(post);
+        return post;
     }
 }
