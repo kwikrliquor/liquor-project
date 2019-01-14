@@ -10,12 +10,15 @@
 
     <form action="/posts/create" method="post" th:object="${post}">
         Title:
-        <input th:field="*{title}" />
+        <input class="form-control" th:field="*{title}" />
         <br />
         Body:
-        <input th:field="*{body}" />
+        <textarea class="form-control" rows="3" th:field="*{body}" />
         <br />
-        <input type="submit" value="Post" />
+        User:
+        <input class="form-control" th:field="*{user}" />
+        <br />
+        <input type="submit" value="Create Post" />
     </form>
 
 

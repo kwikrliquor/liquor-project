@@ -8,6 +8,7 @@
 
     <div class="card">
         <div class="card-body">
+        <h5>User #<span th:text="${post.getUser().getId()}"></span></h5>
             <h5 class="card-title"><span th:text="${post.title}"></span></h5>
             <p class="card-text"><span th:text="${post.body}"></span> </p>
             <a th:href="${post.id} + '/edit'" class="btn-info btn-sm">Edit</a>

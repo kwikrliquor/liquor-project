@@ -1,5 +1,6 @@
-package com.example.springblog;
+package com.example.springblog.controllers;
 
+import com.example.springblog.models.Post;
 import com.example.springblog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

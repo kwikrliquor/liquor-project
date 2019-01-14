@@ -1,11 +1,9 @@
 package com.example.springblog.services;
 
-import com.example.springblog.Post;
-import com.example.springblog.PostRepository;
+import com.example.springblog.models.Post;
+import com.example.springblog.models.PostRepository;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
