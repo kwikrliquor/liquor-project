@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 
 <!--<div th:fragment="head (title)" >-->
@@ -27,6 +28,17 @@
         <li class="nav-item"><a class="nav-link" href="/quotes/random">Random Quote</a></li>
         <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li>
         <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
+        <div sec:authorize="isAuthenticated()">
+            <li class="nav-item">
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="nav-link btn">Logout</button>
+                </form>
+            </li>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+
+        </div>
     </ul>
 </nav>
 

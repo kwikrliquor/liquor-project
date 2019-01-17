@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials::head('Create Post')"></head>
 <body>
 <main role="main" class="container">
@@ -8,15 +9,12 @@
 
 
 
-    <form action="/posts/create" method="post" th:object="${post}">
+    <form th:action="@{/posts/create}" method="post" th:object="${post}">
         Title:
         <input class="form-control" th:field="*{title}" />
         <br />
         Body:
         <textarea class="form-control" rows="3" th:field="*{body}" />
-        <br />
-        User:
-        <input class="form-control" th:field="*{user}" />
         <br />
         <input type="submit" value="Create Post" />
     </form>
