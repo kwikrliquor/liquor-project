@@ -24,14 +24,14 @@ public class ProductController {
 
     @GetMapping("/products/{id}")
     public String postid(@PathVariable int id, Model model) {
-        model.addAttribute("post", productService.findOne(id));
+        model.addAttribute("product", productService.findOne(id));
         model.addAttribute("id", id);
         return "products/show";
     }
 
     @GetMapping("/products/create")
     public String showCreateForm(Model model) {
-        model.addAttribute("post", new Product());
+        model.addAttribute("product", new Product());
         return "products/create";
     }
 
@@ -46,13 +46,13 @@ public class ProductController {
 
     @GetMapping("/products/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
-        model.addAttribute("post", productService.findOne(id));
+        model.addAttribute("product", productService.findOne(id));
         return "products/edit";
     }
 
     @GetMapping("/products/{id}/delete")
     public String delete(@PathVariable int id, Model model) {
-        model.addAttribute("post", productService.findOne(id));
+        model.addAttribute("product", productService.findOne(id));
         productService.delete(productService.findOne(id));
         return "redirect:/products";
     }
