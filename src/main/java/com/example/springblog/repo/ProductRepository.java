@@ -1,5 +1,6 @@
-package com.example.springblog.models;
+package com.example.springblog.repo;
 
+import com.example.springblog.models.Product;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

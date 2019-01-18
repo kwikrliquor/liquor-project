@@ -1,7 +1,7 @@
 package com.example.springblog.services;
 
 import com.example.springblog.models.Product;
-import com.example.springblog.models.ProductRepository;
+import com.example.springblog.repo.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
