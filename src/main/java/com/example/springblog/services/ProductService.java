@@ -10,7 +10,7 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository postsdao;
 
-//    private List<Product> posts;
+//    private List<Product> products;
 
     public ProductService(ProductRepository postsdao) {
         this.postsdao = postsdao;
