@@ -2,7 +2,7 @@ package com.example.springblog.models;
 import javax.persistence.*;
 
 @Entity
-public class Post {
+public class Product {
     @Id @GeneratedValue
     private int id;
 
@@ -16,11 +16,11 @@ public class Post {
     @JoinColumn (name = "user_id")
     private User user;
 
-    public Post() {
+    public Product() {
 
     }
 
-    public Post(String title, String body, User user) {
+    public Product(String title, String body, User user) {
         this.title = title;
         this.body = body;
         this.user = user;

@@ -30,7 +30,7 @@
         <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
         <div sec:authorize="isAuthenticated()">
             <li class="nav-item">
-                <form th:action="@{/logout}" th:method="post">
+                <form th:action="@{/logout}" th:method="product">
                     <button class="nav-link btn">Logout</button>
                 </form>
             </li>

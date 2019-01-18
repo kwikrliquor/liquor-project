@@ -10,10 +10,10 @@
 
     <h3>Here is a list of posts:</h3>
     <ul>
-        <li th:each="post:${posts}" class="card">
+        <li th:each="product:${posts}" class="card">
             <div class="card-body">
-                <h5 class="card-title"><a th:href="'/posts/' + ${post.id}"><span th:text="${post.title}"></span></a></h5>
-                <p class="card-text"><span th:text="${post.body}"></span> </p>
+                <h5 class="card-title"><a th:href="'/posts/' + ${product.id}"><span th:text="${product.title}"></span></a></h5>
+                <p class="card-text"><span th:text="${product.body}"></span> </p>
             </div>
         </li>
     </ul>

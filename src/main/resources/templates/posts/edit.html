@@ -8,7 +8,7 @@
 
 
 
-    <form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" method="post" th:object="${post}">
+    <form th:action="@{'/posts/' + ${product.getId()} + '/edit'}" method="product" th:object="${product}">
         Title:
         <input class="form-control" th:field="*{title}" />
         <br />
