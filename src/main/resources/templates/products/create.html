@@ -9,7 +9,7 @@
 
 
 
-    <form th:action="@{/posts/create}" method="product" th:object="${product}">
+    <form th:action="@{/products/create}" method="POST" th:object="${product}">
         Title:
         <input class="form-control" th:field="*{title}" />
         <br />

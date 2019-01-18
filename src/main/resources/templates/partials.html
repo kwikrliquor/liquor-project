@@ -24,10 +24,10 @@
     <ul class="nav">
         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/products">Posts</a></li>
-        <li class="nav-item"><a class="nav-link" href="/products/create">Create Post</a></li>
+        <li class="nav-item"><a class="nav-link" href="/products/create">Create Product</a></li>
         <div sec:authorize="isAuthenticated()">
             <li class="nav-item">
-                <form th:action="@{/logout}" th:method="product">
+                <form th:action="@{/logout}" th:method="POST">
                     <button class="nav-link btn">Logout</button>
                 </form>
             </li>
