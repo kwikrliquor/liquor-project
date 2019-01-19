@@ -17,7 +17,6 @@ public class Product {
     private User user;
 
     public Product() {
-
     }
 
     public Product(String title, String body, User user) {
