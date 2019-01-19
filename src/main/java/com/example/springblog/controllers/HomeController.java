@@ -11,6 +11,7 @@ public class HomeController {
     public String home() {
         return "Welcome this is the landing page!";
     }
+
     @GetMapping("/error")
     @ResponseBody
     public String not() {

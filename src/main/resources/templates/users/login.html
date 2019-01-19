@@ -6,12 +6,12 @@
     <div th:replace="partials::header"></div>
     <div th:replace="partials::navbar"></div>
 <h1>Log In</h1>
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
+    <div class="alert alert-danger" th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <div class="alert alert-info" th:if="${param.logout}">
+        You have been logged out.
+    </div>
 
 <form th:action="@{/login}" method="POST">
     <label for="username">Username</label>
