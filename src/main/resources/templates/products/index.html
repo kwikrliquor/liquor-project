@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials::head('Posts Home')"></head>
+<head th:replace="partials::head('Products Home')"></head>
 <body>
-<main role="main" class="container">
     <div th:replace="partials::header"></div>
     <div th:replace="partials::navbar"></div>
+<main role="main" class="uk-container">
 
 
 
     <h3>Here is a list of posts:</h3>
-    <ul>
-        <li th:each="product:${products}" class="card">
-            <div class="card-body">
-                <h5 class="card-title"><a th:href="'/products/' + ${product.id}"><span th:text="${product.title}"></span></a></h5>
-                <p class="card-text"><span th:text="${product.body}"></span> </p>
-            </div>
-        </li>
-    </ul>
+    <div class="uk-child-width-1-3 uk-text-center uk-grid">
+        <div th:each="product:${products}" class="uk-card uk-card-hover uk-card-body">
+                <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span th:text="${product.title}"></span></a></h5>
+                <p class=""><span th:text="${product.body}"></span> </p>
+        </div>
+    </div>
 
 
-    <div th:replace="partials::footer"></div>
 </main><!-- /.container -->
+<div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 
 </body>

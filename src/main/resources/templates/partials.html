@@ -9,34 +9,97 @@
 <!--</div>-->
 <head th:fragment="head(title)">
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title th:text="${title}"></title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/local.css" th:href="@{/css/local.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/local.css" />
+    <style>
+        .uk-card>p {
+            word-wrap: break-word;
+        }
+        header {
+            background-color: dodgerblue;
+        }
+        body, html {
+            background-image: url("https://www.lucialighting.com/wp-content/uploads/2018/02/contemporary.jpg");
+            background-repeat: no-repeat;
+        }
+        .ml-1 {
+            margin-left: 20px;
+        }
+        .mt-1 {
+            margin-top: 20px;
+        }
+        .logo-size {
+            width: 350px;
+            height: 75px;
+        }
+        .login-logout {
+            margin-top: 25px;
+        }
+        .header-text-color {
+            color: whitesmoke;
+        }
+        .header-text-color-center {
+            color: #595959;
+        }
+    </style>
+
 </head>
 <body>
 
 <div th:fragment="header">
     <header>
-        Header
+        <div class="uk-text-left uk-float-left">
+            <a class="header-text-color" href="/">How to get Kwikrliquor!</a>
+        </div>
+            <label class="header-text-color-center uk-float-" for="">30-Minute Delivery. Free Pickup.</label>
+        <div class="uk-text-right uk-float-right">
+            <label class="header-text-color" for="">Invite Friends</label>
+        </div>
     </header>
 </div>
-<nav th:fragment="navbar">
-    <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="/products/create">Create Product</a></li>
-        <div sec:authorize="isAuthenticated()">
-            <li class="nav-item">
-                <form th:action="@{/logout}" th:method="POST">
-                    <button class="nav-link btn">Logout</button>
-                </form>
-            </li>
-        </div>
-        <div sec:authorize="!isAuthenticated()">
-            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
 
-        </div>
-    </ul>
+<nav th:fragment="navbar" class="uk-navbar">
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
+            <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536678453823406081/kwikr-logo.png" alt="kwikrLogo"/></a></li>
+            <li><a href="/products"><div>Products</div></a></li>
+            <li><a href="/products/create">Create Product</a></li>
+            <div sec:authorize="isAuthenticated()">
+                <li>
+                    <form th:action="@{/logout}" th:method="POST">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
+                    </form>
+                </li>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <li>
+                    <form th:action="@{/login}" th:method="GET">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
+                    </form>
+                </li>
+            </div>
+        <!--</ul>-->
+        <!--<div class="uk-navbar-right">-->
+        <!--&lt;!&ndash;<ul class="uk-navbar-nav">&ndash;&gt;-->
+            <!--<div sec:authorize="isAuthenticated()">-->
+                <!--<li>-->
+                    <!--<form th:action="@{/logout}" th:method="POST">-->
+                        <!--<input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>-->
+                    <!--</form>-->
+                <!--</li>-->
+            <!--</div>-->
+            <!--<div sec:authorize="!isAuthenticated()">-->
+                <!--<li>-->
+                    <!--<form th:action="@{/login}" th:method="GET">-->
+                        <!--<input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>-->
+                    <!--</form>-->
+                <!--</li>-->
+            <!--</div>-->
+        <!--</div>-->
+        </ul>
+    </div>
 </nav>
 
 <div th:fragment="footer">
@@ -44,10 +107,13 @@
         Footer
     </footer>
 </div>
-<div th:fragment="scripts">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<div th:fragment="scripts"><script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="../static/uikit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
 </div>
 
 </body>

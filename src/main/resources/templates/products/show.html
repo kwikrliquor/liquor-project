@@ -2,23 +2,20 @@
 <html  xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials::head('Posts Home')"></head>
 <body>
-<main role="main" class="container">
     <div th:replace="partials::header"></div>
     <div th:replace="partials::navbar"></div>
+<main role="main" class="uk-container">
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title"><span th:text="${product.title}"></span></h5>
-            <p class="card-text"><span th:text="${product.body}"></span> </p>
-            <a th:href="${product.id} + '/edit'" class="btn-info btn-sm">Edit</a>
-            <a th:href="${product.id} + '/delete'" class="btn-danger btn-sm">Delete</a>
+        <div class="uk-card uk-card-hover uk-card-body">
+            <h5 class="uk-card-title"><span th:text="${product.title}"></span></h5>
+            <p class=""><span th:text="${product.body}"></span> </p>
+            <div class="mt-1">
+                <a th:href="${product.id} + '/edit'" class="uk-button uk-button-default uk-button-small">Edit</a>
+                <a th:href="${product.id} + '/delete'" class="uk-button uk-button-default uk-button-small">Delete</a>
+            </div>
         </div>
-    </div>
-
-
-
-    <div th:replace="partials::footer"></div>
 </main><!-- /.container -->
+    <div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 
 </body>
