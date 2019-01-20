@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials::head('Login')"></head>
 <body>
-<main role="main" class="container">
     <div th:replace="partials::header"></div>
     <div th:replace="partials::navbar"></div>
-<h1>Log In</h1>
+<main role="main" class="uk-container">
+    <h1>Log In</h1>
     <div class="alert alert-danger" th:if="${param.error}">
         Invalid Username and Password.
     </div>
@@ -13,16 +13,18 @@
         You have been logged out.
     </div>
 
-<form th:action="@{/login}" method="POST">
-    <label for="username">Username</label>
-    <input class="form-control" id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input class="form-control" id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-    <a th:href="@{/sign-up}" class="btn btn-success mb-2">Sign Up</a>
-</form>
-    <div th:replace="partials::footer"></div>
+    <form class="uk-form-width-medium" th:action="@{/login}" method="POST">
+        <label class="uk-text-large" for="username">Username</label>
+        <input class="uk-input" id="username" name="username" type="text" />
+        <label class="uk-text-large" for="password">Password</label>
+        <input class="uk-input" id="password" name="password" type="password" />
+        <div class="mt-1">
+            <input class="uk-button uk-button-default uk-button-small" type="submit" value="Log In" />
+            <a th:href="@{/sign-up}" class="uk-button uk-button-default uk-button-small">Sign Up</a>
+        </div>
+    </form>
 </main><!-- /.container -->
+<div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 </body>
 </html>

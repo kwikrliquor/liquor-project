@@ -1,0 +1,17 @@
+.main-header {
+    background-color: #0f7ae5;
+}
+.left {
+
+}
+.center {
+    align-self: center;
+}
+
+.ml-1 {
+    margin-left: 20px;
+}
+
+.login-logout-pos {
+    left: 100px;
+}
