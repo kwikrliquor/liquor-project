@@ -5,9 +5,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "categories")
-public class Category {
-    @Id
-    @GeneratedValue
+public class ProductCategory {
+    @Id @GeneratedValue
     private long id;
 
     @Column(nullable = false)
@@ -16,10 +15,10 @@ public class Category {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Product> products;
 
-    public Category() {
+    public ProductCategory() {
     }
 
-    public Category(String name, List<Product> products) {
+    public ProductCategory(String name, List<Product> products) {
         this.name = name;
         this.products = products;
     }

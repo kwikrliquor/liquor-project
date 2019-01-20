@@ -1,5 +1,6 @@
 package com.example.springblog.models;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -21,17 +22,28 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "cat_id")
-    private Category category;
+    private ProductCategory productCategory;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "products_orders",
+            joinColumns = {@JoinColumn(name = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "order_id")}
+    )
+    private List<ProductOrder> productOrders;
+
+
+    // Constructor
     public Product() {
     }
 
-    public Product(String name, int stock, double cost, String imgUrl, Category category) {
+    // Constructor
+    public Product(String name, int stock, double cost, String imgUrl, ProductCategory productCategory) {
         this.name = name;
         this.stock = stock;
         this.cost = cost;
         this.imgUrl = imgUrl;
-        this.category = category;
+        this.productCategory = productCategory;
     }
 
     public long getId() {
@@ -74,12 +86,12 @@ public class Product {
         this.imgUrl = imgUrl;
     }
 
-    public Category getCategory() {
-        return category;
+    public ProductCategory getProductCategory() {
+        return productCategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
 
 }
