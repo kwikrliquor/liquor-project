@@ -3,38 +3,39 @@ package com.example.springblog.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id @GeneratedValue
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String first_name;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String last_name;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false)
     private String address1;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false)
     private String address2;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false, length = 2)
+    @Column(nullable = false)
     private String state;
 
     @Column(nullable = false)
     private String postalCode;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -42,6 +43,9 @@ public class User {
 
     @Column(nullable = false)
     private long dob;
+    // Potential Alternative code for "dob"
+    //@Column(nullable = false)
+    //private java.sql.Date dob;
 
     public User() {
     }

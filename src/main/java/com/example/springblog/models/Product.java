@@ -2,59 +2,84 @@ package com.example.springblog.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "products")
 public class Product {
     @Id @GeneratedValue
-    private int id;
-
-    @Column(nullable = false, length = 100)
-    private String title;
+    private long id;
 
     @Column(nullable = false)
-    private String body;
+    private String name;
+
+    @Column(nullable = false)
+    private int stock;
+
+    @Column(nullable = false)
+    private double cost;
+
+    @Column(name = "img_url", nullable = false)
+    private String imgUrl;
 
     @ManyToOne
-    @JoinColumn (name = "user_id")
-    private User user;
+    @JoinColumn(name = "cat_id")
+    private Category category;
 
     public Product() {
     }
 
-    public Product(String title, String body, User user) {
-        this.title = title;
-        this.body = body;
-        this.user = user;
+    public Product(String name, int stock, double cost, String imgUrl, Category category) {
+        this.name = name;
+        this.stock = stock;
+        this.cost = cost;
+        this.imgUrl = imgUrl;
+        this.category = category;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBody() {
-        return body;
+    public int getStock() {
+        return stock;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
-    public User getUser() {
-        return user;
+    public double getCost() {
+        return cost;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 }
