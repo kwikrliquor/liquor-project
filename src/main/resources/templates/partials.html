@@ -9,11 +9,12 @@
 <!--</div>-->
 <head th:fragment="head(title)">
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../static/local.css" />
+    <link rel="stylesheet" href="/static/css/components/slideshow.css" />
+    <link rel="stylesheet" href="/static/css/components/slidenav.css" />
+
     <style>
         .uk-card>p {
             word-wrap: break-word;
@@ -24,6 +25,10 @@
         body, html {
             background-image: url("https://www.lucialighting.com/wp-content/uploads/2018/02/contemporary.jpg");
             background-repeat: no-repeat;
+        }
+        .slideshow-img {
+            !important;
+            max-width: max-content;
         }
         .ml-1 {
             margin-left: 20px;
@@ -61,12 +66,60 @@
     </header>
 </div>
 
+<!--<nav class="uk-navbar-container uk-navbar">-->
+    <!--<div class="uk-navbar-left">-->
+
+        <!--<ul class="uk-navbar-nav">-->
+            <!--<li class="uk-active"><a href="#">Active</a></li>-->
+            <!--<li>-->
+                <!--<a href="#">Parent</a>-->
+                <!--<div class="uk-navbar-dropdown">-->
+                    <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
+                        <!--<li class="uk-active"><a href="#">Active</a></li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                        <!--<li class="uk-nav-header">Header</li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                        <!--<li class="uk-nav-divider"></li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li><a href="#">Item</a></li>-->
+        <!--</ul>-->
+
+    <!--</div>-->
+    <!--<div class="uk-navbar-right">-->
+
+        <!--<ul class="uk-navbar-nav">-->
+            <!--<li>-->
+                <!--<a href="#">Parent</a>-->
+                <!--<div class="uk-navbar-dropdown">-->
+                    <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
+                        <!--<li class="uk-active"><a href="#">Active</a></li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                        <!--<li class="uk-nav-header">Header</li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                        <!--<li class="uk-nav-divider"></li>-->
+                        <!--<li><a href="#">Item</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</nav>-->
+
 <nav th:fragment="navbar" class="uk-navbar">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
             <li><a href="/products"><div>Products</div></a></li>
             <li><a href="/products/create">Create Product</a></li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
             <div sec:authorize="isAuthenticated()">
                 <li>
                     <form th:action="@{/logout}" th:method="POST">
@@ -81,24 +134,6 @@
                     </form>
                 </li>
             </div>
-        <!--</ul>-->
-        <!--<div class="uk-navbar-right">-->
-        <!--&lt;!&ndash;<ul class="uk-navbar-nav">&ndash;&gt;-->
-            <!--<div sec:authorize="isAuthenticated()">-->
-                <!--<li>-->
-                    <!--<form th:action="@{/logout}" th:method="POST">-->
-                        <!--<input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>-->
-                    <!--</form>-->
-                <!--</li>-->
-            <!--</div>-->
-            <!--<div sec:authorize="!isAuthenticated()">-->
-                <!--<li>-->
-                    <!--<form th:action="@{/login}" th:method="GET">-->
-                        <!--<input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>-->
-                    <!--</form>-->
-                <!--</li>-->
-            <!--</div>-->
-        <!--</div>-->
         </ul>
     </div>
 </nav>
@@ -108,15 +143,18 @@
         Footer
     </footer>
 </div>
-<div th:fragment="scripts"><script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-    <script src="../static/uikit.js"></script>
+<div th:fragment="scripts">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="/static/js/components/slideshow.js"></script>
+    <script src="/static/js/components/slideshow.min.js"></script>
+    <script src="/static/js/core/nav.js"></script>
+    <script src="/static/js/core/nav.min.js"></script>
+
 </div>
 
 </body>

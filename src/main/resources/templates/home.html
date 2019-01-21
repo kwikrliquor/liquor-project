@@ -2,13 +2,60 @@
 <html  xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials::head('Home')"></head>
 <body>
-<main role="main" class="container">
     <div th:replace="partials::header"></div>
     <div th:replace="partials::navbar"></div>
+<main role="main" class="uk-container uk-container-expand uk-padding-remove">
 
+<div class="uk-position-relative uk-visible-toggle uk-light uk-slideshow-fade-out" tabindex="-1" uk-slideshow="autoplay: true, autoplay-interval: 6000, ratio: false">
 
-    <div th:replace="partials::footer"></div>
+    <ul class="uk-slideshow-items" uk-height-viewport="offset-top: true; offset-bottom: 30">
+        <li>
+            <img src="https://cdn.discordapp.com/attachments/178547154908872704/536731319288201233/GettyImages-494189156.jpg" alt="" class="uk-cover"/>
+            <div class="uk-position-center uk-position-small uk-text-center uk-light">
+                <h2>Shop Beer, Wine, and Liquor!</h2>
+                <h3>30-Minute Delivery. Free Pickup.</h3>
+                <input class="uk-input uk-background-primary uk-border-rounded" id="address-search" name="address-search" type="text" />
+                <input class="uk-button uk-button-default uk-button-large uk-border-rounded" value="Shop Now" type="submit" />
+            </div>
+        </li>
+        <li>
+            <!--<div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-right">-->
+                <img src="https://cdn.discordapp.com/attachments/178547154908872704/536731306919460875/pouring-whiskey-into-glass-with-ice-istock-igorr1.jpg" alt="" class="uk-cover"/>
+            <!--</div>-->
+        </li>
+        <li>
+            <!--<div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-bottom-left">-->
+                <img src="https://cdn.discordapp.com/attachments/178547154908872704/536731319288201233/GettyImages-494189156.jpg" alt="" class="uk-cover"/>
+            <!--</div>-->
+        </li>
+    </ul>
+
+    <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-previous" href="#" uk-slideshow-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-next" href="#" uk-slideshow-item="next"></a>
+
+</div>
+
+    <!--<div class="uk-slidenav-position uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="animation: slide">-->
+
+        <!--<ul class="uk-slideshow-items uk-slideshow uk-overlay-active">-->
+            <!--<li>-->
+                <!--<img data-src="https://cdn.discordapp.com/attachments/178547154908872704/536731319288201233/GettyImages-494189156.jpg" width="800" height="200" alt="" class="uk-cover" uk-img="target: !.uk-slideshow-items"/>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img data-src="https://cdn.discordapp.com/attachments/178547154908872704/536731306919460875/pouring-whiskey-into-glass-with-ice-istock-igorr1.jpg" width="800" height="200" alt="" class="uk-cover" uk-img="target: !.uk-slideshow-items"/>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img data-src="https://cdn.discordapp.com/attachments/178547154908872704/536731319288201233/GettyImages-494189156.jpg" width="800" height="200" alt="" class="uk-cover" uk-img="target: !.uk-slideshow-items"/>-->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <!--<a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-previous" href="#" uk-slideshow-item="previous">L</a>-->
+        <!--<a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-next" href="#" uk-slideshow-item="next">R</a>-->
+
+    <!--</div>-->
+
 </main><!-- /.container -->
+<div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 
 </body>

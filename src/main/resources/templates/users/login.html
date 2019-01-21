@@ -15,12 +15,12 @@
 
     <form class="uk-form-width-medium" th:action="@{/login}" method="POST">
         <label class="uk-text-large" for="username">Username</label>
-        <input class="uk-input" id="username" name="username" type="text" />
+        <input class="uk-input uk-border-rounded" id="username" name="username" type="text" />
         <label class="uk-text-large" for="password">Password</label>
-        <input class="uk-input" id="password" name="password" type="password" />
+        <input class="uk-input uk-border-rounded" id="password" name="password" type="password" />
         <div class="mt-1">
-            <input class="uk-button uk-button-default uk-button-small" type="submit" value="Log In" />
-            <a th:href="@{/sign-up}" class="uk-button uk-button-default uk-button-small">Sign Up</a>
+            <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Log In" />
+            <a th:href="@{/sign-up}" class="uk-button uk-button-default uk-button-small uk-border-rounded">Sign Up</a>
         </div>
     </form>
 </main><!-- /.container -->
