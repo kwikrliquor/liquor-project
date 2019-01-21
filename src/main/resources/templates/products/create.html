@@ -12,13 +12,13 @@
     <form class="uk-form-width-medium" th:action="@{/products/create}" method="POST" th:object="${product}">
         <h1>Create Product</h1>
         Product:
-        <input class="uk-input" th:field="*{title}" />
+        <input class="uk-input uk-border-rounded" th:field="*{title}" />
         <br />
         Description:
-        <textarea class="uk-textarea" rows="3" th:field="*{body}" />
+        <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{body}" />
         <br />
         <div class="mt-1">
-            <input class="uk-button uk-button-default uk-button-small" type="submit" value="Create Product" />
+            <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Create Product" />
         </div>
     </form>
 
