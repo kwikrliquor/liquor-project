@@ -33,7 +33,6 @@ public class Product {
         this.id = id;
     }
 
-
     public String getTitle() {
         return title;
     }

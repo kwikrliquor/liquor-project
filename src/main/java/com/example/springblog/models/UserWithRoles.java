@@ -8,8 +8,11 @@ import java.util.Collection;
 
 public class UserWithRoles extends User implements UserDetails {
 
+    private String userRole;
+
     public UserWithRoles(User user) {
         super(user);  // Call the copy constructor defined in User
+        this.userRole = user.getRole().getName();
     }
 
     @Override
@@ -18,9 +21,8 @@ public class UserWithRoles extends User implements UserDetails {
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
-    @Override
-    public String getUsername() {
-        return null;
+    public String getUserRole() {
+        return userRole;
     }
 
     @Override

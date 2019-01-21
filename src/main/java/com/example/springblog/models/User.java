@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
@@ -65,6 +66,9 @@ public class User {
     @Column(nullable = false)
     private long dob;
 
+    @OneToOne
+    private Role role;
+
     public User() {
     }
 
@@ -76,7 +80,7 @@ public class User {
 
     public User(String first_name, String last_name, String address1, String address2,
         String city, String state, String postalCode, String email, String username,
-        String password, String phone_number, long dob) {
+        String password, String phone_number, long dob, Role role) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.address1 = address1;
@@ -89,6 +93,7 @@ public class User {
         this.password = password;
         this.phone_number = phone_number;
         this.dob = dob;
+        this.role = role;
     }
 
     public User(User copy) {
@@ -209,5 +214,13 @@ public class User {
 
     public void setDob(long dob) {
         this.dob = dob;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
