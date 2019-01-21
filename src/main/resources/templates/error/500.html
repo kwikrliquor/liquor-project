@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title th:text="'Ooops, ' + ${error}"></title>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div th:text="${error}"></div>
+<span th:replace="partials :: scripts"></span>
+</body>
+</html>

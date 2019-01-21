@@ -1,17 +1,29 @@
 package com.example.springblog.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
 public class User {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @NotBlank(message = "First name can not be blank")
+    @Size(min = 3, message = "First name is required")
+    @Column(nullable = false, length = 100)
     private String first_name;
 
-    @Column(nullable = false)
+    @NotBlank(message = "Last name can not be blank")
+    @Size(min = 3, message = "Last name is required")
+    @Column(nullable = false, length = 100)
     private String last_name;
 
     @Column(nullable = false)
@@ -29,18 +41,28 @@ public class User {
     @Column(nullable = false)
     private String postalCode;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Email can not be blank")
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Email must be formatted correctly")
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @NotBlank(message = "Password can not be blank")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$",
+        message = "Password must have one uppercase letter, one number, and one special "
+            + "character")
+    @Size(min = 8, message = "Password must be at least 8 characters")
+    @Column(nullable = false, length = 100)
     private String password;
 
+    @NotBlank(message = "Phone number can not be blank")
+    @Size(min = 10, message = "Phone number required")
     @Column(nullable = false)
     private String phone_number;
 
+    @NotBlank(message = "Date of birth can not be blank")
     @Column(nullable = false)
     private long dob;
     // Potential Alternative code for "dob"

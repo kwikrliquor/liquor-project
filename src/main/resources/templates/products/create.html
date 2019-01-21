@@ -3,25 +3,28 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials::head('Create Post')"></head>
 <body>
-<main role="main" class="container">
     <div th:replace="partials::header"></div>
     <div th:replace="partials::navbar"></div>
+<main role="main" class="uk-container">
 
 
 
-    <form th:action="@{/products/create}" method="POST" th:object="${product}">
-        Title:
-        <input class="form-control" th:field="*{title}" />
+    <form class="uk-form-width-medium" th:action="@{/products/create}" method="POST" th:object="${product}">
+        <h1>Create Product</h1>
+        Product:
+        <input class="uk-input" th:field="*{title}" />
         <br />
-        Body:
-        <textarea class="form-control" rows="3" th:field="*{body}" />
+        Description:
+        <textarea class="uk-textarea" rows="3" th:field="*{body}" />
         <br />
-        <input type="submit" value="Create Post" />
+        <div class="mt-1">
+            <input class="uk-button uk-button-default uk-button-small" type="submit" value="Create Product" />
+        </div>
     </form>
 
 
-    <div th:replace="partials::footer"></div>
 </main><!-- /.container -->
+    <div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 
 </body>

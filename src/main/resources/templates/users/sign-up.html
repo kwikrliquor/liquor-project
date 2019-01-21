@@ -2,18 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials::head('Sign In')"></head>
 <body>
-<h1>Create an account</h1>
-    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-        <label for="username">Username</label>
-        <input id="username" th:field="*{username}" />
-
-        <label for="email">Email</label>
-        <input id="email" th:field="*{email}" />
-
-        <label for="password">Password</label>
-        <input id="password" type="password" th:field="*{password}" />
-
-        <input value="Sign me up!" type="submit" />
-    </form>
+<main role="main" class="container">
+    <div th:replace="partials::header"></div>
+    <div th:replace="partials::navbar"></div>
+    <div class="ml-1">
+        <h1>Create an account</h1>
+        <form class="uk-form-width-medium" th:action="@{/sign-up}" method="POST" th:object="${user}">
+            <div>
+                <label for="username">Username</label>
+                <input th:if="${#fields.hasErrors('username')}" id="username" th:field="*{username}"/>
+                <input th:if="!${#fields.hasErrors('username')}"  id="username" th:field="*{username}" placeholder="Username"/>
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input th:if="${#fields.hasErrors('email')}" class="" id="email" th:field="*{email}"/>
+                <input th:if="!${#fields.hasErrors('email')}" class="" id="email" th:field="*{email}" placeholder="email@example.com"/>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+            <div>
+                <label class="uk-form-label uk-text-left" for="password">Password</label>
+                <input th:if="${#fields.hasErrors('password')}" class="" id="password" type="password" th:field="*{password}"/>
+                <input th:if="!${#fields.hasErrors('password')}" class="" id="password" type="password" th:field="*{password}" placeholder="Password"/>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            </div>
+            <div class="mt-1">
+                <input class="uk-button uk-button-default uk-button-small" value="Sign me up!" type="submit" />
+                <a class="uk-button uk-button-default uk-button-small" th:href="@{/login}">Back to Login</a>
+            </div>
+        </form>
+    </div>
+    <div th:replace="partials::footer"></div>
+</main>
+<div th:replace="partials::scripts"></div>
 </body>
 </html>
