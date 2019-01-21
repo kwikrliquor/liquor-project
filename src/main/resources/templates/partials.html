@@ -11,8 +11,9 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title th:text="${title}"></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
-    <link rel="stylesheet" type="text/css" href="../static/local.css" />
+    <link rel="stylesheet" href="css/uikit.css" />
+    <link rel="stylesheet" href="css/components/slideshow.css" />
+    <link rel="stylesheet" href="css/components/slidenav.css" />
     <style>
         .uk-card>p {
             word-wrap: break-word;
@@ -107,13 +108,13 @@
         Footer
     </footer>
 </div>
-<div th:fragment="scripts"><script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-    <script src="../static/uikit.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
+<div th:fragment="scripts">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="/"></script>
+    <script src="js/components/slideshow.js"></script>
 </div>
 
 </body>
