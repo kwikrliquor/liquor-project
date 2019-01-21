@@ -1,12 +1,13 @@
 package com.example.springblog.controllers;
 
-import com.example.springblog.repo.Users;
 import com.example.springblog.models.User;
+import com.example.springblog.repo.Users;
+import javax.validation.Valid;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,7 +27,12 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@Valid User user, Errors validation, Model model){
+    if (validation.hasErrors()) {
+      model.addAttribute("errors", validation);
+      model.addAttribute("user", user);
+      return "users/sign-up";
+    }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);

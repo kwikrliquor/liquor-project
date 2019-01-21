@@ -8,14 +8,21 @@ import java.util.Collection;
 
 public class UserWithRoles extends User implements UserDetails {
 
+    private String userRole;
+
     public UserWithRoles(User user) {
         super(user);  // Call the copy constructor defined in User
+        this.userRole = user.getRole().getName();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         String roles = ""; // Since we're not using the authorization part of the component
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
+    }
+
+    public String getUserRole() {
+        return userRole;
     }
 
     @Override
