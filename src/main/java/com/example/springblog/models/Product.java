@@ -22,7 +22,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "cat_id")
-    private ProductCategory productCategory;
+    private Category category;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -30,7 +30,7 @@ public class Product {
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "order_id")}
     )
-    private List<ProductOrder> productOrders;
+    private List<Order> orders;
 
 
     // Constructor
@@ -38,12 +38,12 @@ public class Product {
     }
 
     // Constructor
-    public Product(String name, int stock, double cost, String imgUrl, ProductCategory productCategory) {
+    public Product(String name, int stock, double cost, String imgUrl, Category category) {
         this.name = name;
         this.stock = stock;
         this.cost = cost;
         this.imgUrl = imgUrl;
-        this.productCategory = productCategory;
+        this.category = category;
     }
 
     public long getId() {
@@ -86,12 +86,12 @@ public class Product {
         this.imgUrl = imgUrl;
     }
 
-    public ProductCategory getProductCategory() {
-        return productCategory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setProductCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }

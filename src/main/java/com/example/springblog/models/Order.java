@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-public class ProductOrder {
+public class Order {
     @Id @GeneratedValue
     private long id;
 
@@ -24,15 +24,15 @@ public class ProductOrder {
     //@ManyToOne ?
 
 
-    @ManyToMany(mappedBy = "productOrders")
+    @ManyToMany(mappedBy = "orders")
     private List<Product> products;
 
     // Constructor
-    public ProductOrder() {
+    public Order() {
     }
 
     // Constructor
-    public ProductOrder(long date, List<Product> products) {
+    public Order(long date, List<Product> products) {
         this.date = date;
         this.products = products;
     }
