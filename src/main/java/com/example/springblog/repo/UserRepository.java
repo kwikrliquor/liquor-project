@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
     @Query("from User a where a.id=?1")
-    User findById(int id);
+    User findById(long id);
 }

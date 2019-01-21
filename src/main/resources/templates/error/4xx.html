@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title th:text="'Ooops, ' + ${error}"></title>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<th:block th:switch="${error}">
+  <section>
+    <div th:case="'Not Found'">
+      <h1>Page not found!!</h1>
+    </div>
+    <div th:case="'Forbidden'">
+      <h1>You don't have permission to view this page.</h1>
+    </div>
+    <div th:case="'Bad Request'">
+      <h1>No page exists!</h1>
+    </div>
+  </section>
+</th:block>
+<span th:replace="partials :: scripts"></span>
+</body>
+</html>
