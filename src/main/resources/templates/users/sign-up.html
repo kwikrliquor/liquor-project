@@ -8,15 +8,24 @@
     <div class="ml-1">
         <h1>Create an account</h1>
         <form class="uk-form-width-medium" th:action="@{/sign-up}" method="POST" th:object="${user}">
-            <label class="uk-text-large" for="username">Username</label>
-            <input class="uk-input" id="username" th:field="*{username}" />
-
-            <label class="uk-text-large" for="email">Email</label>
-            <input class="uk-input" id="email" th:field="*{email}" />
-
-            <label class="uk-text-large" for="password">Password</label>
-            <input class="uk-input" id="password" type="password" th:field="*{password}" />
-
+            <div>
+                <label for="username">Username</label>
+                <input th:if="${#fields.hasErrors('username')}" id="username" th:field="*{username}"/>
+                <input th:if="!${#fields.hasErrors('username')}"  id="username" th:field="*{username}" placeholder="Username"/>
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input th:if="${#fields.hasErrors('email')}" class="" id="email" th:field="*{email}"/>
+                <input th:if="!${#fields.hasErrors('email')}" class="" id="email" th:field="*{email}" placeholder="email@example.com"/>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+            <div>
+                <label class="uk-form-label uk-text-left" for="password">Password</label>
+                <input th:if="${#fields.hasErrors('password')}" class="" id="password" type="password" th:field="*{password}"/>
+                <input th:if="!${#fields.hasErrors('password')}" class="" id="password" type="password" th:field="*{password}" placeholder="Password"/>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            </div>
             <div class="mt-1">
                 <input class="uk-button uk-button-default uk-button-small" value="Sign me up!" type="submit" />
                 <a class="uk-button uk-button-default uk-button-small" th:href="@{/login}">Back to Login</a>
