@@ -26,13 +26,13 @@ public class Product {
     @JoinColumn(name = "cat_id")
     private Category category; // Not sure if this is correct
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "products_orders",
-            joinColumns = {@JoinColumn(name = "product_id")},
-            inverseJoinColumns = {@JoinColumn(name = "order_id")}
-    )
-    private List<Order> orders;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "products_orders",
+//            joinColumns = {@JoinColumn(name = "product_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "order_id")}
+//    )
+//    private List<Order> orders;
 
 
     @Column(nullable = false, length = 100)
@@ -55,13 +55,12 @@ public class Product {
         this.user = user;
     }
 
-    public Product(String name, int stock, double cost, String imgUrl, Category category, List<Order> orders, String title, String body, User user) {
+    public Product(String name, int stock, double cost, String imgUrl, Category category, String title, String body, User user) {
         this.name = name;
         this.stock = stock;
         this.cost = cost;
         this.imgUrl = imgUrl;
         this.category = category;
-        this.orders = orders;
         this.title = title;
         this.body = body;
         this.user = user;
@@ -113,14 +112,6 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
     }
 
     public String getTitle() {
