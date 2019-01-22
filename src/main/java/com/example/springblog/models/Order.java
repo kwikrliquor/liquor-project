@@ -17,7 +17,9 @@ public class Order {
 
 
     // Foreign key order_status_id to order_status
-    //@ManyToOne ?
+    @ManyToOne
+    @JoinColumn (name = "order_status_id")
+    private OrderStatus orderStatus;
 
 
     // Foreign key user_id to users
@@ -26,17 +28,18 @@ public class Order {
     private User user;
 
 
-    @ManyToMany(mappedBy = "orders")
-    private List<Product> products;
+//    @ManyToMany(mappedBy = "orders")
+//    private List<Product> products;
+
+
 
     // Constructor
     public Order() {
     }
 
     // Constructor
-    public Order(long date, List<Product> products) {
+    public Order(long date) {
         this.date = date;
-        this.products = products;
     }
 
     public long getId() {
@@ -55,11 +58,4 @@ public class Order {
         this.date = date;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }
