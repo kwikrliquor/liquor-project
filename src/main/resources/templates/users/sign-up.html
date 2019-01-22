@@ -4,7 +4,7 @@
 <body>
     <div th:replace="partials::header"></div>
     <div th:replace="partials::navbar"></div>
-  
+
 <main role="main" class="uk-container">
     <h1>Create an account</h1>
     <form class="uk-form-width-medium" th:action="@{/sign-up}" method="POST" th:object="${user}">
