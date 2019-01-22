@@ -5,6 +5,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -64,6 +66,9 @@ public class User {
 
     @OneToOne
     private Role role;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Order> orders;
 
     public User() {
     }

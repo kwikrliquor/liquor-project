@@ -21,7 +21,9 @@ public class Order {
 
 
     // Foreign key user_id to users
-    //@ManyToOne ?
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
 
 
     @ManyToMany(mappedBy = "orders")

@@ -24,7 +24,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "cat_id")
-    private Category category = new Category();
+    private Category category = new Category(); // Not sure if this is correct
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -36,15 +36,15 @@ public class Product {
 
 
 //============================================== Blog Code START
-//    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String title;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private String body;
 
 //    @ManyToOne
 //    @JoinColumn (name = "user_id")
-    private User user;
+//    private User user;
 //================================================================== Blog Code END
 
     public Product() {
@@ -59,11 +59,11 @@ public class Product {
     }
 
 //============================================== Blog Code START
-    public Product(String title, String body, User user) {
-        this.title = title;
-        this.body = body;
-        this.user = user;
-    }
+//    public Product(String title, String body, User user) {
+//        this.title = title;
+//        this.body = body;
+//        this.user = user;
+//    }
 //================================================================== Blog Code END
 
     public int getId() {
@@ -133,12 +133,12 @@ public class Product {
         this.body = body;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 //================================================================== Blog Code END
 }
