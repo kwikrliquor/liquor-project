@@ -6,7 +6,7 @@
     <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container uk-container-expand uk-padding-remove">
 
-<div class="uk-position-relative uk-visible-toggle uk-light uk-slideshow-fade-out" tabindex="-1" uk-slideshow="autoplay: true, autoplay-interval: 6000, ratio: false">
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true, autoplay-interval: 6000">
 
     <ul class="uk-slideshow-items" uk-height-viewport="offset-top: true; offset-bottom: 30">
         <li>
@@ -14,19 +14,29 @@
             <div class="uk-position-center uk-position-small uk-text-center uk-light">
                 <h2>Shop Beer, Wine, and Liquor!</h2>
                 <h3>30-Minute Delivery. Free Pickup.</h3>
-                <input class="uk-input uk-background-primary uk-border-rounded" id="address-search" name="address-search" type="text" />
+                <form action="" method="GET" class="">
+                    <input class="uk-input uk-form-success uk-border-rounded" id="address-search" name="address-search" type="text" placeholder="Address..." />
+                    <input class="uk-button uk-button-default uk-button-large uk-border-rounded" value="Shop Now" type="submit" />
+                </form>
+            </div>
+        </li>
+        <li>
+                <img src="https://cdn.discordapp.com/attachments/178547154908872704/536731306919460875/pouring-whiskey-into-glass-with-ice-istock-igorr1.jpg" alt="" class="uk-cover"/>
+            <div class="uk-position-center uk-position-small uk-text-center uk-light">
+                <h2>Shop Beer, Wine, and Liquor!</h2>
+                <h3>30-Minute Delivery. Free Pickup.</h3>
+                <input class="uk-input uk-background-primary uk-border-rounded" id="address-search1" name="address-search" type="text" placeholder="Address..." />
                 <input class="uk-button uk-button-default uk-button-large uk-border-rounded" value="Shop Now" type="submit" />
             </div>
         </li>
         <li>
-            <!--<div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-right">-->
-                <img src="https://cdn.discordapp.com/attachments/178547154908872704/536731306919460875/pouring-whiskey-into-glass-with-ice-istock-igorr1.jpg" alt="" class="uk-cover"/>
-            <!--</div>-->
-        </li>
-        <li>
-            <!--<div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-bottom-left">-->
                 <img src="https://cdn.discordapp.com/attachments/178547154908872704/536731319288201233/GettyImages-494189156.jpg" alt="" class="uk-cover"/>
-            <!--</div>-->
+            <div class="uk-position-center uk-position-small uk-text-center uk-light">
+                <h2>Shop Beer, Wine, and Liquor!</h2>
+                <h3>30-Minute Delivery. Free Pickup.</h3>
+                <input class="uk-input uk-form-success uk-border-rounded" id="address-search2" name="address-search" type="text" placeholder="Address..." />
+                <input class="uk-button uk-button-default uk-button-large uk-border-rounded" value="Shop Now" type="submit" />
+            </div>
         </li>
     </ul>
 

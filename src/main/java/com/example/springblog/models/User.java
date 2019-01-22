@@ -1,71 +1,69 @@
 package com.example.springblog.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotBlank;
-
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;
 
-    @NotBlank(message = "First name can not be blank")
-    @Size(min = 3, message = "First name is required")
-    @Column(nullable = false, length = 100)
+//    @NotBlank(message = "First name can not be blank")
+//    @Size(min = 3, message = "First name is required")
+    @Column(nullable = true, length = 100)
     private String first_name;
 
-    @NotBlank(message = "Last name can not be blank")
-    @Size(min = 3, message = "Last name is required")
-    @Column(nullable = false, length = 100)
+//    @NotBlank(message = "Last name can not be blank")
+//    @Size(min = 3, message = "Last name is required")
+    @Column(nullable = true, length = 100)
     private String last_name;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = true, length = 1000)
     private String address1;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = true, length = 1000)
     private String address2;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = true, length = 500)
     private String city;
 
-    @Column(nullable = false, length = 2)
+    @Column(nullable = true, length = 2)
     private String state;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String postalCode;
 
-    @NotBlank(message = "Email can not be blank")
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Email must be formatted correctly")
+//    @NotBlank(message = "Email can not be blank")
+//    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Email must be formatted correctly")
     @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @Column(nullable = false, length = 100, unique = true)
     private String username;
 
-    @NotBlank(message = "Password can not be blank")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$",
-        message = "Password must have one uppercase letter, one number, and one special "
-            + "character")
-    @Size(min = 8, message = "Password must be at least 8 characters")
+//    @NotBlank(message = "Password can not be blank")
+//    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$",
+//        message = "Password must have one uppercase letter, one number, and one special "
+//            + "character")
+//    @Size(min = 8, message = "Password must be at least 8 characters")
     @Column(nullable = false, length = 100)
     private String password;
 
-    @NotBlank(message = "Phone number can not be blank")
-    @Size(min = 10, message = "Phone number required")
-    @Column(nullable = false)
+//    @NotBlank(message = "Phone number can not be blank")
+//    @Size(min = 10, message = "Phone number required")
+    @Column(nullable = true)
     private String phone_number;
 
-    @NotBlank(message = "Date of birth can not be blank")
-    @Column(nullable = false)
-    private long dob;
+//    @NotBlank(message = "Date of birth can not be blank")
+    @Column(nullable = true)
+    private int dob;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Order> orders;
+
+
 
     public User() {
     }
@@ -78,7 +76,7 @@ public class User {
 
     public User(String first_name, String last_name, String address1, String address2,
         String city, String state, String postalCode, String email, String username,
-        String password, String phone_number, long dob) {
+        String password, String phone_number, int dob) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.address1 = address1;
@@ -95,18 +93,9 @@ public class User {
 
     public User(User copy) {
         id = copy.id;
-        first_name = copy.first_name;
-        last_name = copy.last_name;
-        address1 = copy.address1;
-        address2 = copy.address2;
-        city = copy.city;
-        state = copy.state;
-        postalCode = copy.postalCode;
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        phone_number = copy.phone_number;
-        dob = copy.dob;
     }
 
     public long getId() {
@@ -209,7 +198,8 @@ public class User {
         return dob;
     }
 
-    public void setDob(long dob) {
+    public void setDob(int dob) {
         this.dob = dob;
     }
+
 }
