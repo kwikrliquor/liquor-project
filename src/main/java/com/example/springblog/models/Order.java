@@ -17,7 +17,9 @@ public class Order {
 
 
     // Foreign key order_status_id to order_status
-    //@ManyToOne ?
+    @ManyToOne
+    @JoinColumn (name = "order_status_id")
+    private OrderStatus orderStatus;
 
 
     // Foreign key user_id to users
@@ -28,6 +30,8 @@ public class Order {
 
     @ManyToMany(mappedBy = "orders")
     private List<Product> products;
+
+
 
     // Constructor
     public Order() {
