@@ -10,21 +10,21 @@ public class Product {
     @Id @GeneratedValue
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int stock;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double cost;
 
-    @Column(name = "img_url", nullable = false)
+    @Column(name = "img_url", nullable = true)
     private String imgUrl;
 
     @ManyToOne
     @JoinColumn(name = "cat_id")
-    private Category category = new Category(); // Not sure if this is correct
+    private Category category; // Not sure if this is correct
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -35,36 +35,37 @@ public class Product {
     private List<Order> orders;
 
 
-//============================================== Blog Code START
     @Column(nullable = false, length = 100)
     private String title;
 
     @Column(nullable = false)
     private String body;
 
-//    @ManyToOne
-//    @JoinColumn (name = "user_id")
-//    private User user;
-//================================================================== Blog Code END
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
+
 
     public Product() {
     }
 
-    public Product(String name, int stock, double cost, String imgUrl, Category category) {
+    public Product(String title, String body, User user) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
+
+    public Product(String name, int stock, double cost, String imgUrl, Category category, List<Order> orders, String title, String body, User user) {
         this.name = name;
         this.stock = stock;
         this.cost = cost;
         this.imgUrl = imgUrl;
         this.category = category;
+        this.orders = orders;
+        this.title = title;
+        this.body = body;
+        this.user = user;
     }
-
-//============================================== Blog Code START
-//    public Product(String title, String body, User user) {
-//        this.title = title;
-//        this.body = body;
-//        this.user = user;
-//    }
-//================================================================== Blog Code END
 
     public int getId() {
         return id;
@@ -114,9 +115,14 @@ public class Product {
         this.category = category;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
 
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
-//============================================== Blog Code START
     public String getTitle() {
         return title;
     }
@@ -133,12 +139,11 @@ public class Product {
         this.body = body;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-//================================================================== Blog Code END
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
