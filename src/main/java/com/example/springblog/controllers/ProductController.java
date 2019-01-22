@@ -38,7 +38,7 @@ public class ProductController {
     @PostMapping("/products/create")
     public String create(@ModelAttribute Product product) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        product.setUser(user);
+//        product.setUser(user);
         productService.create(product);
         return "redirect:/products";
         // save the ad...

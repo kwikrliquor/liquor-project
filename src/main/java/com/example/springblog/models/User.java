@@ -1,11 +1,10 @@
 package com.example.springblog.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue
@@ -60,6 +59,11 @@ public class User {
 //    @NotBlank(message = "Date of birth can not be blank")
     @Column(nullable = true)
     private int dob;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Order> orders;
+
+
 
     public User() {
     }
