@@ -13,12 +13,12 @@ public class User {
 
 //    @NotBlank(message = "First name can not be blank")
 //    @Size(min = 3, message = "First name is required")
-    @Column(nullable = false, length = 100)
+    @Column(nullable = true, length = 100)
     private String first_name;
 
 //    @NotBlank(message = "Last name can not be blank")
 //    @Size(min = 3, message = "Last name is required")
-    @Column(nullable = false, length = 100)
+    @Column(nullable = true, length = 100)
     private String last_name;
 
     @Column(nullable = true, length = 1000)
@@ -30,10 +30,10 @@ public class User {
     @Column(nullable = true, length = 500)
     private String city;
 
-    @Column(nullable = false, length = 2)
+    @Column(nullable = true, length = 2)
     private String state;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String postalCode;
 
 //    @NotBlank(message = "Email can not be blank")
@@ -54,11 +54,11 @@ public class User {
 
 //    @NotBlank(message = "Phone number can not be blank")
 //    @Size(min = 10, message = "Phone number required")
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String phone_number;
 
 //    @NotBlank(message = "Date of birth can not be blank")
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int dob;
 
     public User() {
