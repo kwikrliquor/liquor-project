@@ -4,7 +4,7 @@ import com.example.springblog.models.Product;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ProductRepository extends CrudRepository<Product, Integer> {
+public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("from Product a where a.user=?1")
     Product findUserId(int id);
     @Query("delete from Product a where a.id=?1")

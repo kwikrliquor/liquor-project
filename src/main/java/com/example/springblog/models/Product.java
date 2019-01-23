@@ -1,12 +1,17 @@
 package com.example.springblog.models;
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
 public class Product {
     @Id @GeneratedValue
-    private int id;
+    private long id;
 
     @Column(nullable = true)
     private int stock;
@@ -35,6 +40,18 @@ public class Product {
     public Product() {
     }
 
+    public Product(String title, String body, User user) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
+
+    public Product(String title, String body, Category category) {
+        this.category = category;
+        this.title = title;
+        this.body = body;
+    }
+
     public Product(String title, String body, Category category, User user) {
         this.category = category;
         this.title = title;
@@ -52,11 +69,11 @@ public class Product {
         this.user = user;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

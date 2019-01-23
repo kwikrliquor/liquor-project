@@ -29,7 +29,7 @@ public class ProductService {
         return (List<Category>) catRepo.findAll();
     }
 
-    public Product findOne(int id) {
+    public Product findOne(long id) {
         return postsdao.findOne(id);
     }
 
