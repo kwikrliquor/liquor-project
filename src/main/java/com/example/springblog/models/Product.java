@@ -6,7 +6,7 @@ import java.util.List;
 @Table(name = "products")
 public class Product {
     @Id @GeneratedValue
-    private int id;
+    private long id;
 
     @Column(nullable = true)
     private int stock;
@@ -52,11 +52,11 @@ public class Product {
         this.user = user;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
