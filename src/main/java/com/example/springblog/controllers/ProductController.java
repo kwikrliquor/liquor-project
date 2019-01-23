@@ -3,6 +3,7 @@ package com.example.springblog.controllers;
 import com.example.springblog.models.Category;
 import com.example.springblog.models.Product;
 import com.example.springblog.models.User;
+import com.example.springblog.repo.CategoryRepository;
 import com.example.springblog.services.ProductService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ public class ProductController {
 
     @GetMapping("/products")
     public String show(Model model) {
+
         model.addAttribute("products", productService.getAll());
         return "products/index";
     }

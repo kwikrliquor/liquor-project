@@ -10,9 +10,9 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     @Query("delete from Product a where a.id=?1")
     Product deleteById(int id);
     @Query("from Product a where a.category=?1")
-    Product findBeer(long id);
+    Product findBeer();
     @Query("from Product a where a.category=?2")
-    Product findWine(long id);
+    Product findWine(int id);
     @Query("from Product a where a.category=?3")
-    Product findLiquor(long id);
+    Product findLiquor(int id);
 }

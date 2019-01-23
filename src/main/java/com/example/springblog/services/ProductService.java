@@ -1,6 +1,8 @@
 package com.example.springblog.services;
 
+import com.example.springblog.models.Category;
 import com.example.springblog.models.Product;
+import com.example.springblog.repo.CategoryRepository;
 import com.example.springblog.repo.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,15 +11,22 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductRepository postsdao;
+    private final CategoryRepository catRepo;
 
 //    private List<Product> products;
 
-    public ProductService(ProductRepository postsdao) {
+
+    public ProductService(ProductRepository postsdao, CategoryRepository catRepo) {
         this.postsdao = postsdao;
+        this.catRepo = catRepo;
     }
 
     public List<Product> getAll() {
         return (List<Product>) postsdao.findAll();
+    }
+
+    public List<Category> catGetAll() {
+        return (List<Category>) catRepo.findAll();
     }
 
     public Product findOne(int id) {
@@ -39,18 +48,34 @@ public class ProductService {
         return product;
     }
 
-    public Product beer(Product product) {
-        postsdao.findBeer(product.getCategory().getId());
-        return product;
+    public Category catCreate(Category category) {
+        catRepo.save(category);
+        return category;
     }
 
-    public Product wine(Product product) {
-        postsdao.findWine(product.getCategory().getId());
-        return product;
+    public Category catDelete(Category category) {
+        catRepo.delete(category);
+        return category;
     }
 
-    public Product liquor(Product product) {
-        postsdao.findLiquor(product.getCategory().getId());
-        return product;
+    public Category catEdit(Category category) {
+        catRepo.save(category);
+        return category;
     }
+
+
+
+    public List<Product> beer() {
+        return (List<Product>) postsdao.findBeer();
+    }
+
+//    public Product wine(Product product) {
+//        postsdao.findWine(product.getCategory().getId());
+//        return product;
+//    }
+//
+//    public Product liquor(Product product) {
+//        postsdao.findLiquor(product.getCategory().getId());
+//        return product;
+//    }
 }
