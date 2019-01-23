@@ -30,12 +30,6 @@ public class UserController {
     @Autowired
     private UserService usersService;
 
-
-//    public UserController(Users users, PasswordEncoder passwordEncoder) {
-//        this.users = users;
-//        this.passwordEncoder = passwordEncoder;
-//    }
-
     @GetMapping("/sign-up")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
@@ -77,9 +71,6 @@ public class UserController {
         ur.setRole("ROLE_CUSTOMER");
         ur.setUserId(newUser.getId());
         userRoles.save(ur);
-
-        // Programmatic login after registering a user
-        usersService.authenticate(user);
 
         m.addAttribute("user", user);
         return "redirect:/login";
