@@ -20,8 +20,25 @@ public class ProductController {
 
     @GetMapping("/products")
     public String show(Model model) {
-
         model.addAttribute("products", productService.getAll());
+        return "products/index";
+    }
+
+    @GetMapping("/products/beer")
+    public String beer(Model model) {
+        model.addAttribute("products", productService.beer());
+        return "products/index";
+    }
+
+    @GetMapping("/products/wine")
+    public String wine(Model model) {
+        model.addAttribute("products", productService.wine());
+        return "products/index";
+    }
+
+    @GetMapping("/products/liquor")
+    public String liquor(Model model) {
+        model.addAttribute("products", productService.liquor());
         return "products/index";
     }
 
