@@ -63,10 +63,16 @@ public class ProductService {
         return category;
     }
 
-
-
     public List<Product> beer() {
-        return (List<Product>) postsdao.findBeer();
+        return postsdao.findBeer();
+    }
+
+    public List<Product> wine() {
+        return postsdao.findWine();
+    }
+
+    public List<Product> liquor() {
+        return postsdao.findLiquor();
     }
 
 //    public Product wine(Product product) {
