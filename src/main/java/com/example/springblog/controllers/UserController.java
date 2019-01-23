@@ -58,7 +58,7 @@ public class UserController {
         if (validation.hasErrors()) {
             m.addAttribute("errors", validation);
             m.addAttribute("user", user);
-            return "users/create";
+            return "users/sign-up";
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));

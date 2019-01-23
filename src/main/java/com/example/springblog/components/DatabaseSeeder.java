@@ -48,72 +48,48 @@ public class DatabaseSeeder implements CommandLineRunner {
     this.users = users;
   }
 
-  @EventListener
-  public void seed(ContextRefreshedEvent event) {
-    seedRoles();
-    seedCategories();
-    seedUsers();
-    seedProducts();
-  }
+//  @EventListener
+//  public void seed(ContextRefreshedEvent event) {
+//    seedRoles();
+//    seedCategories();
+//    seedUsers();
+//    seedProducts();
+//  }
 
   private void seedRoles() {
-    long count = StreamSupport.stream(
-        roleRepo.findAll().spliterator(),
-        false)
-        .count();
-    if (count < 3) {
       UserRole roles[] = {
           new UserRole("ROLE_ADMIN",1),
           new UserRole("ROLE_DRIVER", 2),
           new UserRole("ROLE_CUSTOMER", 3)
       };
       roleRepo.save(Arrays.asList(roles));
-    }
   }
 
   private void seedCategories() {
-    long count = StreamSupport.stream(
-        catRepo.findAll().spliterator(),
-        false)
-        .count();
-    if (count < 3) {
       Category types[] = {
           new Category("beer"),
           new Category("wine"),
           new Category("liquor")
       };
       catRepo.save(Arrays.asList(types));
-    }
   }
 
   private void seedUsers() {
-    long count = StreamSupport.stream(
-        userRepo.findAll().spliterator(),
-        false)
-        .count();
-    if (count < 3) {
       User users[] = {
           new User("admin", "admin@gmail.com", passwordEncoder.encode("password")),
           new User("driver", "driver@gmail.com", passwordEncoder.encode("password")),
           new User("customer", "customer@gmail.com", passwordEncoder.encode("password"))
       };
       userRepo.save(Arrays.asList(users));
-    }
   }
 
   private void seedProducts() {
-    long count = StreamSupport.stream(
-        prodRepo.findAll().spliterator(),
-        false)
-        .count();
-    if (count < 3) {
       Product products[] = {
-          new Product("Beer", "12 pack of beer", catRepo.findById(1), userRepo.findById(1)),
-          new Product("Wine", "Big bottle of red wine", catRepo.findById(2), userRepo.findById(1)),
-          new Product("Liquor", "Russian Vodka", catRepo.findById(3), userRepo.findById(1))
+          new Product("Beer", "12 pack of beer", catRepo.findByName("beer"), userRepo.findByUsername("admin")),
+          new Product("Wine", "Big bottle of red wine", catRepo.findByName("wine"), userRepo.findByUsername("admin")),
+          new Product("Liquor", "Russian Vodka", catRepo.findByName("liquor"), userRepo.findByUsername("admin"))
       };
       prodRepo.save(Arrays.asList(products));
-    }
   }
 
   @Override
