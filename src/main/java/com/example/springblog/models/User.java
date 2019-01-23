@@ -63,8 +63,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Order> orders;
 
-
-
     public User() {
     }
 

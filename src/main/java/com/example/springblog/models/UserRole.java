@@ -1,7 +1,11 @@
 package com.example.springblog.models;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_roles")
@@ -19,6 +23,11 @@ public class UserRole {
     private long userId;
 
     public UserRole() {
+    }
+
+    public UserRole(String role, long userId) {
+        this.role = role;
+        this.userId = userId;
     }
 
     public long getId() {
