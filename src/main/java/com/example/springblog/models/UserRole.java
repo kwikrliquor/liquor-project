@@ -15,15 +15,10 @@ public class UserRole {
     @Column(name = "role")
     private String role;
 
-
-    @OneToOne
-    private User user;
+    @Column(name = "user_id")
+    private long userId;
 
     public UserRole() {
-    }
-
-    public UserRole(String role) {
-        this.role = role;
     }
 
     public long getId() {
@@ -34,12 +29,19 @@ public class UserRole {
         this.id = id;
     }
 
-
     public String getRole() {
         return role;
     }
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }
