@@ -111,6 +111,4 @@ public class UserController {
     public Boolean checkEditAuth(User user){
         return usersService.isLoggedIn() && (user.getId() == usersService.loggedInUser().getId());
     }
-
-
 }
