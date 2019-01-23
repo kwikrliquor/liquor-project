@@ -1,6 +1,7 @@
 package com.example.springblog.controllers;
 
 import com.example.springblog.models.User;
+import com.example.springblog.models.UserRole;
 import com.example.springblog.repo.UserRepository;
 import com.example.springblog.repo.UserRoleRepository;
 import com.example.springblog.repo.Users;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -74,7 +74,7 @@ public class UserController {
         User newUser = usersRepository.save(user);
 
         UserRole ur = new UserRole();
-        ur.setRole("ROLE_USER");
+        ur.setRole("ROLE_CUSTOMER");
         ur.setUserId(newUser.getId());
         userRoles.save(ur);
 

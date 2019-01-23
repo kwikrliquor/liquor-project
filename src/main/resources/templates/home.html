@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="partials::head('Home')"></head>
 <body>
     <div th:replace="partials::header"></div>
@@ -43,6 +43,17 @@
     <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-previous" href="#" uk-slideshow-item="previous"></a>
     <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-next" href="#" uk-slideshow-item="next"></a>
 
+    <div sec:authorize="hasRole('ROLE_CUSTOMER')">
+        The CUSTOMER will see this.
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        The ADMIN will see this.
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_DRIVER')">
+        The DRIVER will see this.
+    </div>
 </div>
 
 </main><!-- /.container -->
