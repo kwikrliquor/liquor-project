@@ -110,12 +110,94 @@
     <!--</div>-->
 <!--</nav>-->
 
-<nav th:fragment="navbar" class="uk-navbar">
+<nav th:fragment="navbar" class="uk-navbar" sec:authorize="!isAuthenticated()">
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
+            <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
+            <li><a href="/products"><div>Products</div></a></li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
+            <div sec:authorize="isAuthenticated()">
+                <li>
+                    <form th:action="@{/logout}" th:method="POST">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
+                    </form>
+                </li>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <li>
+                    <form th:action="@{/login}" th:method="GET">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
+                    </form>
+                </li>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_CUSTOMER')">
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
+            <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
+            <li><a href="/products"><div>Products</div></a></li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
+            <div sec:authorize="isAuthenticated()">
+                <li>
+                    <form th:action="@{/logout}" th:method="POST">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
+                    </form>
+                </li>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <li>
+                    <form th:action="@{/login}" th:method="GET">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
+                    </form>
+                </li>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_ADMIN')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
             <li><a href="/products"><div>Products</div></a></li>
             <li><a href="/products/create">Create Product</a></li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
+            <div sec:authorize="isAuthenticated()">
+                <li>
+                    <form th:action="@{/logout}" th:method="POST">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
+                    </form>
+                </li>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <li>
+                    <form th:action="@{/login}" th:method="GET">
+                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
+                    </form>
+                </li>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_DRIVER')">
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
+            <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
+            <li><a href="/products"><div>Open Deliveries</div></a></li>
+            <li><a href="/products"><div>Your Deliveries</div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">

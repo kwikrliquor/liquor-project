@@ -26,15 +26,6 @@ public class Product {
     @JoinColumn(name = "cat_id")
     private Category category; // Not sure if this is correct
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "products_orders",
-//            joinColumns = {@JoinColumn(name = "product_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "order_id")}
-//    )
-//    private List<Order> orders;
-
-
     @Column(nullable = false, length = 100)
     private String title;
 

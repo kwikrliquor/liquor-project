@@ -1,5 +1,6 @@
 package com.example.springblog.controllers;
 
+import com.example.springblog.models.Category;
 import com.example.springblog.models.Product;
 import com.example.springblog.models.User;
 import com.example.springblog.services.ProductService;
