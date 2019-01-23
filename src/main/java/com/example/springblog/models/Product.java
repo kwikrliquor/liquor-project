@@ -5,10 +5,8 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 public class Product {
-
-
     @Id @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(nullable = true)
     private int stock;
@@ -54,11 +52,11 @@ public class Product {
         this.user = user;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
