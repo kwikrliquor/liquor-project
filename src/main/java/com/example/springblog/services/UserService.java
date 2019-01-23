@@ -68,4 +68,9 @@ public class UserService {
         context.setAuthentication(auth);
     }
 
+    public User edit(User user) {
+        usersRepository.save(user);
+        return user;
+    }
+
 }

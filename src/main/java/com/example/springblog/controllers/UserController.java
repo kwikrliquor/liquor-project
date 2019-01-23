@@ -4,7 +4,6 @@ import com.example.springblog.models.User;
 import com.example.springblog.models.UserRole;
 import com.example.springblog.repo.UserRepository;
 import com.example.springblog.repo.UserRoleRepository;
-import com.example.springblog.repo.Users;
 import com.example.springblog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -58,7 +59,7 @@ public class UserController {
         if (validation.hasErrors()) {
             m.addAttribute("errors", validation);
             m.addAttribute("user", user);
-            return "users/create";
+            return "users/sign-up";
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -80,4 +81,36 @@ public class UserController {
     public String logout(){
         return "redirect:/login";
     }
+
+    @GetMapping("/users/{id}/edit")
+    public String editUser(@PathVariable Long id, Model viewModel){
+        User user = usersRepository.findOne(id);
+        viewModel.addAttribute("user", user);
+        viewModel.addAttribute("sessionUser", usersService.loggedInUser());
+        viewModel.addAttribute("showEditControls", usersService.canEditProfile(user));
+        return "users/profile";
+    }
+
+    @PostMapping("/users/{id}/edit")
+    public String editUser(@PathVariable Long id, @Valid User editedUser, Errors validation, Model m){
+
+//        editedUser.setId(id);
+
+//        if (validation.hasErrors()) {
+//            m.addAttribute("errors", validation);
+//            m.addAttribute("user", editedUser);
+//            m.addAttribute("showEditControls", checkEditAuth(editedUser));
+//            return "users/edit";
+//        }
+        editedUser.setPassword(passwordEncoder.encode(editedUser.getPassword()));
+        usersRepository.save(editedUser);
+        return "redirect:/products";
+    }
+
+    // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
+    public Boolean checkEditAuth(User user){
+        return usersService.isLoggedIn() && (user.getId() == usersService.loggedInUser().getId());
+    }
+
+
 }
