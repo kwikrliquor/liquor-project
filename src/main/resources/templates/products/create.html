@@ -14,6 +14,13 @@
         Product:
         <input class="uk-input uk-border-rounded" th:field="*{title}" />
         <br />
+        Product:
+        <select name="cat_id" id="cat_id" th:field="*{category.id}">
+            <option value="1">Beer</option>
+            <option value="2">Wine</option>
+            <option value="3">Liquor</option>
+        </select>
+        <br />
         Description:
         <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{body}" />
         <br />
@@ -21,6 +28,7 @@
             <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Create Product" />
         </div>
     </form>
+
 
 
 </main><!-- /.container -->

@@ -38,4 +38,19 @@ public class ProductService {
         postsdao.save(product);
         return product;
     }
+
+    public Product beer(Product product) {
+        postsdao.findBeer(product.getCategory().getId());
+        return product;
+    }
+
+    public Product wine(Product product) {
+        postsdao.findWine(product.getCategory().getId());
+        return product;
+    }
+
+    public Product liquor(Product product) {
+        postsdao.findLiquor(product.getCategory().getId());
+        return product;
+    }
 }

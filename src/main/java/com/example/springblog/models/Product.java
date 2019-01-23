@@ -8,10 +8,7 @@ public class Product {
 
 
     @Id @GeneratedValue
-    private int id;
-
-    @Column(nullable = true)
-    private String name;
+    private long id;
 
     @Column(nullable = true)
     private int stock;
@@ -40,14 +37,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(String title, String body, User user) {
+    public Product(String title, String body, Category category, User user) {
+        this.category = category;
         this.title = title;
         this.body = body;
         this.user = user;
     }
 
-    public Product(String name, int stock, double cost, String imgUrl, Category category, String title, String body, User user) {
-        this.name = name;
+    public Product(int stock, double cost, String imgUrl, Category category, String title, String body, User user) {
         this.stock = stock;
         this.cost = cost;
         this.imgUrl = imgUrl;
@@ -57,20 +54,12 @@ public class Product {
         this.user = user;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getStock() {

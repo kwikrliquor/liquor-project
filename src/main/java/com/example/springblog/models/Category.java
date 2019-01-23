@@ -12,6 +12,10 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
+//    @OneToMany
+//    @JoinColumn(name = "prod_id")
+//    private Product product; // Not sure if this is correct
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Product> products;
 
