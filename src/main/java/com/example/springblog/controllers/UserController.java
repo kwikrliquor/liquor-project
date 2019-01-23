@@ -80,4 +80,8 @@ public class UserController {
     public String logout(){
         return "redirect:/login";
     }
+
+    @GetMapping("/account")
+    public String showUserAccount
+
 }
