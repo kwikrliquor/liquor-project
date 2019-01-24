@@ -7,6 +7,7 @@ import com.example.springblog.repo.UserRoleRepository;
 import com.example.springblog.services.UserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,13 +77,11 @@ public class UserController {
     return "redirect:/login";
   }
 
-  @GetMapping("/profile/edit/{id}")
-  public String editUser(@PathVariable Long id, Model viewModel){
-    User user = usersRepository.findOne(id);
-    viewModel.addAttribute("user", usersService.edit(user));
-    viewModel.addAttribute("id", id);
-    viewModel.addAttribute("sessionUser", usersService.loggedInUser());
-    viewModel.addAttribute("showEditControls", usersService.canEditProfile(user));
+  @GetMapping("/profile/edit")
+  public String editUser(Model model){
+    User userP = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User user = usersRepository.findOne(userP.getId());
+    model.addAttribute("user", user);
     return "users/profile";
   }
 

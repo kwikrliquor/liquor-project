@@ -5,7 +5,7 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
-    <form class="uk-form-width-medium" th:action="@{'/profile/edit/' + ${user.getId()}}" method="POST" th:object="${user}">
+    <form class="uk-form-width-medium" th:action="@{/profile/edit/}" method="POST" th:object="${user}">
         <h1>Edit Profile</h1>
         First Name:
         <input class="uk-input uk-border-rounded" th:field="*{first_name}" />
