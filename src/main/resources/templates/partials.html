@@ -109,8 +109,8 @@
         <!--</ul>-->
     <!--</div>-->
 <!--</nav>-->
-
-<nav th:fragment="navbar" class="uk-navbar" sec:authorize="!isAuthenticated()">
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+<nav th:fragment="navbar" class="uk-navbar" style="position: relative; z-index: 980;" sec:authorize="!isAuthenticated()">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
@@ -121,24 +121,33 @@
         </ul>
     </div>
     <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav uk-nav-parent-icon">
-            <div sec:authorize="isAuthenticated()">
-                <li>
-                    <form th:action="@{/logout}" th:method="POST">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
-                    </form>
-                </li>
-            </div>
-            <div sec:authorize="!isAuthenticated()">
-                <li>
-                    <form th:action="@{/login}" th:method="GET">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
-                    </form>
-                </li>
-            </div>
+        <ul class="uk-navbar-nav">
+            <li>
+                <form th:action="@{/login}" th:method="GET">
+                    <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
+                </form>
+            </li>
         </ul>
     </div>
+
+        <!--<ul class="uk-navbar-nav uk-nav-parent-icon">-->
+            <!--<div sec:authorize="isAuthenticated()">-->
+                <!--<li>-->
+                    <!--<form th:action="@{/logout}" th:method="POST">-->
+                        <!--<input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>-->
+                    <!--</form>-->
+                <!--</li>-->
+            <!--</div>-->
+            <!--<div sec:authorize="!isAuthenticated()">-->
+                <!--<li>-->
+                    <!--<form th:action="@{/login}" th:method="GET">-->
+                        <!--<input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>-->
+                    <!--</form>-->
+                <!--</li>-->
+            <!--</div>-->
+        <!--</ul>-->
 </nav>
+</div>
 
 <nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_CUSTOMER')">
     <div class="uk-navbar-left">
@@ -151,21 +160,19 @@
         </ul>
     </div>
     <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav uk-nav-parent-icon">
-            <div sec:authorize="isAuthenticated()">
-                <li>
-                    <form th:action="@{/logout}" th:method="POST">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
-                    </form>
-                </li>
-            </div>
-            <div sec:authorize="!isAuthenticated()">
-                <li>
-                    <form th:action="@{/login}" th:method="GET">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
-                    </form>
-                </li>
-            </div>
+        <ul class="uk-navbar-nav">
+            <li class="uk-inline">
+                <a href="#">Parent</a>
+                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+                    <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="POST">
+                            <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
+                        </form>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>
