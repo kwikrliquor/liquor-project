@@ -84,29 +84,30 @@ public class UserController {
     }
 
     @GetMapping("/profile/edit/{id}")
-    public String editUser(Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", user);
-        model.addAttribute("sessionUser", usersService.loggedInUser());
-        model.addAttribute("showEditControls", usersService.canEditProfile(user));
+    public String editUser(@PathVariable Long id, Model viewModel){
+        User user = usersRepository.findOne(id);
+        viewModel.addAttribute("user", usersService.edit(user));
+        viewModel.addAttribute("id", id);
+        viewModel.addAttribute("sessionUser", usersService.loggedInUser());
+        viewModel.addAttribute("showEditControls", usersService.canEditProfile(user));
         return "users/profile";
     }
 
-    @PostMapping("/profile/edit/{id}")
-    public String editUser(@Valid User editedUser, Errors validation, Model m){
-
-//        editedUser.setId(id);
-
-//        if (validation.hasErrors()) {
-//            m.addAttribute("errors", validation);
-//            m.addAttribute("user", editedUser);
-//            m.addAttribute("showEditControls", checkEditAuth(editedUser));
-//            return "users/edit";
-//        }
-        editedUser.setPassword(passwordEncoder.encode(editedUser.getPassword()));
-        usersRepository.save(editedUser);
-        return "redirect:/products";
-    }
+//    @PostMapping("/profile/edit/{id}")
+//    public String editUser(@PathVariable Long id, @Valid User editedUser, Errors validation, Model m){
+//
+////        editedUser.setId(id);
+//
+////        if (validation.hasErrors()) {
+////            m.addAttribute("errors", validation);
+////            m.addAttribute("user", editedUser);
+////            m.addAttribute("showEditControls", checkEditAuth(editedUser));
+////            return "users/edit";
+////        }
+//        editedUser.setPassword(passwordEncoder.encode(editedUser.getPassword()));
+//        usersRepository.save(editedUser);
+//        return "redirect:/products";
+//    }
 
     // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
     public Boolean checkEditAuth(User user){
