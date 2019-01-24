@@ -31,7 +31,7 @@ public class DatabaseSeeder implements CommandLineRunner {
   private final PasswordEncoder passwordEncoder;
   private final Users users;
 
-  @Value("development")
+  @Value("${app.env}")
   private String environment;
 
 
