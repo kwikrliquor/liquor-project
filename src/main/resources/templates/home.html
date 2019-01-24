@@ -2,10 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="partials::head('Home')"></head>
 <body>
-    <div th:replace="partials::header"></div>
-    <div th:replace="partials::navbar"></div>
-<main role="main" class="uk-container uk-container-expand uk-padding-remove">
-
+<div th:replace="partials::header"></div>
+<div th:replace="partials::navbar"></div>
 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true, autoplay-interval: 6000">
 
     <ul class="uk-slideshow-items" uk-height-viewport="offset-top: true; offset-bottom: 30">
@@ -43,6 +41,9 @@
     <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-previous" href="#" uk-slideshow-item="previous"></a>
     <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-next" href="#" uk-slideshow-item="next"></a>
 </div>
+
+<main role="main" class="uk-container">
+
 
     <div sec:authorize="!isAuthenticated()">
         <div tabindex="0" class="uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">

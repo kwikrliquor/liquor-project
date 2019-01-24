@@ -6,8 +6,8 @@
     <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
 
-    <h1>Shop Beer, Wine, and Liquor</h1>
-    <h3>1-Hour Delivery. Free Pickup. Shipping.</h3>
+    <h1 class="uk-text-center">Shop Beer, Wine, and Liquor</h1>
+    <h3 class="uk-text-center">30-Minute Delivery. Free Pickup. Shipping.</h3>
 
     <div sec:authorize="!isAuthenticated()">
         <div tabindex="0" class="uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
