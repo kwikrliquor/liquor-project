@@ -195,7 +195,7 @@ public class DatabaseSeeder implements CommandLineRunner {
   }
 
   @Override
-  public void run(String... strings) {
+  public void run(String... strings) throws Exception {
     if (!environment.equals("development")) {
       log.info("app.env is not development, doing nothing.");
       return;

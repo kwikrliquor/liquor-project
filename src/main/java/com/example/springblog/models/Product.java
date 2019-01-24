@@ -30,7 +30,7 @@ public class Product {
     private String name;
 
     @Column(nullable = false, length = 10000)
-    private String details;
+    private String type;
 
     @Column(nullable = false, length = 10000)
     private String description;
@@ -42,36 +42,36 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String details, String description, User user) {
+    public Product(String name, String type, String description, User user) {
         this.name = name;
-        this.details = details;
+        this.type = type;
         this.description = description;
         this.user = user;
     }
 
-    public Product(String name, String details, String description, Category category) {
+    public Product(String name, String type, String description, Category category) {
         this.name = name;
-        this.details = details;
+        this.type = type;
         this.description = description;
         this.category = category;
     }
 
-    public Product(String name, String details, String description, Category category, User user) {
+    public Product(String name, String type, String description, Category category, User user) {
         this.name = name;
-        this.details = details;
+        this.type = type;
         this.description = description;
         this.category = category;
         this.user = user;
     }
 
     public Product(int stock, double cost, String imgUrl, Category category, String name,
-        String details, String description, User user) {
+        String type, String description, User user) {
         this.stock = stock;
         this.cost = cost;
         this.imgUrl = imgUrl;
         this.category = category;
         this.name = name;
-        this.details = details;
+        this.type = type;
         this.description = description;
         this.user = user;
     }
@@ -124,12 +124,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDetails() {
-        return details;
+    public String getType() {
+        return type;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
