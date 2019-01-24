@@ -26,11 +26,14 @@ public class Product {
     @JoinColumn(name = "cat_id")
     private Category category; // Not sure if this is correct
 
-    @Column(nullable = false, length = 100)
-    private String title;
+    @Column(nullable = false, length = 1000)
+    private String name;
 
-    @Column(nullable = false)
-    private String body;
+    @Column(nullable = false, length = 10000)
+    private String details;
+
+    @Column(nullable = false, length = 10000)
+    private String description;
 
     @ManyToOne
     @JoinColumn (name = "user_id")
@@ -40,32 +43,37 @@ public class Product {
     public Product() {
     }
 
-    public Product(String title, String body, User user) {
-        this.title = title;
-        this.body = body;
+    public Product(String name, String details, String description, User user) {
+        this.name = name;
+        this.details = details;
+        this.description = description;
         this.user = user;
     }
 
-    public Product(String title, String body, Category category) {
+    public Product(String name, String details, String description, Category category) {
+        this.name = name;
+        this.details = details;
+        this.description = description;
         this.category = category;
-        this.title = title;
-        this.body = body;
     }
 
-    public Product(String title, String body, Category category, User user) {
+    public Product(String name, String details, String description, Category category, User user) {
+        this.name = name;
+        this.details = details;
+        this.description = description;
         this.category = category;
-        this.title = title;
-        this.body = body;
         this.user = user;
     }
 
-    public Product(int stock, double cost, String imgUrl, Category category, String title, String body, User user) {
+    public Product(int stock, double cost, String imgUrl, Category category, String name,
+        String details, String description, User user) {
         this.stock = stock;
         this.cost = cost;
         this.imgUrl = imgUrl;
         this.category = category;
-        this.title = title;
-        this.body = body;
+        this.name = name;
+        this.details = details;
+        this.description = description;
         this.user = user;
     }
 
@@ -109,20 +117,28 @@ public class Product {
         this.category = category;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBody() {
-        return body;
+    public String getDetails() {
+        return details;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public User getUser() {

@@ -7,8 +7,9 @@
 <main role="main" class="uk-container">
     <h1>Edit Product</h1>
     <div class="uk-card uk-card-hover uk-card-body">
-        <h5 class="uk-card-title"><span th:text="${product.title}"></span></h5>
-        <p class=""><span th:text="${product.body}"></span> </p>
+        <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
+        <p class=""><span th:text="${product.details}"></span> </p>
+        <p class=""><span th:text="${product.description}"></span> </p>
         <div class="mt-1">
             <a th:href="${product.id} + '/edit'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Edit</a>
             <a th:href="${product.id} + '/delete'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Delete</a>
