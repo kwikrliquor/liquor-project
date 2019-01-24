@@ -6,6 +6,7 @@ import com.example.springblog.repo.UserRepository;
 import com.example.springblog.repo.UserRoleRepository;
 import com.example.springblog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,17 +83,17 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/users/{id}/edit")
-    public String editUser(@PathVariable Long id, Model viewModel){
-        User user = usersRepository.findOne(id);
-        viewModel.addAttribute("user", user);
-        viewModel.addAttribute("sessionUser", usersService.loggedInUser());
-        viewModel.addAttribute("showEditControls", usersService.canEditProfile(user));
+    @GetMapping("/profile/edit/{id}")
+    public String editUser(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+        model.addAttribute("sessionUser", usersService.loggedInUser());
+        model.addAttribute("showEditControls", usersService.canEditProfile(user));
         return "users/profile";
     }
 
-    @PostMapping("/users/{id}/edit")
-    public String editUser(@PathVariable Long id, @Valid User editedUser, Errors validation, Model m){
+    @PostMapping("/profile/edit/{id}")
+    public String editUser(@Valid User editedUser, Errors validation, Model m){
 
 //        editedUser.setId(id);
 

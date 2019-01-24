@@ -5,7 +5,7 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
-    <form class="uk-form-width-medium" th:action="@{'/users/' + ${user.getId()} + '/edit'}" method="POST" th:object="${user}">
+    <form class="uk-form-width-medium" th:action="@{'/profile/edit/' + ${user.getId()}}" method="POST" th:object="${user}">
         <h1>Edit Profile</h1>
         First Name:
         <input class="uk-input uk-border-rounded" th:field="*{first_name}" />
@@ -31,15 +31,18 @@
         Phone Number:
         <input class="uk-input uk-border-rounded" th:field="*{phone_number}" />
         <br />
+        DOB:
+        <input class="uk-input uk-border-rounded" th:field="*{dob}" />
+        <br />
         Username:
         <input class="uk-input uk-border-rounded" th:field="*{username}" />
         <br />
         Email:
         <input class="uk-input uk-border-rounded" th:field="*{email}" />
         <br />
-        Password:
-        <input class="uk-input uk-border-rounded" type="password" th:value="*{password}" />
-        <br />
+        <!--Password:-->
+        <!--<input class="uk-input uk-border-rounded" type="password" th:value="*{password}" />-->
+        <!--<br />-->
         <div class="mt-1">
             <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Edit Profile" />
         </div>
