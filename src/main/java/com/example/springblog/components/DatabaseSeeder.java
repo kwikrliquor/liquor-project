@@ -34,7 +34,6 @@ public class DatabaseSeeder implements CommandLineRunner {
   @Value("${app.env}")
   private String environment;
 
-
   @Autowired
   public DatabaseSeeder(UserRoleRepository roleRepo,
       CategoryRepository catRepo, ProductRepository prodRepo,
