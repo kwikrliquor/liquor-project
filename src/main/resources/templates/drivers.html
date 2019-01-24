@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<html xmlns:th="http://www.thymeleaf.org">
 <!--<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" sec:authorize="hasRole('ROLE_DRIVER')">-->
 <head th:replace="partials::head('Open Orders')"></head>
 <body>
@@ -7,61 +7,23 @@
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
 
-    <div >
-    <h2>Driver Dashboard</h2>
+    <div>
+    <h2 class="uk-text-center">Driver Dashboard</h2>
 
-        <ul class="uk-accordion">
-            <li class="uk-open">
-                <a class="uk-accordion-title" href="#">Item 1</a>
+        <ul class="uk-accordion" data-uk-accordion="{collapse:true}">
+            <li class="uk-card uk-card-default uk-card-body">
+                <a class="uk-accordion-title uk-text-center" href="#">Open Deliveries</a>
                 <div class="uk-accordion-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
             </li>
-            <li>
-                <a class="uk-accordion-title" href="#">Item 2</a>
+            <li class="uk-card uk-card-default uk-card-body">
+                <a class="uk-accordion-title uk-text-center" href="#">My Deliveries</a>
                 <div class="uk-accordion-content">
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-                </div>
-            </li>
-            <li>
-                <a class="uk-accordion-title" href="#">Item 3</a>
-                <div class="uk-accordion-content">
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
             </li>
         </ul>
-
-        <div class="uk-accordion">
-            <div class="uk-child-width-1-1 uk-text-center uk-grid ">
-                <div class= "uk-card uk-card-default uk-card-body ">
-
-                    <a class="uk-accordion-title" href="#">Open Deliveries</a>
-                        <div class="uk-accordion-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Dolorem doloribus ea esse explicabo fugit iure laudantium maiores nemo nesciunt nostrum omnis,
-                                quaerat quia quod repellendus sapiente sequi soluta, totam velit.
-                        </div>
-
-                    <!--<div class="uk-card uk-card-default uk-card-body"><a href="/products"><div>Open Deliveries</div></a></div>-->
-
-                </div>
-            </div>
-
-            <div class="uk-child-width-1-1 uk-text-center uk-grid ">
-                <div class= "uk-card uk-card-default uk-card-body ">
-
-                    <a class="uk-accordion-title" href="#">My Deliveries</a>
-                    <div class="uk-accordion-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Dolorem doloribus ea esse explicabo fugit iure laudantium maiores nemo nesciunt nostrum omnis,
-                        quaerat quia quod repellendus sapiente sequi soluta, totam velit.
-                    </div>
-
-                    <!--<div class="uk-card uk-card-default uk-card-body"><a href="/products"><div>Open Deliveries</div></a></div>-->
-
-                </div>
-            </div>
-
-        </div>
-
 
     </div>
 
