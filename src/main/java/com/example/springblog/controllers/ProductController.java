@@ -26,6 +26,11 @@ public class ProductController {
     return "products/index";
   }
 
+//  @GetMapping("/cart")
+//  public String cart(Model model) {
+//    model.addAttribute()
+//  }
+
   @GetMapping("/products/beer")
   public String beer(Model model) {
     model.addAttribute("products", productService.beer());
