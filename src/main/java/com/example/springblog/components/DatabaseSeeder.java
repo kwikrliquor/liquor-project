@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
+
   private final Logger log = LoggerFactory.getLogger(this.getClass());
   private final UserRoleRepository roleRepo;
   private final CategoryRepository catRepo;

@@ -10,78 +10,67 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    private final ProductRepository postsdao;
-    private final CategoryRepository catRepo;
 
-//    private List<Product> products;
+  private final ProductRepository postsdao;
+  private final CategoryRepository catRepo;
 
+  public ProductService(ProductRepository postsdao, CategoryRepository catRepo) {
+    this.postsdao = postsdao;
+    this.catRepo = catRepo;
+  }
 
-    public ProductService(ProductRepository postsdao, CategoryRepository catRepo) {
-        this.postsdao = postsdao;
-        this.catRepo = catRepo;
-    }
+  public List<Product> getAll() {
+    return (List<Product>) postsdao.findAll();
+  }
 
-    public List<Product> getAll() {
-        return (List<Product>) postsdao.findAll();
-    }
+  public List<Category> catGetAll() {
+    return (List<Category>) catRepo.findAll();
+  }
 
-    public List<Category> catGetAll() {
-        return (List<Category>) catRepo.findAll();
-    }
+  public Product findOne(long id) {
+    return postsdao.findOne(id);
+  }
 
-    public Product findOne(long id) {
-        return postsdao.findOne(id);
-    }
+  public Product create(Product product) {
+    postsdao.save(product);
+    return product;
+  }
 
-    public Product create(Product product) {
-        postsdao.save(product);
-        return product;
-    }
+  public Product delete(Product product) {
+    postsdao.delete(product);
+    return product;
+  }
 
-    public Product delete(Product product) {
-        postsdao.delete(product);
-        return product;
-    }
+  public Product edit(Product product) {
+    postsdao.save(product);
+    return product;
+  }
 
-    public Product edit(Product product) {
-        postsdao.save(product);
-        return product;
-    }
+  public Category catCreate(Category category) {
+    catRepo.save(category);
+    return category;
+  }
 
-    public Category catCreate(Category category) {
-        catRepo.save(category);
-        return category;
-    }
+  public Category catDelete(Category category) {
+    catRepo.delete(category);
+    return category;
+  }
 
-    public Category catDelete(Category category) {
-        catRepo.delete(category);
-        return category;
-    }
+  public Category catEdit(Category category) {
+    catRepo.save(category);
+    return category;
+  }
 
-    public Category catEdit(Category category) {
-        catRepo.save(category);
-        return category;
-    }
+  public List<Product> beer() {
+    return postsdao.findBeer();
+  }
 
-    public List<Product> beer() {
-        return postsdao.findBeer();
-    }
+  public List<Product> wine() {
+    return postsdao.findWine();
+  }
 
-    public List<Product> wine() {
-        return postsdao.findWine();
-    }
+  public List<Product> liquor() {
+    return postsdao.findLiquor();
+  }
 
-    public List<Product> liquor() {
-        return postsdao.findLiquor();
-    }
-
-//    public Product wine(Product product) {
-//        postsdao.findWine(product.getCategory().getId());
-//        return product;
-//    }
-//
-//    public Product liquor(Product product) {
-//        postsdao.findLiquor(product.getCategory().getId());
-//        return product;
-//    }
 }

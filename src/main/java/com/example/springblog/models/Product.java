@@ -10,141 +10,143 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "products")
 public class Product {
-    @Id @GeneratedValue
-    private long id;
 
-    @Column(nullable = true)
-    private int stock;
+  @Id @GeneratedValue
+  private long id;
 
-    @Column(nullable = true)
-    private double cost;
+  @Column(nullable = true)
+  private int stock;
 
-    @Column(name = "img_url", nullable = true)
-    private String imgUrl;
+  @Column(nullable = true)
+  private double cost;
 
-    @ManyToOne
-    @JoinColumn(name = "cat_id")
-    private Category category; // Not sure if this is correct
+  @Column(name = "img_url", nullable = true)
+  private String imgUrl;
 
-    @Column(nullable = false, length = 1000)
-    private String name;
+  @ManyToOne
+  @JoinColumn(name = "cat_id")
+  private Category category; // Not sure if this is correct
 
-    @Column(nullable = false, length = 10000)
-    private String type;
+  @Column(nullable = false, length = 1000)
+  private String name;
 
-    @Column(nullable = false, length = 10000)
-    private String description;
+  @Column(nullable = false, length = 10000)
+  private String type;
 
-    @ManyToOne
-    @JoinColumn (name = "user_id")
-    private User user;
+  @Column(nullable = false, length = 10000)
+  private String description;
 
-    public Product() {
-    }
+  @ManyToOne
+  @JoinColumn (name = "user_id")
+  private User user;
 
-    public Product(String name, String type, String description, User user) {
-        this.name = name;
-        this.type = type;
-        this.description = description;
-        this.user = user;
-    }
+  public Product() {
+  }
 
-    public Product(String name, String type, String description, Category category) {
-        this.name = name;
-        this.type = type;
-        this.description = description;
-        this.category = category;
-    }
+  public Product(String name, String type, String description, User user) {
+    this.name = name;
+    this.type = type;
+    this.description = description;
+    this.user = user;
+  }
 
-    public Product(String name, String type, String description, Category category, User user) {
-        this.name = name;
-        this.type = type;
-        this.description = description;
-        this.category = category;
-        this.user = user;
-    }
+  public Product(String name, String type, String description, Category category) {
+    this.name = name;
+    this.type = type;
+    this.description = description;
+    this.category = category;
+  }
 
-    public Product(int stock, double cost, String imgUrl, Category category, String name,
-        String type, String description, User user) {
-        this.stock = stock;
-        this.cost = cost;
-        this.imgUrl = imgUrl;
-        this.category = category;
-        this.name = name;
-        this.type = type;
-        this.description = description;
-        this.user = user;
-    }
+  public Product(String name, String type, String description, Category category, User user) {
+    this.name = name;
+    this.type = type;
+    this.description = description;
+    this.category = category;
+    this.user = user;
+  }
 
-    public long getId() {
-        return id;
-    }
+  public Product(int stock, double cost, String imgUrl, Category category, String name,
+      String type, String description, User user) {
+    this.stock = stock;
+    this.cost = cost;
+    this.imgUrl = imgUrl;
+    this.category = category;
+    this.name = name;
+    this.type = type;
+    this.description = description;
+    this.user = user;
+  }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public int getStock() {
-        return stock;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
+  public int getStock() {
+    return stock;
+  }
 
-    public double getCost() {
-        return cost;
-    }
+  public void setStock(int stock) {
+    this.stock = stock;
+  }
 
-    public void setCost(double cost) {
-        this.cost = cost;
-    }
+  public double getCost() {
+    return cost;
+  }
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
+  public void setCost(double cost) {
+    this.cost = cost;
+  }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
+  public String getImgUrl() {
+    return imgUrl;
+  }
 
-    public Category getCategory() {
-        return category;
-    }
+  public void setImgUrl(String imgUrl) {
+    this.imgUrl = imgUrl;
+  }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+  public Category getCategory() {
+    return category;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setCategory(Category category) {
+    this.category = category;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getType() {
-        return type;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+  public String getType() {
+    return type;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void setType(String type) {
+    this.type = type;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
 }

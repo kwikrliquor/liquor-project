@@ -5,93 +5,86 @@ import com.example.springblog.models.UserRole;
 import com.example.springblog.repo.UserRepository;
 import com.example.springblog.repo.UserRoleRepository;
 import com.example.springblog.services.UserService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
-
 @Controller
 public class UserController {
-    @Autowired
-    private UserRepository usersRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+  @Autowired
+  private UserRepository usersRepository;
 
-    @Autowired
-    private UserRoleRepository userRoles;
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UserService usersService;
+  @Autowired
+  private UserRoleRepository userRoles;
 
-    @GetMapping("/sign-up")
-    public String showSignupForm(Model model){
-        model.addAttribute("user", new User());
-        return "users/sign-up";
+  @Autowired
+  private UserService usersService;
+
+  @GetMapping("/sign-up")
+  public String showSignupForm(Model model){
+    model.addAttribute("user", new User());
+    return "users/sign-up";
+  }
+
+  @PostMapping("/sign-up")
+  public String saveUser(@Valid User user, Errors validation, Model m){
+    String username = user.getUsername();
+    User existingUsername = usersRepository.findByUsername(username);
+    User existingEmail = usersRepository.findByEmail(user.getEmail());
+
+    if(existingUsername != null){
+      validation.rejectValue("username", "user.username", "Duplicated username " + username);
     }
 
-    @PostMapping("/sign-up")
-    public String saveUser(@Valid User user, Errors validation, Model m){
-        String username = user.getUsername();
-        User existingUsername = usersRepository.findByUsername(username);
-        User existingEmail = usersRepository.findByEmail(user.getEmail());
-
-
-        if(existingUsername != null){
-
-            validation.rejectValue("username", "user.username", "Duplicated username " + username);
-
-        }
-
-        if(existingEmail != null){
-
-            validation.rejectValue("email", "user.email", "Duplicated email " + user.getEmail());
-
-        }
-
-        if (validation.hasErrors()) {
-            m.addAttribute("errors", validation);
-            m.addAttribute("user", user);
-            return "users/sign-up";
-        }
-
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        // Custom validation if the username is taken
-
-        User newUser = usersRepository.save(user);
-
-        UserRole ur = new UserRole();
-        ur.setRole("ROLE_CUSTOMER");
-        ur.setUserId(newUser.getId());
-        userRoles.save(ur);
-
-        m.addAttribute("user", user);
-        return "redirect:/login";
+    if(existingEmail != null){
+      validation.rejectValue("email", "user.email", "Duplicated email " + user.getEmail());
     }
 
-    @GetMapping("/logout")
-    public String logout(){
-        return "redirect:/login";
+    if (validation.hasErrors()) {
+      m.addAttribute("errors", validation);
+      m.addAttribute("user", user);
+      return "users/sign-up";
     }
 
-    @GetMapping("/profile/edit/{id}")
-    public String editUser(@PathVariable Long id, Model viewModel){
-        User user = usersRepository.findOne(id);
-        viewModel.addAttribute("user", usersService.edit(user));
-        viewModel.addAttribute("id", id);
-        viewModel.addAttribute("sessionUser", usersService.loggedInUser());
-        viewModel.addAttribute("showEditControls", usersService.canEditProfile(user));
-        return "users/profile";
-    }
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+    // Custom validation if the username is taken
+
+    User newUser = usersRepository.save(user);
+
+    UserRole ur = new UserRole();
+    ur.setRole("ROLE_CUSTOMER");
+    ur.setUserId(newUser.getId());
+    userRoles.save(ur);
+
+    m.addAttribute("user", user);
+    return "redirect:/login";
+  }
+
+  @GetMapping("/logout")
+  public String logout(){
+    return "redirect:/login";
+  }
+
+  @GetMapping("/profile/edit/{id}")
+  public String editUser(@PathVariable Long id, Model viewModel){
+    User user = usersRepository.findOne(id);
+    viewModel.addAttribute("user", usersService.edit(user));
+    viewModel.addAttribute("id", id);
+    viewModel.addAttribute("sessionUser", usersService.loggedInUser());
+    viewModel.addAttribute("showEditControls", usersService.canEditProfile(user));
+    return "users/profile";
+  }
 
 //    @PostMapping("/profile/edit/{id}")
 //    public String editUser(@PathVariable Long id, @Valid User editedUser, Errors validation, Model m){
@@ -109,8 +102,9 @@ public class UserController {
 //        return "redirect:/products";
 //    }
 
-    // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
-    public Boolean checkEditAuth(User user){
-        return usersService.isLoggedIn() && (user.getId() == usersService.loggedInUser().getId());
-    }
+  // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
+  public Boolean checkEditAuth(User user){
+    return usersService.isLoggedIn() && (user.getId() == usersService.loggedInUser().getId());
+  }
+
 }

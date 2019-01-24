@@ -11,46 +11,45 @@ import javax.persistence.Table;
 @Table(name = "user_roles")
 public class UserRole {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
+  @Column(name = "role")
+  private String role;
 
-    @Column(name = "role")
-    private String role;
+  @Column(name = "user_id")
+  private long userId;
 
-    @Column(name = "user_id")
-    private long userId;
+  public UserRole() {
+  }
 
-    public UserRole() {
-    }
+  public UserRole(String role, long userId) {
+    this.role = role;
+    this.userId = userId;
+  }
 
-    public UserRole(String role, long userId) {
-        this.role = role;
-        this.userId = userId;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public long getId() {
-        return id;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  public String getRole() {
+    return role;
+  }
 
-    public String getRole() {
-        return role;
-    }
+  public void setRole(String role) {
+    this.role = role;
+  }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+  public long getUserId() {
+    return userId;
+  }
 
-    public long getUserId() {
-        return userId;
-    }
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
 }

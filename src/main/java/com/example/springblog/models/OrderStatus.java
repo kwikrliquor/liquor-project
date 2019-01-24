@@ -5,8 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "order_status")
 public class OrderStatus {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Column(nullable = false)
@@ -34,4 +34,5 @@ public class OrderStatus {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 }
