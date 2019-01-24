@@ -170,7 +170,7 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li class="uk-inline">
-                <a href="#">Parent</a>
+                <a href="#" th:text ="${#authentication.principal.username}">Parent</a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
                     <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
                     <li class="uk-nav-divider"></li>

@@ -16,7 +16,7 @@
                     <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
                         th:text="${product.name}"></span></a></h5>
                     <h5><em>Type</em></h5>
-                    <hr />
+                    <hr class="uk-divider-icon" />
                     <p th:text="${product.type}"></p>
                     <div class="mt-1">
                         <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
@@ -33,7 +33,7 @@
                     <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
                             th:text="${product.name}"></span></a></h5>
                     <h5><em>Type</em></h5>
-                    <hr />
+                    <hr class="uk-divider-icon" />
                     <p th:text="${product.type}"></p>
                     <div class="mt-1">
                         <a th:href="${product.id} + '/edit'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
