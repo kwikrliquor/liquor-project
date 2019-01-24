@@ -15,7 +15,8 @@
                 <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
                     <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
                         th:text="${product.name}"></span></a></h5>
-                    <h5><em>Type</em></h5>
+                    <h5><em>Price</em></h5>
+                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>                    <h5><em>Type</em></h5>
                     <hr class="uk-divider-icon" />
                     <p th:text="${product.type}"></p>
                     <div class="mt-1">

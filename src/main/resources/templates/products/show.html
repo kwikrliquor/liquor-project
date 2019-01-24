@@ -9,6 +9,8 @@
         <h1>Edit Product</h1>
         <div class="uk-card uk-card-hover uk-card-body">
             <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
+            <h5><em>Price</em></h5>
+            <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
             <h5><em>Type</em></h5>
             <hr class="uk-divider-icon" />
             <p class=""><strong><span th:text="${product.type}"></span></strong></p>

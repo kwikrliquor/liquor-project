@@ -15,10 +15,10 @@ public class Product {
   private long id;
 
   @Column(nullable = true)
-  private int stock;
+  private Integer quantity;
 
   @Column(nullable = true)
-  private double cost;
+  private double price;
 
   @Column(name = "img_url", nullable = true)
   private String imgUrl;
@@ -57,18 +57,20 @@ public class Product {
     this.category = category;
   }
 
-  public Product(String name, String type, String description, Category category, User user) {
+  public Product(String name, String type, String description, Category category, User user,
+      double price) {
     this.name = name;
     this.type = type;
     this.description = description;
     this.category = category;
     this.user = user;
+    this.price = price;
   }
 
-  public Product(int stock, double cost, String imgUrl, Category category, String name,
+  public Product(Integer quantity, double price, String imgUrl, Category category, String name,
       String type, String description, User user) {
-    this.stock = stock;
-    this.cost = cost;
+    this.quantity = quantity;
+    this.price = price;
     this.imgUrl = imgUrl;
     this.category = category;
     this.name = name;
@@ -85,20 +87,20 @@ public class Product {
     this.id = id;
   }
 
-  public int getStock() {
-    return stock;
+  public Integer getQuantity() {
+    return quantity;
   }
 
-  public void setStock(int stock) {
-    this.stock = stock;
+  public void setQuantity(Integer quantity) {
+    this.quantity = quantity;
   }
 
-  public double getCost() {
-    return cost;
+  public double getPrice() {
+    return price;
   }
 
-  public void setCost(double cost) {
-    this.cost = cost;
+  public void setPrice(double price) {
+    this.price = price;
   }
 
   public String getImgUrl() {
