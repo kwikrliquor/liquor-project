@@ -7,12 +7,10 @@
     <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
 
-
-
     <form class="uk-form-width-medium" th:action="@{/products/create}" method="POST" th:object="${product}">
         <h1>Create Product</h1>
         Product:
-        <input class="uk-input uk-border-rounded" th:field="*{title}" />
+        <input class="uk-input uk-border-rounded" th:field="*{name}" />
         <br />
         Category:
         <select name="cat_id" id="cat_id" th:field="*{category.id}">
@@ -21,15 +19,17 @@
             <option value="3">Liquor</option>
         </select>
         <br />
+        Details:
+        <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{details}" />
+        <br />
+        <br />
         Description:
-        <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{body}" />
+        <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{description}" />
         <br />
         <div class="mt-1">
             <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Create Product" />
         </div>
     </form>
-
-
 
 </main><!-- /.container -->
     <div th:replace="partials::footer"></div>
