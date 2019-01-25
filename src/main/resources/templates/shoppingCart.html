@@ -15,7 +15,7 @@
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
             <div th:each="product : ${products.entrySet()}">
                 <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
-                    <h1 class="uk-card-title"><a th:text="${product.getKey().name}" th:href="@{'/product/' + ${product.getKey().id}}">Title</a></h1>
+                    <h1 class="uk-card-title"><a th:text="${product.getKey().name}" th:href="@{'/products/' + ${product.getKey().id}}">Title</a></h1>
                     <hr class="uk-divider-icon" />
                     <p><em>Description</em></p>
                     <p th:text="${product.getKey().description}">Description</p>
