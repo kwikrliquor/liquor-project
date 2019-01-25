@@ -13,7 +13,6 @@
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <link rel="stylesheet" href="/static/css/components/slideshow.css" />
     <link rel="stylesheet" href="/static/css/components/slidenav.css" />
 
@@ -112,8 +111,7 @@
         <!--</ul>-->
     <!--</div>-->
 <!--</nav>-->
-<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-<nav th:fragment="navbar" class="uk-navbar" style="position: relative; z-index: 980;" sec:authorize="!isAuthenticated()">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container" style="margin-bottom: 200px; z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="!isAuthenticated()">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
@@ -153,7 +151,6 @@
             <!--</div>-->
         <!--</ul>-->
 </nav>
-</div>
 
 <nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_CUSTOMER')">
     <div class="uk-navbar-left">
@@ -244,9 +241,9 @@
 
 
 <footer th:fragment="footer" class="footer fixed-bottom">
-    <div class="container">
-        <p class="text-muted text-center">Place sticky footer content here.</p>
-    </div>
+    <!--<div class="container">-->
+        <!--<p class="text-muted text-center">Place sticky footer content here.</p>-->
+    <!--</div>-->
 </footer>
 
 <div th:fragment="scripts">
@@ -262,6 +259,8 @@
     <script src="/static/js/core/scrollspy.min.js"></script>
     <script src="/static/js/components/slideshow.js"></script>
     <script src="/static/js/components/slideshow.min.js"></script>
+    <script src="/static/js/components/sticky.js"></script>
+    <script src="/static/js/components/sticky.min.js"></script>
     <script src="/static/js/core/nav.js"></script>
     <script src="/static/js/core/nav.min.js"></script>
 

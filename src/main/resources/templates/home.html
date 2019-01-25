@@ -51,9 +51,12 @@
                 <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
                     <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
                             th:text="${product.name}"></span></a></h5>
-                    <h5><em>Type</em></h5>
                     <hr class="uk-divider-icon" />
+                    <p><em>Type</em></p>
                     <p th:text="${product.type}"></p>
+                    <hr class="uk-divider-icon" />
+                    <p><em>Price</em></p>
+                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
                         <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
                     </div>
@@ -68,9 +71,12 @@
                 <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
                     <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
                             th:text="${product.name}"></span></a></h5>
-                    <h5><em>Type</em></h5>
                     <hr class="uk-divider-icon" />
+                    <p><em>Type</em></p>
                     <p th:text="${product.type}"></p>
+                    <hr class="uk-divider-icon" />
+                    <p><em>Price</em></p>
+                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
                         <a th:href="@{'/shoppingCart/addProduct/' + ${product.id}}" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
                     </div>

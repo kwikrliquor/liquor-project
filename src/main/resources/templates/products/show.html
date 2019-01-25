@@ -6,17 +6,18 @@
     <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
     <div sec:authorize="!isAuthenticated()">
-        <h1>Edit Product</h1>
-        <div class="uk-card uk-card-hover uk-card-body">
+        <h1>Product Details</h1>
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
             <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
+            <hr class="uk-divider-icon" />
+            <h5><em>Type</em></h5>
+            <p class=""><strong><span th:text="${product.type}"></span></strong></p>
+            <hr class="uk-divider-icon" />
+            <h5><em>Description</em></h5>
+            <p class=""><span th:text="${product.description}"></span> </p>
+            <hr class="uk-divider-icon" />
             <h5><em>Price</em></h5>
             <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
-            <h5><em>Type</em></h5>
-            <hr class="uk-divider-icon" />
-            <p class=""><strong><span th:text="${product.type}"></span></strong></p>
-            <h5><em>Description</em></h5>
-            <hr class="uk-divider-icon" />
-            <p class=""><span th:text="${product.description}"></span> </p>
             <div class="mt-1">
                 <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
             </div>
@@ -24,15 +25,18 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_CUSTOMER')">
-        <h1>Edit Product</h1>
-        <div class="uk-card uk-card-hover uk-card-body">
+        <h1>Product Details</h1>
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
             <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
+            <hr class="uk-divider-icon" />
             <h5><em>Type</em></h5>
-            <hr class="uk-divider-icon" />
             <p class=""><strong><span th:text="${product.type}"></span></strong></p>
-            <h5><em>Description</em></h5>
             <hr class="uk-divider-icon" />
+            <h5><em>Description</em></h5>
             <p class=""><span th:text="${product.description}"></span> </p>
+            <hr class="uk-divider-icon" />
+            <h5><em>Price</em></h5>
+            <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
             <div class="mt-1">
                 <a th:href="${product.id} + '/edit'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
             </div>
@@ -40,15 +44,18 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_ADMIN')">
-        <h1>Edit Product</h1>
-        <div class="uk-card uk-card-hover uk-card-body">
+        <h1>Product Details</h1>
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
             <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
-            <h5><em>Type</em></h5>
             <hr class="uk-divider-icon" />
+            <p><em>Type</em></p>
             <p class=""><strong><span th:text="${product.type}"></span></strong></p>
-            <h5><em>Description</em></h5>
             <hr class="uk-divider-icon" />
+            <p><em>Description</em></p>
             <p class=""><span th:text="${product.description}"></span> </p>
+            <hr class="uk-divider-icon" />
+            <p><em>Price</em></p>
+            <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
             <div class="mt-1">
                 <a th:href="${product.id} + '/edit'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Edit</a>
                 <a th:href="${product.id} + '/delete'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Delete</a>
