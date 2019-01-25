@@ -16,4 +16,5 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     @Query("from Order a where a.orderStatusId.id=?1")
     List<Order> findOrdersByOrderStatusId(long id);
 
+
 }
