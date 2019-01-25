@@ -35,22 +35,13 @@ public class DriverController {
     }
 
     @PostMapping("/drivers")
-    public String changeOrderStatus(@ModelAttribute Order order, @RequestParam("unassigned") Long unassignedId) {
+    public String assignOrderStatus(@RequestParam("orderId") Long orderId) {
+        Order existingOrder = orderRepository.findOne(orderId);
 
-        order.setOrderStatusId(orderStatusRepository.findById(unassignedId + 1));
+        existingOrder.setOrderStatusId(orderStatusRepository.findById(2));
 
+        orderRepository.save(existingOrder);
 
-//        Long thisId = Long.parseLong(id);
-//
-//        Order order = orderRepository.findOne(thisId);
-//
-//        if(order.getOrderStatusId().getId() == 1) {
-//            order.setOrderStatusId(orderStatusRepository.findOrderStatusById(2));
-//        } else {
-//            order.setOrderStatusId(orderStatusRepository.findOrderStatusById(1));
-//        }
-
-//        orderRepository.findByOrderStatusId(assignedId).setOrderStatusId(assignedId);
         return "redirect:/drivers";
     }
 
