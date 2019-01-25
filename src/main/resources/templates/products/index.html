@@ -10,7 +10,7 @@
     <h3 class="uk-text-center">30-Minute Delivery. Free Pickup. Shipping.</h3>
 
     <div sec:authorize="!isAuthenticated()">
-        <div tabindex="0" class="uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
+        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
             <div th:each="product : ${products}">
                 <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
                     <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
@@ -30,7 +30,7 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_CUSTOMER')">
-        <div tabindex="0" class="uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
+        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
             <div th:each="product : ${products}">
                 <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
                     <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span

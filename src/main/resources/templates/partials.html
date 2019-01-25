@@ -152,7 +152,7 @@
         <!--</ul>-->
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_CUSTOMER')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_CUSTOMER')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
@@ -183,7 +183,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_ADMIN')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_ADMIN')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
@@ -255,6 +255,10 @@
     <script src="/static/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
+    <script src="/static/js/core/grid.js"></script>
+    <script src="/static/js/core/grid.min.js"></script>
+    <script src="/static/js/components/grid.js"></script>
+    <script src="/static/js/components/grid.min.js"></script>
     <script src="/static/js/core/scrollspy.js"></script>
     <script src="/static/js/core/scrollspy.min.js"></script>
     <script src="/static/js/components/slideshow.js"></script>
