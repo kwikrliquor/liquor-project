@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
@@ -18,7 +20,11 @@ public class Product {
   private int stock;
 
   @Column(nullable = true)
-  private double cost;
+  private int quantity;
+
+  @Column(nullable = true)
+  @DecimalMin(value = "0.00", message = "*Price has to be non negative number")
+  private BigDecimal price;
 
   @Column(name = "img_url", nullable = true)
   private String imgUrl;
@@ -57,18 +63,19 @@ public class Product {
     this.category = category;
   }
 
-  public Product(String name, String type, String description, Category category, User user) {
+  public Product(String name, String type, String description, BigDecimal price, Category category, User user) {
     this.name = name;
     this.type = type;
     this.description = description;
+    this.price = price;
     this.category = category;
     this.user = user;
   }
 
-  public Product(int stock, double cost, String imgUrl, Category category, String name,
-      String type, String description, User user) {
+  public Product(int stock, int quantity, BigDecimal price, String imgUrl, Category category, String name, String type, String description, User user) {
     this.stock = stock;
-    this.cost = cost;
+    this.quantity = quantity;
+    this.price = price;
     this.imgUrl = imgUrl;
     this.category = category;
     this.name = name;
@@ -93,12 +100,20 @@ public class Product {
     this.stock = stock;
   }
 
-  public double getCost() {
-    return cost;
+  public int getQuantity() {
+    return quantity;
   }
 
-  public void setCost(double cost) {
-    this.cost = cost;
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
+  public void setPrice(BigDecimal price) {
+    this.price = price;
   }
 
   public String getImgUrl() {
@@ -148,5 +163,4 @@ public class Product {
   public void setUser(User user) {
     this.user = user;
   }
-
 }
