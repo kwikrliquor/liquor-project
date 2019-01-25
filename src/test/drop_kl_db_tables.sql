@@ -8,6 +8,13 @@ DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
 
+SELECT * FROM users;
+SELECT * FROM products;
+SELECT * FROM categories;
+SELECT * FROM orders;
+SELECT * FROM order_status;
+SELECT * FROM products_orders;
+SELECT * FROM user_reviews;
 
 
 UPDATE users
@@ -16,4 +23,14 @@ SET first_name = 'John', last_name = 'Smith', address1 = "123 Bakers Ln",
     WHERE id = 1;
 
 
-SELECT * FROM users;
+
+INSERT INTO order_status (status)
+VALUES ('New Order'),
+       ('Ready for Driver'),
+       ('On Route'),
+       ('Delivered');
+
+INSERT INTO orders (date, order_status_id, user_id)
+VALUES (01032019, 1, 3),
+       (01052019, 2, 2),
+       (01072019, 3, 1);

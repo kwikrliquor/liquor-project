@@ -23,17 +23,23 @@ public class Order {
 
   @ManyToOne
   @JoinColumn (name = "order_status_id")
-  private OrderStatus orderStatus;
+  private OrderStatus orderStatusId;
 
   @ManyToOne
   @JoinColumn (name = "user_id")
-  private User user;
+  private User userId;
 
   public Order() {
   }
 
   public Order(long date) {
     this.date = date;
+  }
+
+  public Order(long date, OrderStatus orderStatusId, User userId) {
+    this.date = date;
+    this.orderStatusId = orderStatusId;
+    this.userId = userId;
   }
 
   public long getId() {
@@ -52,4 +58,19 @@ public class Order {
     this.date = date;
   }
 
+  public OrderStatus getOrderStatusId() {
+    return orderStatusId;
+  }
+
+  public void setOrderStatusId(OrderStatus orderStatusId) {
+    this.orderStatusId = orderStatusId;
+  }
+
+  public User getUserId() {
+    return userId;
+  }
+
+  public void setUserId(User userId) {
+    this.userId = userId;
+  }
 }

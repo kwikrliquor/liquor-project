@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" sec:authorize="hasRole('ROLE_DRIVER')">-->
+<head th:replace="partials::head('Open Orders')"></head>
+<body>
+<div th:replace="partials::header"></div>
+<div th:replace="partials::navbar"></div>
+<main role="main" class="uk-container">
+
+    <div>
+    <h2 class="uk-text-center">Driver Dashboard</h2>
+
+        <ul class="uk-accordion" data-uk-accordion="{collapse:true}">
+            <li class="uk-card uk-card-default uk-card-body">
+                <a class="uk-accordion-title uk-text-center" href="#">Open Deliveries</a>
+                <div class="uk-accordion-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </li>
+            <li class="uk-card uk-card-default uk-card-body">
+                <a class="uk-accordion-title uk-text-center" href="#">My Deliveries</a>
+                <div class="uk-accordion-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</main><!-- /.container -->
+<div th:replace="partials::footer"></div>
+<div th:replace="partials::scripts"></div>
+
+</body>
+</html>
