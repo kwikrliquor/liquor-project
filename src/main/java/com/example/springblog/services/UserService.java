@@ -1,7 +1,9 @@
 package com.example.springblog.services;
 
 import com.example.springblog.models.UserWithRoles;
+import com.example.springblog.repo.RoleRepository;
 import com.example.springblog.repo.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,7 @@ public class UserService {
 
   private UserRepository usersRepository;
 
+  @Autowired
   public UserService(UserRepository usersRepository) {
     this.usersRepository = usersRepository;
   }
