@@ -7,4 +7,7 @@ public interface OrderStatusRepository extends CrudRepository<OrderStatus, Long>
     OrderStatus findByStatus(String status);
 
     OrderStatus findOrderStatusById(long id);
+
+    OrderStatus findById(long id);
+
 }
