@@ -28,6 +28,7 @@ public class DriverController {
     @GetMapping("/drivers")
     public String showDriversPage(Model model){
 
+
         model.addAttribute("unassignedOrders", orderRepository.findOrdersByOrderStatusId(1));
         model.addAttribute("assignedOrders", orderRepository.findOrdersByOrderStatusId(2));
         return "drivers";
