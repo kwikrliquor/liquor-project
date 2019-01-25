@@ -60,7 +60,7 @@ public class User {
   @Column(nullable = true)
   private int dob;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
   private List<Order> orders;
 
   public User() {
