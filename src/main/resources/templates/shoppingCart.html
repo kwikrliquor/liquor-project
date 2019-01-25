@@ -7,7 +7,7 @@
 <div th:replace="partials::navbar"></div>
 <main role="main" class="container">
     <h1 class="jumbotron">
-        <span sec:authentication="name"></span>'s Shopping Cart
+        <span sec:authentication="name"></span>'s shopping cart
     </h1>
 
     <div class="panel-default well" th:each="product : ${products.entrySet()}">
@@ -22,7 +22,7 @@
                 <button type="button" class="btn btn-primary" th:text="Remove">Remove</button>
             </a>
         </div>
-        <br></br>
+        <br />
     </div>
 
     <div class="row panel-body">
