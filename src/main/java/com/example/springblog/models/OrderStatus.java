@@ -1,6 +1,7 @@
 package com.example.springblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "order_status")
@@ -11,6 +12,9 @@ public class OrderStatus {
 
 	@Column(nullable = false)
 	private String status;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "orderStatusId")
+	private List<Order> orders;
 
 	public OrderStatus() {
 	}
@@ -35,4 +39,11 @@ public class OrderStatus {
 		this.status = status;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 }

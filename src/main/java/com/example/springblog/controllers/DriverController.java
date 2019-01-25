@@ -1,6 +1,9 @@
 package com.example.springblog.controllers;
 
+import com.example.springblog.models.Order;
 import com.example.springblog.models.User;
+import com.example.springblog.repo.OrderRepository;
+import com.example.springblog.repo.OrderStatusRepository;
 import com.example.springblog.repo.UserRepository;
 import com.example.springblog.repo.UserRoleRepository;
 import com.example.springblog.services.UserService;
@@ -10,24 +13,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.lang.reflect.Array;
+import java.util.List;
+
 @Controller
 public class DriverController {
 
     @Autowired
-    private UserRepository usersRepository;
+    private OrderRepository orderRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private UserRoleRepository userRoles;
-
-    @Autowired
-    private UserService usersService;
+    private OrderStatusRepository orderStatusRepository;
 
     @GetMapping("/drivers")
     public String showDriversPage(Model model){
-        model.addAttribute("user", new User());
+
+
+        model.addAttribute("unassignedOrders", orderRepository.findOrdersByOrderStatusId(1));
+        model.addAttribute("assignedOrders", orderRepository.findOrdersByOrderStatusId(2));
         return "drivers";
     }
 
