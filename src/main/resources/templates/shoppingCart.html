@@ -6,6 +6,7 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="container">
+
     <div sec:authorize="!isAuthenticated()">
         <h1 class="uk-text-large"> Please Login to View your Cart</h1>
     </div>
@@ -27,7 +28,7 @@
                 </div>
             </div>
             <div class="uk-grid uk-width uk-align-center">
-                <h2 class="" th:inline="text">Total: $[[${total}]]</h2>
+                <h2 class="" th:inline="text">Total in cart: $[[${total}]]</h2>
                 <br />
                 <a th:href="@{'/shoppingCart/checkout'}" class="">
                     <button type="button" class="uk-button uk-button-default uk-border-rounded" th:text="Checkout">Checkout</button>
