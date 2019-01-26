@@ -31,8 +31,8 @@
                 <h2 class="" th:inline="text">Total in cart: $[[${total}]]</h2>
                 <br />
                 <form th:action="@{'/shoppingCart/checkout'}" method="GET">
-
                     <script
+                            th:method="POST"
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
                             th:attr="data-amount=${total_stripe}"
@@ -42,9 +42,7 @@
                             data-locale="auto"
                             data-zip-code="true">
                     </script>
-                    <button type="button" class="uk-button uk-button-default uk-border-rounded" th:text="Checkout">Checkout</button>
                 </form>
-                th:attr="data-description='Your total is: $' + ${total}"
             </div>
         </div>
     </div>
