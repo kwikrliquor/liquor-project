@@ -34,16 +34,35 @@ public class DriverController {
         return "drivers";
     }
 
-    @PostMapping("/drivers")
-    public String assignOrderStatus(@RequestParam("orderId") Long orderId) {
-        Order existingOrder = orderRepository.findOne(orderId);
+    @PostMapping("/drivers/assign")
+    public String assignOrderStatus(@RequestParam("orderWithStatus1") Long orderWithStatus1) {
 
-        existingOrder.setOrderStatusId(orderStatusRepository.findById(2));
 
-        orderRepository.save(existingOrder);
+        Order placedOrder = orderRepository.findOne(orderWithStatus1);
+
+//        placedOrder.setOrderStatusId(orderStatusRepository.findById(2));
+        placedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderPrepared());
+
+        orderRepository.save(placedOrder);
+
 
         return "redirect:/drivers";
     }
 
+
+
+//    @PostMapping("/drivers/unassign")
+//    public String unAssignOrderStatus(@RequestParam("orderIdStatus2") Long orderWithStatus2) {
+//
+//
+//        Order preparedOrder = orderRepository.findOne(orderWithStatus2);
+//
+////        preparedOrder.setOrderStatusId(orderStatusRepository.findById(2));
+//        preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderPlaced());
+//
+//        orderRepository.save(preparedOrder);
+//
+//        return "redirect:/drivers";
+//    }
 
 }

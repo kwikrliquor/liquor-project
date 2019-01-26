@@ -58,7 +58,7 @@ public class User {
 
 //    @NotBlank(message = "Date of birth can not be blank")
   @Column(nullable = true)
-  private int dob;
+  private String dob;
 
   @Column(nullable = true, length = 2000)
   private String img_url;
@@ -77,7 +77,7 @@ public class User {
 
   public User(String first_name, String last_name, String address1, String address2,
       String city, String state, String postalCode, String email, String username,
-      String password, String phone_number, int dob, String img_url) {
+      String password, String phone_number, String dob, String img_url) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.address1 = address1;
@@ -93,7 +93,7 @@ public class User {
     this.img_url = img_url;
   }
 
-  public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String phone_number, int dob) {
+  public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String phone_number, String dob) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.address1 = address1;
@@ -210,11 +210,11 @@ public class User {
     this.phone_number = phone_number;
   }
 
-  public long getDob() {
+  public String getDob() {
     return dob;
   }
 
-  public void setDob(int dob) {
+  public void setDob(String dob) {
     this.dob = dob;
   }
 

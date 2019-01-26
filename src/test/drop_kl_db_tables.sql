@@ -25,15 +25,15 @@ SET first_name = 'John', last_name = 'Smith', address1 = "123 Bakers Ln",
 
 
 INSERT INTO order_status (status)
-VALUES ('New Order'),
-       ('Ready for Driver'),
-       ('On Route'),
+VALUES ('Awaiting Fulfillment'),
+       ('Delivery Pending'),
+       ('Out for Delivery'),
        ('Delivered');
 
 INSERT INTO orders (date, order_status_id, user_id)
-VALUES (11111111, 1, 2),
-       (22222222, 2, 2),
-       (33333333, 2, 3),
-       (44444444, 3, 3),
-       (55555555, 1, 3),
-       (66666666, 1, 1);
+VALUES ('12/23/2018', 1, 2),
+       ('12/24/2018', 2, 2),
+       ('12/24/2018', 2, 3),
+       ('01/03/2019', 3, 3),
+       ('01/07/2019', 1, 3),
+       ('01/15/2019', 1, 1);

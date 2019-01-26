@@ -16,7 +16,7 @@ public class Order {
   private long id;
 
   @Column(nullable = false)
-  private long date;
+  private String date;
   // Potential Alternative code for "date"
   //@Column(nullable = false)
   //private java.sql.Date date;
@@ -32,11 +32,11 @@ public class Order {
   public Order() {
   }
 
-  public Order(long date) {
+  public Order(String date) {
     this.date = date;
   }
 
-  public Order(long date, OrderStatus orderStatusId, User userId) {
+  public Order(String date, OrderStatus orderStatusId, User userId) {
     this.date = date;
     this.orderStatusId = orderStatusId;
     this.userId = userId;
@@ -55,11 +55,11 @@ public class Order {
     this.id = id;
   }
 
-  public long getDate() {
+  public String getDate() {
     return date;
   }
 
-  public void setDate(long date) {
+  public void setDate(String date) {
     this.date = date;
   }
 
