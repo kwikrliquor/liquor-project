@@ -63,11 +63,12 @@ public class Product {
     this.category = category;
     }
 
-    public Product(String name, String type, String description, BigDecimal price, Category category, User user) {
+    public Product(String name, String type, String description, BigDecimal price, int quantity, Category category, User user) {
     this.name = name;
     this.type = type;
     this.description = description;
     this.price = price;
+    this.quantity = quantity;
     this.category = category;
     this.user = user;
     }

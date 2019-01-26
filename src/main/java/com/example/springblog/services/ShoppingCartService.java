@@ -1,17 +1,26 @@
 package com.example.springblog.services;
 
 
+import com.example.springblog.components.Methods;
 import com.example.springblog.exception.NotEnoughProductsInStockException;
+import com.example.springblog.models.Order;
 import com.example.springblog.models.Product;
+import com.example.springblog.models.ProductOrder;
+import com.example.springblog.models.User;
+import com.example.springblog.repo.OrderRepository;
+import com.example.springblog.repo.ProductOrderRepository;
 import com.example.springblog.repo.ProductRepository;
+import com.example.springblog.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,13 +29,21 @@ import java.util.Map;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Transactional
 public class ShoppingCartService {
+    private final ProductOrderRepository productOrderRepository;
+    private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final Methods methods;
 
     private Map<Product, Integer> products = new HashMap<>();
 
     @Autowired
-    public ShoppingCartService(ProductRepository productRepository) {
+    public ShoppingCartService(ProductOrderRepository productOrderRepository, OrderRepository orderRepository, UserRepository userRepository, ProductRepository productRepository, Methods methods) {
+        this.productOrderRepository = productOrderRepository;
+        this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
         this.productRepository = productRepository;
+        this.methods = methods;
     }
 
     /**
@@ -40,6 +57,10 @@ public class ShoppingCartService {
             products.replace(product, products.get(product) + 1);
         } else {
             products.put(product, 1);
+        }
+        for(Map.Entry<Product, Integer> entry: products.entrySet()) {
+            System.out.println(entry.getKey().getId() + " : " + entry.getValue());
+//            ProductOrder(entry.getKey().getId(), );
         }
     }
 
@@ -80,6 +101,7 @@ public class ShoppingCartService {
                 throw new NotEnoughProductsInStockException(product);
             entry.getKey().setQuantity(product.getQuantity() - entry.getValue());
         }
+        methods.newOrder();
         productRepository.save(products.keySet());
         productRepository.flush();
         products.clear();

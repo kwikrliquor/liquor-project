@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials::head('Edit Post')"></head>
+<body>
+<div th:replace="partials::header"></div>
+<div th:replace="partials::navbar"></div>
+<main role="main" class="uk-container">
+    <h1 class="uk-text-center"><span class="uk-text-capitalize" th:text ="${#authentication.principal.username}"></span>, Thank you for you Order!</h1>
+</main><!-- /.container -->
+<div th:replace="partials::footer"></div>
+<div th:replace="partials::scripts"></div>
+
+</body>
+</html>

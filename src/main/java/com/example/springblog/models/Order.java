@@ -42,6 +42,11 @@ public class Order {
     this.userId = userId;
   }
 
+  public Order(long date, User userId) {
+    this.date = date;
+    this.userId = userId;
+  }
+
   public long getId() {
     return id;
   }

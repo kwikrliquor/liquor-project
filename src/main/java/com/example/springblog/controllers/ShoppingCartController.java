@@ -43,11 +43,13 @@ public class ShoppingCartController {
 
     @GetMapping("/shoppingCart/checkout")
     public ModelAndView checkout() {
+        ModelAndView modelAndView = new ModelAndView("checkoutSuccess");
         try {
             shoppingCartService.checkout();
         } catch (NotEnoughProductsInStockException e) {
             return shoppingCart().addObject("outOfStockMessage", e.getMessage());
         }
-        return shoppingCart();
+        shoppingCart();
+        return modelAndView;
     }
 }
