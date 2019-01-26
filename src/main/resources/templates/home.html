@@ -76,7 +76,9 @@
                     <p><em>Price</em></p>
                     <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
-                        <a th:href="@{'/shoppingCart/addProduct/' + ${product.id}}" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
+                        <form method="POST" th:action="@{'/shoppingCart/addProduct/' + ${product.id}}">
+                            <input type="submit" value="ADD TO CART" class="uk-button uk-button-default uk-button-small uk-border-rounded" />
+                        </form>
                     </div>
                 </div>
             </div>
