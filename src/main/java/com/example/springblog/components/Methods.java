@@ -34,7 +34,7 @@ public class Methods {
     public void newOrder() {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Order order[] = {
-                new Order(12423432, orderStatusRepo.findId1(), userRepo.findById(sessionUser.getId()))
+                new Order("12/27/18", orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
         };
         orderRepo.save(Arrays.asList(order));
     }
