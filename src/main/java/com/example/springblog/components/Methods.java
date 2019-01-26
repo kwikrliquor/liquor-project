@@ -9,7 +9,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 @Component
 public class Methods {
@@ -33,8 +35,9 @@ public class Methods {
 
     public void newOrder() {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String timeStamp = new SimpleDateFormat("MM/dd/yyyy" + "\n" + "HH:mm:ss").format(new Date());
         Order order[] = {
-                new Order("12/27/18", orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
+                new Order(timeStamp, orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
         };
         orderRepo.save(Arrays.asList(order));
     }
