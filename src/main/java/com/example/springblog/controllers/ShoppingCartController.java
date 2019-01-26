@@ -18,6 +18,7 @@ public class ShoppingCartController {
     private final ProductService productService;
     private final OrderRepository orderRepository;
     private final Methods methods;
+    private int x;
 
     @Autowired
     public ShoppingCartController(ShoppingCartService shoppingCartService, ProductService productService, OrderRepository orderRepository, Methods methods) {
@@ -32,6 +33,7 @@ public class ShoppingCartController {
         ModelAndView modelAndView = new ModelAndView("shoppingCart");
         modelAndView.addObject("products", shoppingCartService.getProductsInCart());
         modelAndView.addObject("total", shoppingCartService.getTotal().toString());
+        modelAndView.addObject("total_stripe", shoppingCartService.getTotal().toString().replace(".", ""));
         return modelAndView;
     }
 
