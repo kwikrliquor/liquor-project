@@ -37,12 +37,8 @@ public class DriverController {
     @PostMapping("/drivers/assign")
     public String assignOrderToDriver(@RequestParam("orderWithStatus1") Long orderWithStatus1) {
 
-
         Order placedOrder = orderRepository.findOne(orderWithStatus1);
-
-//        placedOrder.setOrderStatusId(orderStatusRepository.findById(2));
         placedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderPrepared());
-
         orderRepository.save(placedOrder);
 
 
@@ -52,12 +48,8 @@ public class DriverController {
     @PostMapping("/drivers/unassign")
     public String unAssignOrderFromDriver(@RequestParam("orderWithStatus2") Long orderWithStatus2) {
 
-
         Order preparedOrder = orderRepository.findOne(orderWithStatus2);
-
-//        preparedOrder.setOrderStatusId(orderStatusRepository.findById(2));
         preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderPlaced());
-
         orderRepository.save(preparedOrder);
 
         return "redirect:/drivers";
