@@ -16,14 +16,16 @@ public class Methods {
     private final UserRoleRepository roleRepo;
     private final CategoryRepository catRepo;
     private final ProductRepository prodRepo;
+    private final OrderStatusRepository orderStatusRepo;
     private final UserRepository userRepo;
     private final OrderRepository orderRepo;
     private final PasswordEncoder passwordEncoder;
 
-    public Methods(UserRoleRepository roleRepo, CategoryRepository catRepo, ProductRepository prodRepo, UserRepository userRepo, OrderRepository orderRepo, PasswordEncoder passwordEncoder) {
+    public Methods(UserRoleRepository roleRepo, CategoryRepository catRepo, ProductRepository prodRepo, OrderStatusRepository orderStatusRepo, UserRepository userRepo, OrderRepository orderRepo, PasswordEncoder passwordEncoder) {
         this.roleRepo = roleRepo;
         this.catRepo = catRepo;
         this.prodRepo = prodRepo;
+        this.orderStatusRepo = orderStatusRepo;
         this.userRepo = userRepo;
         this.orderRepo = orderRepo;
         this.passwordEncoder = passwordEncoder;
@@ -31,9 +33,8 @@ public class Methods {
 
     public void newOrder() {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         Order order[] = {
-                new Order(12423432, userRepo.findById(sessionUser.getId()))
+                new Order(12423432, orderStatusRepo.findId1(), userRepo.findById(sessionUser.getId()))
         };
         orderRepo.save(Arrays.asList(order));
     }

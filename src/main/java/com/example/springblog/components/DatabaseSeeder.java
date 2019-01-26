@@ -1,13 +1,7 @@
 package com.example.springblog.components;
 
-import com.example.springblog.models.Category;
-import com.example.springblog.models.Product;
-import com.example.springblog.models.User;
-import com.example.springblog.models.UserRole;
-import com.example.springblog.repo.CategoryRepository;
-import com.example.springblog.repo.ProductRepository;
-import com.example.springblog.repo.UserRepository;
-import com.example.springblog.repo.UserRoleRepository;
+import com.example.springblog.models.*;
+import com.example.springblog.repo.*;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -22,55 +16,64 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
 
-  private final Logger log = LoggerFactory.getLogger(this.getClass());
-  private final UserRoleRepository roleRepo;
-  private final CategoryRepository catRepo;
-  private final ProductRepository prodRepo;
-  private final UserRepository userRepo;
-  private final PasswordEncoder passwordEncoder;
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final UserRoleRepository roleRepo;
+    private final CategoryRepository catRepo;
+    private final ProductRepository prodRepo;
+    private final OrderStatusRepository orderStatusRepo;
+    private final UserRepository userRepo;
+    private final PasswordEncoder passwordEncoder;
 
-  @Value("${app.env}")
-  private String environment;
+    @Value("${app.env}")
+    private String environment;
 
-  @Autowired
-  public DatabaseSeeder(UserRoleRepository roleRepo,
-      CategoryRepository catRepo, ProductRepository prodRepo,
-      UserRepository userRepo, PasswordEncoder passwordEncoder) {
-    this.roleRepo = roleRepo;
-    this.catRepo = catRepo;
-    this.prodRepo = prodRepo;
-    this.userRepo = userRepo;
-    this.passwordEncoder = passwordEncoder;
-  }
+    public DatabaseSeeder(UserRoleRepository roleRepo, CategoryRepository catRepo, ProductRepository prodRepo, OrderStatusRepository orderStatusRepo, UserRepository userRepo, PasswordEncoder passwordEncoder) {
+        this.roleRepo = roleRepo;
+        this.catRepo = catRepo;
+        this.prodRepo = prodRepo;
+        this.orderStatusRepo = orderStatusRepo;
+        this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
+    }
 
-  private void seedRoles() {
-      UserRole roles[] = {
+    private void seedRoles() {
+        UserRole roles[] = {
           new UserRole("ROLE_ADMIN",1),
           new UserRole("ROLE_DRIVER", 2),
           new UserRole("ROLE_CUSTOMER", 3)
-      };
-      roleRepo.save(Arrays.asList(roles));
-  }
+        };
+        roleRepo.save(Arrays.asList(roles));
+    }
 
-  private void seedCategories() {
+    private void seedStatus() {
+        OrderStatus status[] = {
+            new OrderStatus("ORDER_PLACED"),
+            new OrderStatus("PREPARING_ORDER"),
+            new OrderStatus("DELIVERY"),
+            new OrderStatus("COMPLETED")
+        };
+        orderStatusRepo.save(Arrays.asList(status));
+    }
+
+    private void seedCategories() {
       Category types[] = {
           new Category("beer"),
           new Category("wine"),
           new Category("liquor")
       };
       catRepo.save(Arrays.asList(types));
-  }
+    }
 
-  private void seedUsers() {
+    private void seedUsers() {
       User users[] = {
           new User("admin", "admin@gmail.com", passwordEncoder.encode("password")),
           new User("driver", "driver@gmail.com", passwordEncoder.encode("password")),
           new User("customer", "customer@gmail.com", passwordEncoder.encode("password"))
       };
       userRepo.save(Arrays.asList(users));
-  }
+    }
 
-  private void seedProducts() {
+    private void seedProducts() {
     Product products[] = {
       new Product(
           "Samuel Adams Boston Lager",
@@ -231,10 +234,10 @@ public class DatabaseSeeder implements CommandLineRunner {
           userRepo.findByUsername("admin"))
     };
       prodRepo.save(Arrays.asList(products));
-  }
+    }
 
-  @Override
-  public void run(String... strings) throws Exception {
+    @Override
+    public void run(String... strings) throws Exception {
     if (!environment.equals("development")) {
       log.info("app.env is not development, doing nothing.");
       return;
@@ -244,11 +247,15 @@ public class DatabaseSeeder implements CommandLineRunner {
     log.info("Deleting users...");
     userRepo.deleteAll();
     log.info("Deleting categories...");
+    orderStatusRepo.deleteAll();
+    log.info("Deleting status...");
     catRepo.deleteAll();
     log.info("Deleting roles...");
     roleRepo.deleteAll();
     log.info("Seeding roles...");
     seedRoles();
+    log.info("Seeding status...");
+    seedStatus();
     log.info("Seeding categories...");
     seedCategories();
     log.info("Seeding users...");
@@ -256,6 +263,6 @@ public class DatabaseSeeder implements CommandLineRunner {
     log.info("Seeding products...");
     seedProducts();
     log.info("Finished running seeders!");
-  }
+    }
 
 }

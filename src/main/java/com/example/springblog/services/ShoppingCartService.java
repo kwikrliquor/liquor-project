@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -58,10 +59,10 @@ public class ShoppingCartService {
         } else {
             products.put(product, 1);
         }
-        for(Map.Entry<Product, Integer> entry: products.entrySet()) {
-            System.out.println(entry.getKey().getId() + " : " + entry.getValue());
-//            ProductOrder(entry.getKey().getId(), );
-        }
+//        //REALLY GOOD LOOP FOR HASHMAPS, MUST USE
+//        for(Map.Entry<Product, Integer> entry: products.entrySet()) {
+//            System.out.println(entry.getKey().getId() + " : " + entry.getValue());
+//        }
     }
 
     /**
