@@ -58,12 +58,17 @@ public class ShoppingCartController {
     @GetMapping("/shoppingCart/checkout")
     public ModelAndView order() {
         ModelAndView modelAndView = new ModelAndView("checkoutSuccess");
+        modelAndView.addObject("order_num", orderRepository.findAll().size());
+        return modelAndView;
+    }
+
+    @PostMapping("/shoppingCart/checkout")
+    public ModelAndView orderPost() {
         try {
             shoppingCartService.checkout();
         } catch (NotEnoughProductsInStockException e) {
             return shoppingCart().addObject("outOfStockMessage", e.getMessage());
         }
-        modelAndView.addObject("order_num", orderRepository.findAll().size());
-        return modelAndView;
+        return shoppingCart();
     }
 }

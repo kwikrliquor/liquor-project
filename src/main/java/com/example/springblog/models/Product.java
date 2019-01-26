@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 @Entity
 @Table(name = "products")

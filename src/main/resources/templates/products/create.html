@@ -21,12 +21,10 @@
         </select>
         <br />
         Price:
-        <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{price}" />
-        <br />
+        <input type="number" step="any" class="uk-input uk-border-rounded" th:field="*{price}" />
         <br />
         Type:
         <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{type}" />
-        <br />
         <br />
         Description:
         <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{description}" />
