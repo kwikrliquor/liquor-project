@@ -8,13 +8,10 @@ import java.util.List;
 public class OrderStatus {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
 	@Column(nullable = false)
 	private String status;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "orderStatusId")
-	private List<Order> orders;
 
 	public OrderStatus() {
 	}
@@ -23,11 +20,9 @@ public class OrderStatus {
 		this.status = status;
 	}
 
-	public long getId() {
-		return id;
-	}
+	public int getId() { return id; }
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -39,11 +34,4 @@ public class OrderStatus {
 		this.status = status;
 	}
 
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
 }
