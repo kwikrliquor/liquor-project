@@ -57,10 +57,18 @@ public class Product {
     }
 
     public Product(String name, String type, String description, Category category) {
-    this.name = name;
-    this.type = type;
-    this.description = description;
-    this.category = category;
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.category = category;
+    }
+
+    public Product(String name, String type, String description, BigDecimal price, Category category) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.price = price;
+        this.category = category;
     }
 
     public Product(String name, String type, String description, BigDecimal price, int quantity, Category category, User user) {
