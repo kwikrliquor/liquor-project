@@ -16,7 +16,7 @@
             <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
                 <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
                 <h5 class="uk-card-title">Order# <span th:text="${order.id}"></span></h5>
-                <p>Created on: <span th:text="${order.date}"></span></p>
+                <p>Created on: <br/> <em><span th:text="${order.date}"></span></em></p>
                 <button name="unassigned" type="submit" th:value="${order.getOrderStatusId().getId()}">Assign</button>
             </div>
         </form>
