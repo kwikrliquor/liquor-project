@@ -89,4 +89,9 @@ public class ProductController {
     return "redirect:/products";
   }
 
+  @GetMapping("/google")
+    public String check() {
+    return "google";
+  }
+
 }
