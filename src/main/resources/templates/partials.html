@@ -163,7 +163,7 @@
         </ul>
     </div>
     <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav">
+        <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li class="uk-inline">
                 <a href="#"><div class="uk-text-large" th:text ="${#authentication.principal.username}"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
@@ -193,48 +193,44 @@
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
-            <div sec:authorize="isAuthenticated()">
-                <li>
-                    <form th:action="@{/logout}" th:method="POST">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
-                    </form>
-                </li>
-            </div>
-            <div sec:authorize="!isAuthenticated()">
-                <li>
-                    <form th:action="@{/login}" th:method="GET">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
-                    </form>
-                </li>
-            </div>
+            <li class="uk-inline">
+                <a href="#"><div class="uk-text-large" th:text ="${#authentication.principal.username}"></div></a>
+                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+                    <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="POST">
+                            <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
+                        </form>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar" sec:authorize="hasRole('ROLE_DRIVER')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_DRIVER')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div>Open Deliveries</div></a></li>
-            <li><a href="/products"><div>Your Deliveries</div></a></li>
+            <li><a href="/products"><div>All Products</div></a></li>
+            <li><a href="/driver_dashboard"><div>Dashboard</div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
-            <div sec:authorize="isAuthenticated()">
-                <li>
-                    <form th:action="@{/logout}" th:method="POST">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
-                    </form>
-                </li>
-            </div>
-            <div sec:authorize="!isAuthenticated()">
-                <li>
-                    <form th:action="@{/login}" th:method="GET">
-                        <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
-                    </form>
-                </li>
-            </div>
+            <li class="uk-inline">
+                <a href="#"><div class="uk-text-large" th:text ="${#authentication.principal.username}"></div></a>
+                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+                    <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="POST">
+                            <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Logout"/>
+                        </form>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

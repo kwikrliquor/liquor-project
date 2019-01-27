@@ -28,7 +28,7 @@ public class DriverController {
     @Autowired
     private ProductOrderRepository productOrderRepository;
 
-    @GetMapping("/drivers")
+    @GetMapping("/driver_dashboard")
     public String showDriversPage(Model model){
 
         model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
@@ -48,7 +48,7 @@ public class DriverController {
         orderRepository.save(placedOrder);
 
 
-        return "redirect:/drivers";
+        return "redirect:/driver_dashboard";
     }
 
     @PostMapping("/drivers/unassign")
@@ -62,7 +62,7 @@ public class DriverController {
 
         orderRepository.save(preparedOrder);
 
-        return "redirect:/drivers";
+        return "redirect:/driver_dashboard";
     }
 
     @GetMapping("/order_details/{id}")

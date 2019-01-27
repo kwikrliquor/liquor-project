@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials::head('My Account')"></head>
 <body>
 <div th:replace="partials::header"></div>
@@ -55,20 +56,7 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_DRIVER')">
-        <h1>Dashboard</h1>
-        <div class="uk-child-width-1-2 uk-text-center uk-grid">
-            <div>
-
-                <a href="/open-deliveries"><div class="uk-card uk-card-default uk-card-body">New Deliveries</div></a>
-                <!--<div class="uk-card uk-card-default uk-card-body"><a href="/products"><div>Open Deliveries</div></a></div>-->
-
-            </div>
-            <div>
-
-                <a href="/my-deliveries"><div class="uk-card uk-card-default uk-card-body">My Deliveries</div></a>
-
-            </div>
-        </div>
+        The DRIVER will see this.
     </div>
 
 </main><!-- /.container -->
