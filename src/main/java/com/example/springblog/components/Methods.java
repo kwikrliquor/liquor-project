@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -33,11 +34,12 @@ public class Methods {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void newOrder() {
+    public void newOrder(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String timeStamp = new SimpleDateFormat("MM/dd/yyyy" + "\n" + "HH:mm:ss").format(new Date());
         Order order[] = {
-                new Order(timeStamp, orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
+                //NEED TO GRAB THE temp_address from the shoppingCart.html input field, google autofill works
+                new Order(timeStamp, ,orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
         };
         orderRepo.save(Arrays.asList(order));
     }

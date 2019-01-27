@@ -131,5 +131,21 @@
 <div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 
+<script>
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('address-search')),
+            {types: ['geocode']});
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('address-search1')),
+            {types: ['geocode']});
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('address-search2')),
+            {types: ['geocode']});
+    }
+</script>
+
 </body>
 </html>

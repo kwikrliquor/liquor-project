@@ -17,6 +17,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
@@ -102,6 +103,7 @@ public class ShoppingCartService {
                 throw new NotEnoughProductsInStockException(product);
             entry.getKey().setQuantity(product.getQuantity() - entry.getValue());
         }
+        //FIX THE Method object to accept tempAddress in the parameters
         methods.newOrder();
         productRepository.save(products.keySet());
         productRepository.flush();

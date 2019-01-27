@@ -105,7 +105,6 @@
 
     // This example requires the Places library. Include the libraries=places
     // parameter when you first load the API. For example:
-    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
     var placeSearch, autocomplete;
     var componentForm = {
@@ -138,6 +137,7 @@
             document.getElementById(component).disabled = false;
         }
 
+        //THIS PART DOESN'T WORK CAUSE CANT ESCAPE < IN FOR LOOP
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
         for (var i = 0; i < place.address_components.length; i++) {
@@ -171,8 +171,6 @@
 <div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcZgyTawnZx-QYzO384s-G_Qxe3-pElM&libraries=places&callback=initAutocomplete"
-        async defer></script>
-
+<script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcZgyTawnZx-QYzO384s-G_Qxe3-pElM&amp;libraries=places&amp;callback=initAutocomplete"></script>
 </body>
 </html>
