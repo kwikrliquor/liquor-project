@@ -63,4 +63,13 @@ public class DriverController {
         return "redirect:/drivers";
     }
 
+    @GetMapping("/order_details/{id}")
+    public String showDetails(@PathVariable int id, Model model) {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("user", sessionUser);
+        model.addAttribute("order", orderRepository.findOrdersById(id));
+        model.addAttribute("id", id);
+        return "orders/order_show";
+    }
+
 }
