@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials::head('My Account')"></head>
 <body>
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
     <div sec:authorize="hasRole('ROLE_CUSTOMER')">
-        <form class="uk-form-width-medium" th:action="@{/profile/edit/}" method="POST" th:object="${user}">
+        <form class="uk-form-width-medium" th:action="@{/profile/edit}" method="POST" th:object="${user}">
             <h1>Edit Profile</h1>
             First Name:
             <input class="uk-input uk-border-rounded" th:field="*{first_name}" />
@@ -29,21 +30,21 @@
             Zip Code:
             <input class="uk-input uk-border-rounded" th:field="*{postalCode}" />
             <br />
-            <!--Phone Number:-->
-            <!--<input class="uk-input uk-border-rounded" th:field="*{phone_number}" />-->
-            <!--<br />-->
-            <!--DOB:-->
-            <!--<input class="uk-input uk-border-rounded" th:field="*{dob}" />-->
-            <!--<br />-->
+            Phone Number:
+            <input class="uk-input uk-border-rounded" th:field="*{phone_number}" />
+            <br />
+            DOB:
+            <input type="date" class="uk-input uk-border-rounded" th:field="*{dob}" />
+            <br />
             Username:
             <input class="uk-input uk-border-rounded" th:field="*{username}" />
             <br />
             Email:
             <input class="uk-input uk-border-rounded" th:field="*{email}" />
             <br />
-            <!--Password:-->
-            <!--<input class="uk-input uk-border-rounded" type="password" th:value="*{password}" />-->
-            <!--<br />-->
+            Password:
+            <input class="uk-input uk-border-rounded" type="password" th:value="*{password}" />
+            <br />
             <div class="mt-1">
                 <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Edit Profile" />
             </div>
@@ -55,20 +56,7 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_DRIVER')">
-        <h1>Dashboard</h1>
-        <div class="uk-child-width-1-2 uk-text-center uk-grid">
-            <div>
-
-                <a href="/open-deliveries"><div class="uk-card uk-card-default uk-card-body">New Deliveries</div></a>
-                <!--<div class="uk-card uk-card-default uk-card-body"><a href="/products"><div>Open Deliveries</div></a></div>-->
-
-            </div>
-            <div>
-
-                <a href="/my-deliveries"><div class="uk-card uk-card-default uk-card-body">My Deliveries</div></a>
-
-            </div>
-        </div>
+        The DRIVER will see this.
     </div>
 
 </main><!-- /.container -->

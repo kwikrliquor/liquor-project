@@ -2,13 +2,12 @@ package com.example.springblog.controllers;
 
 import com.example.springblog.models.Order;
 import com.example.springblog.models.OrderStatus;
+import com.example.springblog.models.ProductOrder;
 import com.example.springblog.models.User;
-import com.example.springblog.repo.OrderRepository;
-import com.example.springblog.repo.OrderStatusRepository;
-import com.example.springblog.repo.UserRepository;
-import com.example.springblog.repo.UserRoleRepository;
+import com.example.springblog.repo.*;
 import com.example.springblog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +25,10 @@ public class DriverController {
     @Autowired
     private OrderStatusRepository orderStatusRepository;
 
-    @GetMapping("/drivers")
+    @Autowired
+    private ProductOrderRepository productOrderRepository;
+
+    @GetMapping("/driver_dashboard")
     public String showDriversPage(Model model){
 
         model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
@@ -46,7 +48,7 @@ public class DriverController {
         orderRepository.save(placedOrder);
 
 
-        return "redirect:/drivers";
+        return "redirect:/driver_dashboard";
     }
 
     @PostMapping("/drivers/unassign")
@@ -60,7 +62,16 @@ public class DriverController {
 
         orderRepository.save(preparedOrder);
 
-        return "redirect:/drivers";
+        return "redirect:/driver_dashboard";
+    }
+
+    @GetMapping("/order_details/{id}")
+    public String showDetails(@PathVariable int id, Model model) {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("user", sessionUser);
+        model.addAttribute("order", orderRepository.findOrdersById(id));
+        model.addAttribute("id", id);
+        return "orders/order_show";
     }
 
 }

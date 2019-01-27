@@ -8,11 +8,7 @@ package com.example.springblog.repo;
         import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    Order findOrderById(long id);
-
-    Order findByOrderStatusId(long id);
-
-    Order findOrderByOrderStatusId(long id);
+    Order findOrdersById(long id);
 
     @Query("from Order a where a.orderStatusId.id=1")
     List<Order> findOrdersStatus1();
