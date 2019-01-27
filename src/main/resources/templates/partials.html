@@ -165,7 +165,7 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li class="uk-inline">
-                <a href="#"><div class="uk-text-large" th:text ="${#authentication.principal.username}"></div></a>
+                <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
                     <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
                     <li class="uk-nav-divider"></li>
@@ -194,7 +194,7 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li class="uk-inline">
-                <a href="#"><div class="uk-text-large" th:text ="${#authentication.principal.username}"></div></a>
+                <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
                     <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
                     <li class="uk-nav-divider"></li>
@@ -220,7 +220,7 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li class="uk-inline">
-                <a href="#"><div class="uk-text-large" th:text ="${#authentication.principal.username}"></div></a>
+                <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
                     <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
                     <li class="uk-nav-divider"></li>
@@ -263,6 +263,11 @@
     <script src="/static/js/components/sticky.min.js"></script>
     <script src="/static/js/core/nav.js"></script>
     <script src="/static/js/core/nav.min.js"></script>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcZgyTawnZx-QYzO384s-G_Qxe3-pElM&amp;libraries=places&amp;callback=initAutocomplete"></script>
+
 
 </div>
 

@@ -17,6 +17,9 @@ public class Order {
 
   @Column(nullable = false)
   private String date;
+
+  @Column(nullable = true)
+  private String tempAddress;
   // Potential Alternative code for "date"
   //@Column(nullable = false)
   //private java.sql.Date date;
@@ -36,8 +39,9 @@ public class Order {
     this.date = date;
   }
 
-  public Order(String date, OrderStatus orderStatusId, User userId) {
+  public Order(String date, String tempAddress, OrderStatus orderStatusId, User userId) {
     this.date = date;
+    this.tempAddress = tempAddress;
     this.orderStatusId = orderStatusId;
     this.userId = userId;
   }
@@ -77,5 +81,13 @@ public class Order {
 
   public void setUserId(User userId) {
     this.userId = userId;
+  }
+
+  public String getTempAddress() {
+    return tempAddress;
+  }
+
+  public void setTempAddress(String tempAddress) {
+    this.tempAddress = tempAddress;
   }
 }

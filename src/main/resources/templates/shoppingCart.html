@@ -8,7 +8,7 @@
 <main role="main" class="container">
 
     <div sec:authorize="!isAuthenticated()">
-        <h1 class="uk-text-large"> Please Login to View your Cart</h1>
+        <a href="/login"><h1 class="uk-text-large"> Please Login to View your Cart</h1></a>
     </div>
 
     <div sec:authorize="isAuthenticated()">
@@ -28,6 +28,7 @@
                 </div>
             </div>
             <div class="uk-grid uk-width uk-align-center">
+                <input class="uk-input uk-border-rounded" id="checkout_address" name="checkout_address" type="text" />
                 <h2 class="" th:inline="text">Total in cart: $[[${total}]]</h2>
                 <br />
                 <form th:action="@{'/shoppingCart/checkout'}" method="GET">
@@ -49,7 +50,16 @@
 </main><!-- /.container -->
 <div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
-<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('checkout_address')),
+            {types: ['geocode']});
+    }
+</script>
 
 </body>
 </html>
