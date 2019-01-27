@@ -2,13 +2,12 @@ package com.example.springblog.controllers;
 
 import com.example.springblog.models.Order;
 import com.example.springblog.models.OrderStatus;
+import com.example.springblog.models.ProductOrder;
 import com.example.springblog.models.User;
-import com.example.springblog.repo.OrderRepository;
-import com.example.springblog.repo.OrderStatusRepository;
-import com.example.springblog.repo.UserRepository;
-import com.example.springblog.repo.UserRoleRepository;
+import com.example.springblog.repo.*;
 import com.example.springblog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +24,9 @@ public class DriverController {
 
     @Autowired
     private OrderStatusRepository orderStatusRepository;
+
+    @Autowired
+    private ProductOrderRepository productOrderRepository;
 
     @GetMapping("/drivers")
     public String showDriversPage(Model model){

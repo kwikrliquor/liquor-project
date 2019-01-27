@@ -9,39 +9,35 @@
 
     <h2 class="uk-text-center">Driver Dashboard</h2>
     <br/>
-    <div class="uk-child-width-expand@s uk-text-center uk-grid">
-        <div>
+    <h4 class="uk-text-center">New Orders</h4>
+    <div tabindex="0" class="uk-child-width-1-3@m uk-grid uk-text-center">
 
-            <h4 class="uk-text-center">New Orders</h4>
-            <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center">
-            <form th:action="@{/drivers/assign}" method="post" th:each="order : ${unassignedOrders}">
-                <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
-                    <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
-                    <h5 class="uk-card-title">Order# <span th:text="${order.id}"></span></h5>
-                    <p>Created on: <br/> <em><span th:text="${order.date}"></span></em></p>
-                    <button name="unassigned" type="submit" th:value="${order.getOrderStatusId().getId()}">Assign</button>
-                </div>
-            </form>
+        <form th:action="@{/drivers/assign}" method="post" th:each="order : ${unassignedOrders}">
+            <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
+                <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
+                <h5 class="uk-card-title"><a th:href="'/order_details/' + ${order.id}"><span
+                        th:text="'Order #' + ${order.id}"></span></a></h5>
+                <p>Created on: <br/> <em><span th:text="${order.date}"></span></em></p>
+                <button name="unassigned" type="submit" th:value="${order.getOrderStatusId().getId()}">Assign</button>
             </div>
+        </form>
 
-        </div>
-        <br/>
-        <br/>
-        <div>
+    </div>
+    <br/>
+    <br/>
+    <h4 class="uk-text-center">My Deliveries</h4>
+    <div tabindex="0" class="uk-child-width-1-3@m uk-grid uk-text-center">
 
-            <h4 class="uk-text-center">My Deliveries</h4>
-            <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center">
-                <form th:action="@{/drivers/unassign}" method="post" th:each="order : ${assignedOrders}">
-                    <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
-                        <input type="hidden" name="orderWithStatus2" th:value="${order.id}"/>
-                        <h5 class="uk-card-title">Order# <span th:text="${order.id}"></span></h5>
-                        <p>Created on: <em class="uk-text-success"><span th:text="${order.date}"></span></em></p>
-                        <button name="assigned" type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
-                    </div>
-                </form>
+        <form th:action="@{/drivers/unassign}" method="post" th:each="order : ${assignedOrders}">
+            <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
+                <input type="hidden" name="orderWithStatus2" th:value="${order.id}"/>
+                <h5 class="uk-card-title"><a th:href="'/order_details/' + ${order.id}"><span
+                        th:text="'Order #' + ${order.id}"></span></a></h5>
+                <p>Created on: <span th:text="${order.date}"></span></p>
+                <button name="assigned" type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
             </div>
+        </form>
 
-        </div>
     </div>
 
 
