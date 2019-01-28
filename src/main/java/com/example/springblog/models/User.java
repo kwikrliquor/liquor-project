@@ -75,6 +75,13 @@ public class User {
     this.password = password;
   }
 
+  public User(String username, String email, String password, String img_url) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.img_url = img_url;
+  }
+
   public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String password, String phone_number, String dob) {
     this.first_name = first_name;
     this.last_name = last_name;
@@ -86,6 +93,36 @@ public class User {
     this.email = email;
     this.username = username;
     this.password = password;
+    this.phone_number = phone_number;
+    this.dob = dob;
+  }
+
+  public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String password, String phone_number, String dob, String img_url) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.address1 = address1;
+    this.address2 = address2;
+    this.city = city;
+    this.state = state;
+    this.postalCode = postalCode;
+    this.email = email;
+    this.username = username;
+    this.password = password;
+    this.phone_number = phone_number;
+    this.dob = dob;
+    this.img_url = img_url;
+  }
+
+  public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String phone_number, String dob) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.address1 = address1;
+    this.address2 = address2;
+    this.city = city;
+    this.state = state;
+    this.postalCode = postalCode;
+    this.email = email;
+    this.username = username;
     this.phone_number = phone_number;
     this.dob = dob;
   }
