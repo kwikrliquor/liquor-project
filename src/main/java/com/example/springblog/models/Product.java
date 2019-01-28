@@ -82,6 +82,17 @@ public class Product {
     this.user = user;
     }
 
+    public Product(String name, String type, String description, BigDecimal price, int quantity, String imgUrl,Category category, User user) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.imgUrl = imgUrl;
+        this.category = category;
+        this.user = user;
+    }
+
     public Product(int stock, int quantity, BigDecimal price, String imgUrl, Category category, String name, String type, String description, User user) {
     this.stock = stock;
     this.quantity = quantity;
