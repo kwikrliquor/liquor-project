@@ -254,6 +254,8 @@
     <script src="/static/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
+    <script src="/static/css/components/progress.css"></script>
+    <script src="/static/css/components/progress.min.css"></script>
     <script src="/static/js/core/grid.js"></script>
     <script src="/static/js/core/grid.min.js"></script>
     <script src="/static/js/components/grid.js"></script>
@@ -271,7 +273,30 @@
 
     <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcZgyTawnZx-QYzO384s-G_Qxe3-pElM&amp;libraries=places&amp;callback=initAutocomplete"></script>
 
+    <script>
 
+        UIkit.util.ready(function () {
+
+            var bar = document.getElementById('js-progressbar');
+
+            var animate = $('#assigned').click(function () {
+                bar.value = 25;
+
+                if (bar.value >= bar.max) {
+                    clearInterval(animate);
+                }
+            });
+
+            var animate = $('#unassigned').click(function () {
+                bar.value = 1;
+
+                if (bar.value >= bar.max) {
+                    clearInterval(animate);
+                }
+            });
+        });
+
+    </script>
 </div>
 
 </body>
