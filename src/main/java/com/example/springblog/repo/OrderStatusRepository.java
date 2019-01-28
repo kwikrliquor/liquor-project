@@ -18,6 +18,9 @@ public interface OrderStatusRepository extends JpaRepository<OrderStatus, Long> 
     @Query("from OrderStatus a where a.id=2")
     OrderStatus findStatusOrderPrepared();
 
+    @Query("from OrderStatus a where a.id=2")
+    OrderStatus findStatusOrderBackPrepared();
+
     @Query("from OrderStatus a where a.id=3")
     OrderStatus findStatusOrderDelivery();
 
