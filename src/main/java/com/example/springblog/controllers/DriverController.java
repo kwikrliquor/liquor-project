@@ -126,5 +126,4 @@ public class DriverController {
         model.addAttribute("id", id);
         return "orders/order_show";
     }
-
 }
