@@ -46,6 +46,12 @@ public class Order {
     this.userId = userId;
   }
 
+  public Order(String date, OrderStatus orderStatusId, User userId) {
+    this.date = date;
+    this.orderStatusId = orderStatusId;
+    this.userId = userId;
+  }
+
   public Order(String date, User userId) {
     this.date = date;
     this.userId = userId;

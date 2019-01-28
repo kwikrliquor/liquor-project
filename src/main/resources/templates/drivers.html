@@ -15,36 +15,99 @@
             <div>
 
                 <h4 class="uk-text-center">New Orders</h4>
-                <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center">
+                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-2@m uk-grid uk-text-center">
 
                     <form th:action="@{/drivers/assign}" method="post" th:each="order : ${unassignedOrders}">
-                        <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
-                            <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
+                        <div class="uk-card uk-card-hover uk-card-body">
+                            <input type="hidden" name="orderWithStatus1" id="orderWithStatus1" th:value="${order.id}"/>
                             <h5 class="uk-card-title"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
                             <p>Created on: <br/> <em><span th:text="${order.date}"></span></em></p>
                             <button name="unassigned" type="submit" th:value="${order.getOrderStatusId().getId()}">Assign</button>
+                                <span>Order Placed</span>
+                            <div th:if="${order.getOrderStatusId().id} == 1">
+                                <progress class="uk-progress" value="25" max="100"></progress>
+                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
 
             <div>
 
-                <h4 class="uk-text-center">My Deliveries</h4>
-                <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center">
+                <h4 class="uk-text-center"><span class="uk-text-capitalize" sec:authentication="name"></span>'s Accepted Orders</h4>
+                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-2@m uk-grid uk-text-center">
 
-                    <form th:action="@{/drivers/unassign}" method="post" th:each="order : ${assignedOrders}">
-                        <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">
-                            <input type="hidden" name="orderWithStatus2" th:value="${order.id}"/>
+                    <div th:each="order : ${assignedOrders}">
+
+                        <div class="uk-card uk-card-hover uk-card-body">
                             <h5 class="uk-card-title"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
                             <p>Created on: <span th:text="${order.date}"></span></p>
-                            <button name="assigned" type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
-                        </div>
-                    </form>
+                            <div class="uk-inline" th:if="${order.getOrderStatusId().id} > 1">
+                                <form th:action="@{/drivers/unassign}" method="post">
+                                    <input type="hidden" name="orderWithStatus2" th:value="${order.id}"/>
+                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
+                                </form>
+                                <form th:action="@{/drivers/delivery}" method="post">
+                                    <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
+                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Out for Delivery</button>
+                                </form>
+                            </div>
 
+                            <div th:if="${order.getOrderStatusId().id} == 2">
+                                <span>Preparing Order</span>
+                                <progress class="uk-progress" value="50" max="100"></progress>
+                            </div>
+                            <div th:if="${order.getOrderStatusId().id} == 3">
+                                <span>Out for Delivery</span>
+                                <progress class="uk-progress" value="75" max="100"></progress>
+                            </div>
+                            <div th:if="${order.getOrderStatusId().id} == 4">
+                                <span>Delivered</span>
+                                <progress class="uk-progress" value="100" max="100"></progress>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+
+                <h4 class="uk-text-center"><span class="uk-text-capitalize" sec:authentication="name"></span>'s Deliveries</h4>
+                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-2@m uk-grid uk-text-center">
+
+                    <div th:each="order : ${outForDelivery}">
+
+                        <div class="uk-card uk-card-hover uk-card-body">
+                            <h5 class="uk-card-title"><a th:href="'/order_details/' + ${order.id}"><span
+                                    th:text="'Order #' + ${order.id}"></span></a></h5>
+                            <p>Created on: <span th:text="${order.date}"></span></p>
+                            <div class="" th:if="${order.getOrderStatusId().id} > 1">
+                                <form th:action="@{/drivers/prepare}" method="post">
+                                    <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
+                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Preparing</button>
+                                </form>
+                                <form th:action="@{/drivers/delivered}" method="post">
+                                    <input type="hidden" name="orderWithStatus4" th:value="${order.id}"/>
+                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Delivered</button>
+                                </form>
+                            </div>
+
+                            <div th:if="${order.getOrderStatusId().id} == 2">
+                                <span>Preparing Order</span>
+                                <progress class="uk-progress" value="50" max="100"></progress>
+                            </div>
+                            <div th:if="${order.getOrderStatusId().id} == 3">
+                                <span>Out for Delivery</span>
+                                <progress class="uk-progress" value="75" max="100"></progress>
+                            </div>
+                            <div th:if="${order.getOrderStatusId().id} == 4">
+                                <span>Delivered</span>
+                                <progress class="uk-progress" value="100" max="100"></progress>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="uk-grid uk-width uk-align-center">
-                <input class="uk-input uk-border-rounded" id="checkout_address" name="checkout_address" type="text" />
+                <input class="uk-input uk-border-rounded uk-width-medium checkout-box" id="checkout_address" name="checkout_address" type="text" />
                 <h2 class="" th:inline="text">Total in cart: $[[${total}]]</h2>
                 <br />
                 <form th:action="@{'/shoppingCart/checkout'}" method="GET">
