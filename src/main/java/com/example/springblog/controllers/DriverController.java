@@ -70,7 +70,7 @@ public class DriverController {
     }
 
     @PostMapping("/drivers/delivery")
-    public String orderOutForDevilery(@RequestParam("orderWithStatus3") Long orderWithStatus3) {
+    public String orderOutForDelivery(@RequestParam("orderWithStatus3") Long orderWithStatus3) {
 
         Order preparedOrder = orderRepository.findOne(orderWithStatus3);
         preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderDelivery());

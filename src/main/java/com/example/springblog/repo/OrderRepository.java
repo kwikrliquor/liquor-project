@@ -24,7 +24,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("from Order a where a.orderStatusId.id=3")
     List<Order> findOrdersStatus3();
 
-    @Query("from Order a where a.orderStatusId.id=1")
+    @Query("from Order a where a.orderStatusId.id=5")
     List<Order> findUnverifiedOrders();
 
 }
