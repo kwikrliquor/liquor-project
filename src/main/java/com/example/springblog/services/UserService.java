@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 
 @Service("usersSvc")
 public class UserService {
@@ -25,7 +26,9 @@ public class UserService {
     this.usersRepository = usersRepository;
   }
 
-
+  public List<User> getAll() {
+    return usersRepository.findAll();
+  }
 
   public boolean isLoggedIn() {
     boolean isAnonymousUser =
