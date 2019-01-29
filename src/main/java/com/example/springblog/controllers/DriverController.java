@@ -35,6 +35,7 @@ public class DriverController {
         model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
         model.addAttribute("assignedOrders", orderRepository.findOrdersStatus2());
         model.addAttribute("outForDelivery", orderRepository.findOrdersStatus3());
+        model.addAttribute("delivered", orderRepository.findOrdersStatus4());
 
         return "drivers";
     }
