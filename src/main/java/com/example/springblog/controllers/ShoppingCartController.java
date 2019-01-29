@@ -1,6 +1,5 @@
 package com.example.springblog.controllers;
 
-import com.example.springblog.components.Methods;
 import com.example.springblog.exception.NotEnoughProductsInStockException;
 import com.example.springblog.repo.OrderRepository;
 import com.example.springblog.services.ProductService;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,15 +17,12 @@ public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
     private final ProductService productService;
     private final OrderRepository orderRepository;
-    private final Methods methods;
-    private int x;
 
     @Autowired
-    public ShoppingCartController(ShoppingCartService shoppingCartService, ProductService productService, OrderRepository orderRepository, Methods methods) {
+    public ShoppingCartController(ShoppingCartService shoppingCartService, ProductService productService, OrderRepository orderRepository) {
         this.shoppingCartService = shoppingCartService;
         this.productService = productService;
         this.orderRepository = orderRepository;
-        this.methods = methods;
     }
 
     @GetMapping("/shoppingCart")
@@ -56,14 +53,17 @@ public class ShoppingCartController {
     }
 
     @GetMapping("/shoppingCart/checkout")
-    public ModelAndView order() {
+    public ModelAndView order(@RequestParam("checkout_address") String checkout_address) {
         ModelAndView modelAndView = new ModelAndView("checkoutSuccess");
         try {
-            shoppingCartService.checkout();
+            shoppingCartService.checkout(checkout_address);
+//            shoppingCartService.newOrder(checkout_address);
         } catch (NotEnoughProductsInStockException e) {
             return shoppingCart().addObject("outOfStockMessage", e.getMessage());
         }
         modelAndView.addObject("order_num", orderRepository.findAll().size());
+//        modelAndView.addObject("order_address", orderRepository.findAll().size());
+
         return modelAndView;
     }
 
@@ -71,9 +71,21 @@ public class ShoppingCartController {
 //    public ModelAndView orderPost() {
 //        try {
 //            shoppingCartService.checkout();
+//            shoppingCartService.newOrder();
 //        } catch (NotEnoughProductsInStockException e) {
 //            return shoppingCart().addObject("outOfStockMessage", e.getMessage());
 //        }
 //        return shoppingCart();
+//    }
+
+//    @PostMapping("/drivers/delivered")
+//    public String delivered(@RequestParam("checkout_address") Long checkout_address, Model model) {
+//        model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
+//
+//        Order tempAddress = orderRepository.findOne(checkout_address);
+//        tempAddress.setTempAddress(orderRepository.);
+//        orderRepository.save(preparedOrder);
+//
+//        return "redirect:/driver_dashboard";
 //    }
 }

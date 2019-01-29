@@ -13,18 +13,18 @@
     <div sec:authorize="!isAuthenticated()">
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
-                <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
+                <div class="uk-card uk-card-hover uk-card-body remove-top-padding uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" />
                     <!--<div class="product-card" th:style="'background-image: url(' + ${product.imgUrl} + ')'">-->
 
-                    <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
+                    <h5 class="uk-card-title remove-margin"><a th:href="'/products/' + ${product.id}"><span
                         th:text="${product.name}"></span></a></h5>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Type</em></p>
-                    <p th:text="${product.type}"></p>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Price</em></p>
-                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Type</em></p>
+                    <p class="remove-margin" th:text="${product.type}"></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Price</em></p>
+                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
                         <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
                     </div>
@@ -37,16 +37,16 @@
     <div sec:authorize="hasRole('ROLE_CUSTOMER')">
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
-                <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
+                <div class="uk-card uk-card-hover uk-card-body remove-top-padding uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" />
-                    <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
+                    <h5 class="uk-card-title remove-margin"><a th:href="'/products/' + ${product.id}"><span
                             th:text="${product.name}"></span></a></h5>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Type</em></p>
-                    <p th:text="${product.type}"></p>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Price</em></p>
-                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Type</em></p>
+                    <p class="remove-margin" th:text="${product.type}"></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Price</em></p>
+                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
                         <form method="POST" th:action="@{'/shoppingCart/addProduct/' + ${product.id}}">
                             <input type="submit" value="ADD TO CART" class="uk-button uk-button-default uk-button-small uk-border-rounded" />
@@ -60,16 +60,16 @@
     <div sec:authorize="hasRole('ROLE_DRIVER')">
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
-                <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
+                <div class="uk-card uk-card-hover uk-card-body remove-top-padding uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" />
-                    <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
+                    <h5 class="uk-card-title remove-margin"><a th:href="'/products/' + ${product.id}"><span
                             th:text="${product.name}"></span></a></h5>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Type</em></p>
-                    <p th:text="${product.type}"></p>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Price</em></p>
-                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Type</em></p>
+                    <p class="remove-margin" th:text="${product.type}"></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Price</em></p>
+                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
                     <!--<div class="mt-1">-->
                         <!--<form method="POST" th:action="@{'/shoppingCart/addProduct/' + ${product.id}}">-->
                             <!--<input type="submit" value="ADD TO CART" class="uk-button uk-button-default uk-button-small uk-border-rounded" />-->
@@ -83,16 +83,16 @@
     <div sec:authorize="hasRole('ROLE_ADMIN')">
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
-                <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
+                <div class="uk-card uk-card-hover uk-card-body remove-top-padding uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" />
-                    <h5 class="uk-card-title"><a th:href="'/products/' + ${product.id}"><span
+                    <h5 class="uk-card-title remove-margin"><a th:href="'/products/' + ${product.id}"><span
                             th:text="${product.name}"></span></a></h5>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Type</em></p>
-                    <p th:text="${product.type}"></p>
-                    <hr class="uk-divider-icon" />
-                    <p><em>Price</em></p>
-                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Type</em></p>
+                    <p class="remove-margin" th:text="${product.type}"></p>
+                    <hr class="uk-divider-icon remove-bottom-margin" />
+                    <p class="remove-margin"><em>Price</em></p>
+                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
                         <a th:href="@{'/products/' + ${product.getId()} + '/edit'}" class="uk-button uk-button-default uk-button-small uk-border-rounded">Edit</a>
                         <a th:href="@{'/products/' + ${product.getId()} + '/delete'}" class="uk-button uk-button-default uk-button-small uk-border-rounded">Delete</a>
