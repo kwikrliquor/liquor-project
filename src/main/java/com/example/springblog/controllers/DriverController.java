@@ -28,94 +28,61 @@ public class DriverController {
     @Autowired
     private OrderStatusRepository orderStatusRepository;
 
-    @Autowired
-    private ProductOrderRepository productOrderRepository;
-
     @GetMapping("/driver_dashboard")
     public String showDriversPage(Model model){
+
         model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
         model.addAttribute("assignedOrders", orderRepository.findOrdersStatus2());
         model.addAttribute("outForDelivery", orderRepository.findOrdersStatus3());
+
         return "drivers";
     }
 
     @PostMapping("/drivers/assign")
-    public String assignOrderToDriver(@RequestParam("orderWithStatus1") Long orderWithStatus1, Model model) {
-        model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
-        model.addAttribute("assignedOrders", orderRepository.findOrdersStatus2());
-        model.addAttribute("outForDelivery", orderRepository.findOrdersStatus3());
+    public String assignOrderToDriver(@RequestParam("orderWithStatus1") Long orderWithStatus1) {
 
         Order placedOrder = orderRepository.findOne(orderWithStatus1);
-
-//        placedOrder.setOrderStatusId(orderStatusRepository.findById(2));
         placedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderPrepared());
-
         orderRepository.save(placedOrder);
-
 
         return "redirect:/driver_dashboard";
     }
 
     @PostMapping("/drivers/prepare")
-    public String backToPrepare(@RequestParam("orderWithStatus3") Long orderWithStatus3, Model model) {
-        model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
-        model.addAttribute("assignedOrders", orderRepository.findOrdersStatus2());
-        model.addAttribute("outForDelivery", orderRepository.findOrdersStatus3());
+    public String backToPrepare(@RequestParam("orderWithStatus3") Long orderWithStatus3) {
 
         Order placedOrder = orderRepository.findOne(orderWithStatus3);
-
-//        placedOrder.setOrderStatusId(orderStatusRepository.findById(2));
         placedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderBackPrepared());
-
         orderRepository.save(placedOrder);
-
 
         return "redirect:/driver_dashboard";
     }
 
     @PostMapping("/drivers/unassign")
-    public String unAssignOrderFromDriver(@RequestParam("orderWithStatus2") Long orderWithStatus2, Model model) {
-        model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
-        model.addAttribute("assignedOrders", orderRepository.findOrdersStatus2());
-        model.addAttribute("outForDelivery", orderRepository.findOrdersStatus3());
+    public String unAssignOrderFromDriver(@RequestParam("orderWithStatus2") Long orderWithStatus2) {
 
         Order preparedOrder = orderRepository.findOne(orderWithStatus2);
-
-//        preparedOrder.setOrderStatusId(orderStatusRepository.findById(2));
         preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderPlaced());
-
         orderRepository.save(preparedOrder);
 
         return "redirect:/driver_dashboard";
     }
 
     @PostMapping("/drivers/delivery")
-    public String orderOutForDevilery(@RequestParam("orderWithStatus3") Long orderWithStatus3, Model model) {
-        model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
-        model.addAttribute("assignedOrders", orderRepository.findOrdersStatus2());
-        model.addAttribute("outForDelivery", orderRepository.findOrdersStatus3());
+    public String orderOutForDevilery(@RequestParam("orderWithStatus3") Long orderWithStatus3) {
 
         Order preparedOrder = orderRepository.findOne(orderWithStatus3);
-
-//        preparedOrder.setOrderStatusId(orderStatusRepository.findById(2));
         preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderDelivery());
-
         orderRepository.save(preparedOrder);
 
         return "redirect:/driver_dashboard";
     }
 
     @PostMapping("/drivers/delivered")
-    public String delivered(@RequestParam("orderWithStatus4") Long orderWithStatus4, Model model) {
-        model.addAttribute("unassignedOrders", orderRepository.findOrdersStatus1());
-        model.addAttribute("assignedOrders", orderRepository.findOrdersStatus2());
-        model.addAttribute("outForDelivery", orderRepository.findOrdersStatus3());
+    public String delivered(@RequestParam("orderWithStatus4") Long orderWithStatus4) {
 
         Order preparedOrder = orderRepository.findOne(orderWithStatus4);
-
-//        preparedOrder.setOrderStatusId(orderStatusRepository.findById(2));
         preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderCompleted());
-
         orderRepository.save(preparedOrder);
 
         return "redirect:/driver_dashboard";
@@ -123,8 +90,6 @@ public class DriverController {
 
     @GetMapping("/order_details/{id}")
     public String showDetails(@PathVariable int id, Model model) {
-//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("user", sessionUser);
         model.addAttribute("order", orderRepository.findOrdersById(id));
         model.addAttribute("id", id);
         return "orders/order_show";
