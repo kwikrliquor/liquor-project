@@ -29,7 +29,7 @@ public class UserController {
   private UserRoleRepository userRoles;
 
   @Autowired
-  private UserService usersService;
+  private UserService userService;
 
   @GetMapping("/sign-up")
   public String showSignupForm(Model model){
@@ -98,7 +98,7 @@ public class UserController {
 
   // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
   public Boolean checkEditAuth(User user){
-    return usersService.isLoggedIn() && (user.getId() == usersService.loggedInUser().getId());
+    return userService.isLoggedIn() && (user.getId() == userService.loggedInUser().getId());
   }
 
 }

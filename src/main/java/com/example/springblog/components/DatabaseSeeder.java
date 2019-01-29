@@ -150,7 +150,7 @@ public class DatabaseSeeder implements CommandLineRunner {
           "This delicious, crowd pleasing Cabernet – consistently named a Wine Enthusiast \"Best Buy\" – delivers serious bang for the buck! It's packed with lip smacking flavors of blackcurrant, black cherry and plum, with subtle hints of dark chocolate and spice.",
               new BigDecimal(49.99),
               100,
-          "https://cdn.discordapp.com/attachments/178547154908872704/539504148081803275/dark-horse-cabernet-sauvignon.png",
+          "https://cdn.discordapp.com/attachments/178547154908872704/539660767595593739/excelsior-cabernet-sauvignon.png",
           catRepo.findByName("wine"),
           userRepo.findByUsername("admin")),
       new Product(

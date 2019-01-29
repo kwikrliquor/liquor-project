@@ -23,6 +23,9 @@ public class DriverController {
     private OrderRepository orderRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private OrderStatusRepository orderStatusRepository;
 
     @Autowired
@@ -126,4 +129,12 @@ public class DriverController {
         model.addAttribute("id", id);
         return "orders/order_show";
     }
+
+//    @GetMapping("/my-orders")
+//    public String myOrders(@ModelAttribute Order order, Model model) {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        model.addAttribute("order", orderRepository.findTheOrder(sessionUser.getId()));
+//        return "orders/user_show";
+//    }
 }

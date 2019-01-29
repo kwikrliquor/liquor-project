@@ -25,6 +25,8 @@ public class UserService {
     this.usersRepository = usersRepository;
   }
 
+
+
   public boolean isLoggedIn() {
     boolean isAnonymousUser =
         SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken;

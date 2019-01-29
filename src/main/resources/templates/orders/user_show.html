@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials::head('Order Details')"></head>
+<body>
+<div th:replace="partials::header"></div>
+<div th:replace="partials::navbar"></div>
+<main role="main" class="uk-container">
+    <h1>Hufigbehjfgsfsdf</h1>
+    <div th:each="order : ${order}">
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+            <h5 class="uk-card-title">Order: #<span th:text="${order.id}"></span></h5>
+            <hr class="uk-divider-icon" />
+            <h5><em>Date Ordered</em></h5>
+            <p class=""><strong><span th:text="${order.date}"></span></strong></p>
+            <hr class="uk-divider-icon" />
+            <h5><em>User Details</em></h5>
+            <p class="">User: #<span th:text="${order.userId.id}"></span><br/>Name: <span th:text="${order.userId.username}"></span></p>
+        </div>
+    </div>
+    <!--<div sec:authorize="hasRole('ROLE_CUSTOMER')">-->
+        <!--<h1>Product Details</h1>-->
+        <!--<div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">-->
+            <!--<div th:each="order : ${myOrder}">-->
+                <!--<div class="uk-card uk-card-hover uk-card-body uk-text-center">-->
+                    <!--<h5 class="uk-card-title">Order: #<span th:text="${order.id}"></span></h5>-->
+                    <!--<hr class="uk-divider-icon" />-->
+                    <!--<h5><em>Date Ordered</em></h5>-->
+                    <!--<p class=""><strong><span th:text="${order.date}"></span></strong></p>-->
+                    <!--<hr class="uk-divider-icon" />-->
+                    <!--<h5><em>User Details</em></h5>-->
+                    <!--<p class="">User: #<span th:text="${order.userId.id}"></span><br/>Name: <span th:text="${order.userId.username}"></span></p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</main><!-- /.container -->
+<div th:replace="partials::footer"></div>
+<div th:replace="partials::scripts"></div>
+
+</body>
+</html>
