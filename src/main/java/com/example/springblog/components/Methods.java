@@ -17,32 +17,33 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Methods {
-    private final UserRoleRepository roleRepo;
-    private final CategoryRepository catRepo;
-    private final ProductRepository prodRepo;
-    private final OrderStatusRepository orderStatusRepo;
-    private final UserRepository userRepo;
-    private final OrderRepository orderRepo;
-    private final PasswordEncoder passwordEncoder;
+  private final UserRoleRepository roleRepo;
+  private final CategoryRepository catRepo;
+  private final ProductRepository prodRepo;
+  private final OrderStatusRepository orderStatusRepo;
+  private final UserRepository userRepo;
+  private final OrderRepository orderRepo;
+  private final PasswordEncoder passwordEncoder;
 
-    public Methods(UserRoleRepository roleRepo, CategoryRepository catRepo, ProductRepository prodRepo, OrderStatusRepository orderStatusRepo, UserRepository userRepo, OrderRepository orderRepo, PasswordEncoder passwordEncoder) {
-        this.roleRepo = roleRepo;
-        this.catRepo = catRepo;
-        this.prodRepo = prodRepo;
-        this.orderStatusRepo = orderStatusRepo;
-        this.userRepo = userRepo;
-        this.orderRepo = orderRepo;
-        this.passwordEncoder = passwordEncoder;
-    }
+  public Methods(UserRoleRepository roleRepo, CategoryRepository catRepo, ProductRepository prodRepo, OrderStatusRepository orderStatusRepo, UserRepository userRepo, OrderRepository orderRepo, PasswordEncoder passwordEncoder) {
+    this.roleRepo = roleRepo;
+    this.catRepo = catRepo;
+    this.prodRepo = prodRepo;
+    this.orderStatusRepo = orderStatusRepo;
+    this.userRepo = userRepo;
+    this.orderRepo = orderRepo;
+    this.passwordEncoder = passwordEncoder;
+  }
 
-    public void newOrder() {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String timeStamp = new SimpleDateFormat("MM/dd/yyyy" + "\n" + "HH:mm:ss").format(new Date());
-        Order order[] = {
-                //NEED TO GRAB THE temp_address from the shoppingCart.html input field, google autofill works
-                new Order(timeStamp, orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
-        };
-        orderRepo.save(Arrays.asList(order));
-    }
+  public void newOrder() {
+    User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    String timeStamp = new SimpleDateFormat("MM/dd/yyyy" + "\n" + "HH:mm:ss").format(new Date());
+    Order order[] = {
+        //NEED TO GRAB THE temp_address from the shoppingCart.html input field, google autofill works
+        new Order(timeStamp, orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
+    };
+    orderRepo.save(Arrays.asList(order));
+  }
+
 
 }
