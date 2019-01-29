@@ -9,12 +9,9 @@ package com.example.springblog.repo;
         import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
-//    @Query("from Order a where a.userId.id = id")
-//    List<Order> findOrder(long id);
+    List<Order> findOrdersByUserId(User user);
 
     List<Order> findAllByUserId(Long id);
-
-    Order findByUserId(long id);
 
     Order findOrdersById(long id);
 

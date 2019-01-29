@@ -134,7 +134,7 @@ public class DriverController {
     public String myOrders(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userId = userRepository.findOne(sessionUser.getId());
-        model.addAttribute("orders", orderRepository.findAllByUserId(sessionUser.getId()));
+        model.addAttribute("orders", orderRepository.findOrdersByUserId(userId));
         return "orders/user_show";
     }
 }
