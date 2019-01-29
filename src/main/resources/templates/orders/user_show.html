@@ -7,7 +7,7 @@
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
     <h1>Hufigbehjfgsfsdf</h1>
-    <div th:each="order : ${order}">
+    <div th:each="order : ${orders}">
         <div class="uk-card uk-card-hover uk-card-body uk-text-center">
             <h5 class="uk-card-title">Order: #<span th:text="${order.id}"></span></h5>
             <hr class="uk-divider-icon" />

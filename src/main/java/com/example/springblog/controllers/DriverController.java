@@ -130,11 +130,11 @@ public class DriverController {
         return "orders/order_show";
     }
 
-//    @GetMapping("/my-orders")
-//    public String myOrders(@ModelAttribute Order order, Model model) {
-//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        model.addAttribute("order", orderRepository.findTheOrder(sessionUser.getId()));
-//        return "orders/user_show";
-//    }
+    @GetMapping("/my-orders")
+    public String myOrders(Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userId = userRepository.findOne(sessionUser.getId());
+        model.addAttribute("orders", orderRepository.findAllByUserId(sessionUser.getId()));
+        return "orders/user_show";
+    }
 }
