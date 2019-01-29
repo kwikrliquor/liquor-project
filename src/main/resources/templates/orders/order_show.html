@@ -6,9 +6,10 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
+
     <div sec:authorize="hasRole('ROLE_DRIVER')">
         <h1>Product Details</h1>
-        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center uk-border-rounded product-card-color product-card">
             <h5 class="uk-card-title">Order: #<span th:text="${order.id}"></span></h5>
             <hr class="uk-divider-icon" />
             <h5><em>Date Ordered</em></h5>
@@ -18,15 +19,15 @@
             <p class="">User: #<span th:text="${order.userId.id}"></span><br/>Name: <span th:text="${order.userId.username}"></span></p>
             <div class="uk-inline" th:if="${order.getOrderStatusId().id} > 1">
                 <form th:action="@{/drivers/assign}" method="post">
-                    <input type="hidden" name="orderWithStatus1" id="orderWithStatus1" th:value="${order.id}"/>
+                    <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
                     <button type="submit" th:value="${order.getOrderStatusId().getId()}">Preparing Order</button>
                 </form>
                 <form th:action="@{/drivers/delivery}" method="post">
-                    <input type="hidden" name="orderWithStatus3" id="orderWithStatus3" th:value="${order.id}"/>
+                    <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
                     <button type="submit" th:value="${order.getOrderStatusId().getId()}">Out for Delivery</button>
                 </form>
                 <form th:action="@{/drivers/delivered}" method="post">
-                    <input type="hidden" name="orderWithStatus4" id="orderWithStatus4" th:value="${order.id}"/>
+                    <input type="hidden" name="orderWithStatus4" th:value="${order.id}"/>
                     <button type="submit" th:value="${order.getOrderStatusId().getId()}">Delivered</button>
                 </form>
             </div>
