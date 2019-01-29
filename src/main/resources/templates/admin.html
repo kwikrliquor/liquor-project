@@ -18,35 +18,6 @@
         <div tabindex="0" class=" uk-text-center uk-padding-small kl-form">
             <h4 class="uk-text-center uk-text-bold">Existing Users</h4>
             <div th:each="user : ${existingUsers}">
-
-
-
-                <!--<form th:action="@{/users/edit}" method="post">-->
-                    <hr/>
-                    <div>
-                        <input type="hidden" name="" th:value="${user.id}"/>
-                        <h5 class="uk-margin-remove"><a th:href="'/user-details/' + ${user.id}"><span
-                                th:text="'Username: ' + ${user.username}"></span></a></h5>
-                        <p class="uk-margin-remove">Name: <span th:text="${user.first_name} + ' ' + ${user.last_name}"></span></p>
-                        <!--<p class="uk-margin-remove">Status: Preparing Order-->
-                            <!--<button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit">Assign to Driver</button>-->
-                        <!--</p>-->
-                        <!--<div th:if="${order.getOrderStatusId().id} == 1">-->
-                            <!--<progress class="uk-progress" value="25" max="100"></progress>-->
-                        <!--</div>-->
-                    </div>
-                <!--</form>-->
-            </div>
-        </div>
-
-        <!-- Existing Orders Column-->
-        <div class=" uk-text-center uk-padding-small driver-form kl-form">
-            <h4 class="uk-text-center uk-text-bold">Customers Pending Age Verification</h4>
-            <div th:each="user : ${unverifiedUsers}">
-
-
-
-                <!--<form th:action="@{/users/edit}" method="post">-->
                 <hr/>
                 <div>
                     <input type="hidden" name="" th:value="${user.id}"/>
@@ -54,7 +25,20 @@
                             th:text="'Username: ' + ${user.username}"></span></a></h5>
                     <p class="uk-margin-remove">Name: <span th:text="${user.first_name} + ' ' + ${user.last_name}"></span></p>
                 </div>
+            </div>
+        </div>
 
+        <!-- Existing Orders Column-->
+        <div class=" uk-text-center uk-padding-small driver-form kl-form">
+            <h4 class="uk-text-center uk-text-bold">Customers Pending Age Verification</h4>
+            <div th:each="user : ${unverifiedUsers}">
+                <hr/>
+                <div>
+                    <input type="hidden" name="" th:value="${user.id}"/>
+                    <h5 class="uk-margin-remove"><a th:href="'/user-details/' + ${user.id}"><span
+                            th:text="'Username: ' + ${user.username}"></span></a></h5>
+                    <p class="uk-margin-remove">Name: <span th:text="${user.first_name} + ' ' + ${user.last_name}"></span></p>
+                </div>
             </div>
 
             <!--<div class="" th:each="order : ${assignedOrders}">-->
