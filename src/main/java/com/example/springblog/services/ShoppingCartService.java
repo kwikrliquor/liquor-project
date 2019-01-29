@@ -1,51 +1,42 @@
 package com.example.springblog.services;
 
 
-import com.example.springblog.components.Methods;
 import com.example.springblog.exception.NotEnoughProductsInStockException;
 import com.example.springblog.models.Order;
 import com.example.springblog.models.Product;
-import com.example.springblog.models.ProductOrder;
 import com.example.springblog.models.User;
-import com.example.springblog.repo.OrderRepository;
-import com.example.springblog.repo.ProductOrderRepository;
-import com.example.springblog.repo.ProductRepository;
-import com.example.springblog.repo.UserRepository;
+import com.example.springblog.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Transactional
 public class ShoppingCartService {
     private final ProductOrderRepository productOrderRepository;
-    private final OrderRepository orderRepository;
-    private final UserRepository userRepository;
+    private final OrderRepository orderRepo;
+    private final OrderStatusRepository orderStatusRepo;
+    private final UserRepository userRepo;
     private final ProductRepository productRepository;
-    private final Methods methods;
 
     private Map<Product, Integer> products = new HashMap<>();
 
     @Autowired
-    public ShoppingCartService(ProductOrderRepository productOrderRepository, OrderRepository orderRepository, UserRepository userRepository, ProductRepository productRepository, Methods methods) {
+    public ShoppingCartService(ProductOrderRepository productOrderRepository, OrderRepository orderRepo, OrderStatusRepository orderStatusRepo, UserRepository userRepo, ProductRepository productRepository) {
         this.productOrderRepository = productOrderRepository;
-        this.orderRepository = orderRepository;
-        this.userRepository = userRepository;
+        this.orderRepo = orderRepo;
+        this.orderStatusRepo = orderStatusRepo;
+        this.userRepo = userRepo;
         this.productRepository = productRepository;
-        this.methods = methods;
     }
 
     /**
@@ -94,7 +85,7 @@ public class ShoppingCartService {
      *
      * @throws NotEnoughProductsInStockException
      */
-    public void checkout() throws NotEnoughProductsInStockException {
+    public void checkout(String address) throws NotEnoughProductsInStockException {
         Product product;
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             // Refresh quantity for every product before checking
@@ -104,10 +95,20 @@ public class ShoppingCartService {
             entry.getKey().setQuantity(product.getQuantity() - entry.getValue());
         }
         //FIX THE Method object to accept tempAddress in the parameters
-        methods.newOrder();
+        newOrder(address);
         productRepository.save(products.keySet());
         productRepository.flush();
         products.clear();
+    }
+
+    public void newOrder(String address) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String timeStamp = new SimpleDateFormat("MM/dd/yyyy" + "\n" + "HH:mm:ss").format(new Date());
+        Order order[] = {
+                //NEED TO GRAB THE temp_address from the shoppingCart.html input field, google autofill works
+                new Order(timeStamp, address, orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
+        };
+        orderRepo.save(Arrays.asList(order));
     }
 
     public BigDecimal getTotal() {
