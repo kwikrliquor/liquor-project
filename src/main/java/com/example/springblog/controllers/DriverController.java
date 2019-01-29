@@ -5,6 +5,7 @@ import com.example.springblog.models.OrderStatus;
 import com.example.springblog.models.ProductOrder;
 import com.example.springblog.models.User;
 import com.example.springblog.repo.*;
+import com.example.springblog.services.SmsSender;
 import com.example.springblog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -75,6 +76,9 @@ public class DriverController {
         preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderDelivery());
         orderRepository.save(preparedOrder);
 
+        SmsSender smsSender = new SmsSender();
+        smsSender.sendTextDelivery();
+
         return "redirect:/driver_dashboard";
     }
 
@@ -84,6 +88,9 @@ public class DriverController {
         Order preparedOrder = orderRepository.findOne(orderWithStatus4);
         preparedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderCompleted());
         orderRepository.save(preparedOrder);
+
+        SmsSender smsSender = new SmsSender();
+        smsSender.sendTextDelivered();
 
         return "redirect:/driver_dashboard";
     }

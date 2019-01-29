@@ -14,7 +14,7 @@ public class SmsSender {
             "dae561f1ad2ac06899f21fcb3b118875";
 
     //    public static void main(String[] args) {
-    public void sendText(){
+    public void sendTextDelivery(){
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
         Message message = Message
