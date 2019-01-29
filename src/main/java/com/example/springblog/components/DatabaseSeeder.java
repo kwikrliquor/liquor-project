@@ -51,6 +51,7 @@ public class DatabaseSeeder implements CommandLineRunner {
             new OrderStatus("PREPARING_ORDER"),
             new OrderStatus("DELIVERY"),
             new OrderStatus("COMPLETED"),
+            new OrderStatus("PENDING_VERIFICATION"),
             new OrderStatus("PROBLEM")
         };
         orderStatusRepo.save(Arrays.asList(status));
