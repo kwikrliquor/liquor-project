@@ -1,5 +1,6 @@
 package com.example.springblog.controllers;
 
+import com.example.springblog.models.User;
 import com.example.springblog.repo.OrderRepository;
 import com.example.springblog.repo.OrderStatusRepository;
 import com.example.springblog.repo.UserRepository;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController {
@@ -19,10 +21,14 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/admin_dashboard")
-    public String showDriversPage(Model model){
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @GetMapping("/admin-dashboard")
+    public String showAdminPage(Model model){
+
         model.addAttribute("existingUsers", userService.getAll());
-        model.addAttribute("unverifiedUsers", userService.getAll());
+        model.addAttribute("unverifiedOrders", orderRepository.findUnverifiedOrders());
 
         return "admin";
     }
@@ -35,8 +41,5 @@ public class AdminController {
         return "users/profile";
 
     }
-
-
-
 
 }
