@@ -50,7 +50,7 @@ public class AdminController {
     public String setToPrepare(@RequestParam("unverifiedUser") Long unverifiedUser) {
 
         User verifiedUser = userRepository.findOne(unverifiedUser);
-        verifiedUser.setAgeIsVerified(true);
+        verifiedUser.setAgeVerified(true);
         userRepository.save(verifiedUser);
 
         return "redirect:/admin-dashboard";

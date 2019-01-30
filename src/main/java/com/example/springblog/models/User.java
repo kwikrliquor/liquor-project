@@ -64,7 +64,7 @@ public class User {
   private String img_url;
 
   @Column(nullable=true)
-  private Boolean ageIsVerified;
+  private Boolean ageVerified;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
   private List<Order> orders;
@@ -78,12 +78,12 @@ public class User {
     this.password = password;
   }
 
-  public User(String username, String email, String password, String img_url, Boolean ageIsVerified) {
+  public User(String username, String email, String password, String img_url, Boolean ageVerified) {
     this.username = username;
     this.email = email;
     this.password = password;
     this.img_url = img_url;
-    this.ageIsVerified = ageIsVerified;
+    this.ageVerified = ageVerified;
   }
 
   public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String password, String phone_number, String dob) {
@@ -104,7 +104,7 @@ public class User {
   public User(String first_name, String last_name, String address1,
               String address2, String city, String state, String postalCode,
               String email, String username, String password, String phone_number,
-              String dob, String img_url, Boolean ageIsVerified) {
+              String dob, String img_url, Boolean ageVerified) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.address1 = address1;
@@ -118,7 +118,7 @@ public class User {
     this.phone_number = phone_number;
     this.dob = dob;
     this.img_url = img_url;
-    this.ageIsVerified = ageIsVerified;
+    this.ageVerified = ageVerified;
   }
 
   public User(String first_name, String last_name, String address1,
@@ -256,11 +256,11 @@ public class User {
     this.img_url = img_url;
   }
 
-  public Boolean getAgeIsVerified() {
-    return ageIsVerified;
+  public Boolean getAgeVerified() {
+    return ageVerified;
   }
 
-  public void setAgeIsVerified(Boolean ageIsVerified) {
-    this.ageIsVerified = ageIsVerified;
+  public void setAgeVerified(Boolean ageVerified) {
+    this.ageVerified = ageVerified;
   }
 }

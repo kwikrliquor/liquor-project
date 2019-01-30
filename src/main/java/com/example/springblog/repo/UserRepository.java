@@ -11,7 +11,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
   User findByUsername(String username);
   User findByEmail(String email);
 
-  @Query("from User a where a.ageIsVerified=false")
+  @Query("from User a where a.ageVerified=false")
   List <User> findUnverifiedUsers();
 
 
