@@ -58,7 +58,7 @@ public class UserController {
     }
 
     user.setPassword(passwordEncoder.encode(user.getPassword()));
-    user.setAgeVerified(false);
+//    user.setAgeVerified(false);
 
     // Custom validation if the username is taken
 
