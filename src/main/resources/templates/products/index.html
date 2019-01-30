@@ -14,7 +14,7 @@
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
                 <div class="uk-card uk-card-hover uk-card-body remove-top-padding uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
-                    <img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" />
+                    <a th:href="'/products/' + ${product.id}"><img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" /></a>
                     <!--<div class="product-card" th:style="'background-image: url(' + ${product.imgUrl} + ')'">-->
 
                     <h5 class="uk-card-title remove-margin"><a th:href="'/products/' + ${product.id}"><span
