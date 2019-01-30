@@ -6,25 +6,8 @@
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
     <h1 class="uk-text-center"><span class="uk-text-capitalize" th:text ="${#authentication.principal.username}"></span>, Thank you for you Order!</h1>
-    <h3 class="uk-text-center">Your Order Number is: #<span th:text="${order_num}"></span></h3>
+    <h3 class="uk-text-center">Your Order Number is: #<span th:text="${order}"></span></h3>
     <h3></h3>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            const apikey = 'ACVgQ6x6ROGnmziYi2Iawz';
-            const client = filestack.init(apikey);
-            const options = {
-                    maxFiles: 20,
-                    uploadInBackground: false,
-                    onOpen: () => console.log('opened!'),
-                onUploadDone: (res) => console.log(res),
-                storeTo: {
-                workflows: ["1bec67a1-47c6-416f-8a18-659a1564c011"]
-            }
-        };
-            client.picker(options).open();
-        });
-    </script>
 </main><!-- /.container -->
 <div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>

@@ -94,8 +94,11 @@ public class ShoppingCartService {
                 throw new NotEnoughProductsInStockException(product);
             entry.getKey().setQuantity(product.getQuantity() - entry.getValue());
         }
-        //FIX THE Method object to accept tempAddress in the parameters
-        newOrder(address);
+//        if (userRepo.verificationTrue(true)) {
+            newOrder(address);
+//        System.out.println(products.get(products.keySet()));
+//        System.out.println(products.get(products.entrySet()));
+//        }
         productRepository.save(products.keySet());
         productRepository.flush();
         products.clear();

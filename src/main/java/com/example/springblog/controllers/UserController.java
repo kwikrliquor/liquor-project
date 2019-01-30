@@ -58,7 +58,6 @@ public class UserController {
     }
 
     user.setPassword(passwordEncoder.encode(user.getPassword()));
-//    user.setAgeVerified(false);
 
     // Custom validation if the username is taken
 
@@ -80,10 +79,31 @@ public class UserController {
 
   @GetMapping("/profile/edit")
   public String editUser(Model model){
-    User userP = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    User user = usersRepository.findOne(userP.getId());
-    model.addAttribute("user", user);
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User userC = usersRepository.findOne(user.getId());
+    model.addAttribute("user", userC);
+    return "users/profile-edit";
+  }
+
+  @GetMapping("/profile")
+  public String userProfile(@ModelAttribute User thisUser, Model model){
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User userC = usersRepository.findOne(user.getId());
+    User userInfo = usersRepository.findOne(user.getId());
+    model.addAttribute("user", userC);
+    model.addAttribute("userInfo", userInfo);
+
     return "users/profile";
+  }
+
+  @PostMapping("/profile")
+  public String idUpdate(@RequestParam("upload_url") String idFile) {
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User userDetails = usersRepository.findOne(user.getId());
+    userDetails.setImg_url(idFile);
+    userDetails.setAgeVerified(false);
+    usersRepository.save(userDetails);
+    return "redirect:/profile";
   }
 
     @PostMapping("/profile/edit")
@@ -94,7 +114,7 @@ public class UserController {
             m.addAttribute("user", editedUser);
             m.addAttribute("showEditControls", checkEditAuth(editedUser));
         usersRepository.save(editedUser);
-        return "redirect:/products";
+        return "redirect:/profile";
     }
 
   // Edit controls are being showed up if the user is logged in and it's the same user viewing the file

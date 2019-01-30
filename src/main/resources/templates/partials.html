@@ -211,7 +211,7 @@
                 <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
                     <li><a th:href="@{'/my-orders'}">My Orders</a></li>
-                    <li><a th:href="@{'/profile/edit'}">Edit Profile</a></li>
+                    <li><a th:href="@{'/profile'}">Profile</a></li>
                     <li class="uk-nav-divider"></li>
                     <li>
                         <form th:action="@{/logout}" th:method="POST">
@@ -313,6 +313,28 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcZgyTawnZx-QYzO384s-G_Qxe3-pElM&amp;libraries=places&amp;callback=initAutocomplete"></script>
+
+    <script>
+        function openPick() {
+            const apikey = 'ACVgQ6x6ROGnmziYi2Iawz';
+            const client = filestack.init(apikey);
+            const options = {
+                maxFiles: 20,
+                uploadInBackground: false,
+                onOpen: () => console.log('opened!'),
+                onUploadDone: (res) => sendUrl(res),
+                storeTo: {
+                    workflows: ["1bec67a1-47c6-416f-8a18-659a1564c011"]
+                }
+            };
+            client.picker(options).open();
+            const fileInput = document.getElementById("upload_url");
+            let sendUrl = (res) =>{
+                let fileData = res.filesUploaded[0];
+                fileInput.value = fileData.url;
+            };
+        }
+    </script>
 
     <script src="//static.filestackapi.com/filestack-js/1.x.x/filestack.min.js"></script>
 
