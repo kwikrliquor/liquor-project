@@ -87,10 +87,26 @@ public class UserController {
 
   @GetMapping("/profile")
   public String userProfile(Model model){
-//    User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-//    user.setAgeVerified(false);
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User userC = usersRepository.findOne(user.getId());
+    User userInfo = usersRepository.findOne(user.getId());
+    User userAge = usersRepository.findOne(user.getId());
+//    if (user.getImg_url() != null) {
+      userAge.setAgeVerified(false);
+      usersRepository.save(userAge);
+//    }
+    model.addAttribute("user", userC);
+    model.addAttribute("userInfo", userInfo);
     return "users/profile";
+  }
+
+  @PostMapping("/profile")
+  public String idUpdate(@RequestParam("upload_url") String idFile) {
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User userC = usersRepository.findOne(user.getId());
+    userC.setImg_url(idFile);
+    usersRepository.save(userC);
+    return "redirect:/profile";
   }
 
     @PostMapping("/profile/edit")
