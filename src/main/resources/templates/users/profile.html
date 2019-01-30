@@ -6,91 +6,42 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
+
     <div sec:authorize="hasRole('ROLE_CUSTOMER')">
-        <form class="uk-form-width-medium" th:action="@{/profile/edit}" method="POST" th:object="${user}">
+        <!--<div class="uk-form-width-medium" th:object="${user}">-->
             <h1>Edit Profile</h1>
             First Name:
-            <input class="uk-input uk-border-rounded" th:field="*{first_name}" />
+            <label class="uk-input uk-border-rounded" th:text ="${#authentication.getPrincipal().getUser().getFirst_name}" />
             <br />
-            Last Name:
-            <input class="uk-input uk-border-rounded" th:field="*{last_name}" />
-            <br />
-            Address 1:
-            <input class="uk-input uk-border-rounded" th:field="*{address1}" />
-            <br />
-            Address 2:
-            <input class="uk-input uk-border-rounded" th:field="*{address2}" />
-            <br />
-            City:
-            <input class="uk-input uk-border-rounded" th:field="*{city}" />
-            <br />
-            State:
-            <input class="uk-input uk-border-rounded" th:field="*{state}" />
-            <br />
-            Zip Code:
-            <input class="uk-input uk-border-rounded" th:field="*{postalCode}" />
-            <br />
-            Phone Number:
-            <input class="uk-input uk-border-rounded" th:field="*{phone_number}" />
-            <br />
-            DOB:
-            <input type="date" class="uk-input uk-border-rounded" th:field="*{dob}" />
-            <br />
-            <br />
-            <div class="mt-1">
-                <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Edit Profile" />
-            </div>
-        </form>
-    </div>
+            <!--Last Name:-->
+            <!--<label class="uk-input uk-border-rounded" th:label="${user.last_name}" />-->
+            <!--<br />-->
+            <!--Address 1:-->
+            <!--<label class="uk-input uk-border-rounded" th:label="${user.address1}" />-->
+            <!--<br />-->
+            <!--Address 2:-->
+            <!--<label class="uk-input uk-border-rounded" th:label="${user.address2}" />-->
+            <!--<br />-->
+            <!--City:-->
+            <!--<label class="uk-input uk-border-rounded" th:label="${user.city}" />-->
+            <!--<br />-->
+            <!--State:-->
+            <!--<label class="uk-input uk-border-rounded" th:label="${user.state}" />-->
+            <!--<br />-->
+            <!--Zip Code:-->
+            <!--<label class="uk-input uk-border-rounded" th:label="${user.postalCode}" />-->
+            <!--<br />-->
+            <!--Phone Number:-->
+            <!--<label class="uk-input uk-border-rounded" th:label="${user.phone_number}" />-->
+            <!--<br />-->
+            <!--DOB:-->
+            <!--<label type="date" class="uk-input uk-border-rounded" th:label="${user.dob}" />-->
+            <!--<br />-->
+        </div>
+    <!--</div>-->
 
-    <div sec:authorize="hasRole('ROLE_ADMIN')">
-        <form class="uk-form-width-medium" th:action="@{/profile/edit}" method="POST" th:object="${user}">
-            <h1>Edit Profile</h1>
-            First Name:
-            <input class="uk-input uk-border-rounded" th:field="*{first_name}" />
-            <br />
-            Last Name:
-            <input class="uk-input uk-border-rounded" th:field="*{last_name}" />
-            <br />
-            Address 1:
-            <input class="uk-input uk-border-rounded" th:field="*{address1}" />
-            <br />
-            Address 2:
-            <input class="uk-input uk-border-rounded" th:field="*{address2}" />
-            <br />
-            City:
-            <input class="uk-input uk-border-rounded" th:field="*{city}" />
-            <br />
-            State:
-            <input class="uk-input uk-border-rounded" th:field="*{state}" />
-            <br />
-            Zip Code:
-            <input class="uk-input uk-border-rounded" th:field="*{postalCode}" />
-            <br />
-            Phone Number:
-            <input class="uk-input uk-border-rounded" th:field="*{phone_number}" />
-            <br />
-            DOB:
-            <input type="date" class="uk-input uk-border-rounded" th:field="*{dob}" />
-            <br />
-            Username:
-            <input class="uk-input uk-border-rounded" th:field="*{username}" />
-            <br />
-            Email:
-            <input class="uk-input uk-border-rounded" th:field="*{email}" />
-            <br />
-            Password:
-            <input class="uk-input uk-border-rounded" type="password" th:value="*{password}" />
-            <br />
-            <div class="mt-1">
-                <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Edit Profile" />
-            </div>
-        </form>
-    </div>
-
-    <div sec:authorize="hasRole('ROLE_DRIVER')">
-        The DRIVER will see this.
-    </div>
+    <a href=""><input type="text" name="" id="" value="Upload ID" /></a>
+    <a href="/profile/edit"><input type="button" class="uk-input uk-border-rounded" value="Edit Profile" /></a>
 
 </main><!-- /.container -->
 <div th:replace="partials::footer"></div>
