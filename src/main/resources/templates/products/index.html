@@ -11,11 +11,13 @@
     <h3 class="uk-text-center">30-Minute Delivery. Free Pickup. Shipping.</h3>
 
     <div sec:authorize="!isAuthenticated()">
-        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
+        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
-                <div class="uk-card uk-card-hover uk-card-body remove-top-padding uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
-                    <a th:href="'/products/' + ${product.id}"><img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" /></a>
+                <div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
+
                     <!--<div class="product-card" th:style="'background-image: url(' + ${product.imgUrl} + ')'">-->
+
+                    <a th:href="'/products/' + ${product.id}"><img class="uk-align-center" th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" /></a>
 
                     <h5 class="uk-card-title remove-margin"><a th:href="'/products/' + ${product.id}"><span
                         th:text="${product.name}"></span></a></h5>
