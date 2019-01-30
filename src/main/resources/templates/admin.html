@@ -30,17 +30,17 @@
 
         <!-- Verification Pending Orders Column-->
         <div class=" uk-text-center uk-padding-small driver-form kl-form">
-            <h4 class="uk-text-center uk-text-bold">Orders Pending Id Verification</h4>
-            <div th:each="order : ${unverifiedOrders}">
+            <h4 class="uk-text-center uk-text-bold"> Unverified Customers</h4>
+            <div th:each="user : ${unverifiedUsers}">
                 <hr/>
                 <div>
-                    <h5 class="uk-margin-remove">Order# <a th:href="'/order_details/' + ${order.id}"><span
-                            th:text="${order.id}"></span></a></h5>
-                    <p><a th:href="${order.userId.img_url}">View Customer's ID</a></p>
-                    <!--<p><a th:href="" th:value="${order.userId.img_url}" onclick="window.open(this.value)">View Customer's ID</a></p>-->
-                        <form th:action="@{admin-dashboard/prepare}" method="post">
-                            <input type="hidden" name="orderWithStatus5" th:value="${order.id}"/>
-                            <button type="submit" th:value="${order.orderStatusId.id}">Verify ID</button>
+                    <h5 class="uk-margin-remove">Username: <a th:href="'/order_details/' + ${user.id}"><span
+                            th:text="${user.username}"></span></a></h5>
+                    <p><a th:href="${user.img_url}">View Customer's ID</a></p>
+                    <!--<p><a th:href="" th:value="${user.userId.img_url}" onclick="window.open(this.value)">View Customer's ID</a></p>-->
+                        <form th:action="@{admin-dashboard/verify}" method="post">
+                            <input type="hidden" name="unverifiedUser" th:value="${user.id}"/>
+                            <button type="submit" th:value="${user.id}">Verify ID</button>
                         </form>
 
                     <!--</div>-->

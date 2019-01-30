@@ -78,11 +78,12 @@ public class User {
     this.password = password;
   }
 
-  public User(String username, String email, String password, String img_url) {
+  public User(String username, String email, String password, String img_url, Boolean ageIsVerified) {
     this.username = username;
     this.email = email;
     this.password = password;
     this.img_url = img_url;
+    this.ageIsVerified = ageIsVerified;
   }
 
   public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String password, String phone_number, String dob) {
