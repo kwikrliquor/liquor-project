@@ -32,7 +32,7 @@ public class AdminController {
     public String showAdminPage(Model model){
 
         model.addAttribute("existingUsers", userService.getAll());
-        model.addAttribute("unverifiedOrders", orderRepository.findUnverifiedOrders());
+        model.addAttribute("unverifiedUsers", userRepository.findUnverifiedUsers());
 
         return "admin";
     }
@@ -46,12 +46,12 @@ public class AdminController {
 
     }
 
-    @PostMapping("admin-dashboard/prepare")
-    public String setToPrepare(@RequestParam("orderWithStatus5") Long orderWithStatus5) {
+    @PostMapping("admin-dashboard/verify")
+    public String setToPrepare(@RequestParam("unverifiedUser") Long unverifiedUser) {
 
-        Order placedOrder = orderRepository.findOne(orderWithStatus5);
-        placedOrder.setOrderStatusId(orderStatusRepository.findStatusOrderPlaced());
-        orderRepository.save(placedOrder);
+        User verifiedUser = userRepository.findOne(unverifiedUser);
+        verifiedUser.setAgeVerified(true);
+        userRepository.save(verifiedUser);
 
         return "redirect:/admin-dashboard";
     }

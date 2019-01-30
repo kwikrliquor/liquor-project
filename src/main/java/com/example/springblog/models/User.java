@@ -63,6 +63,9 @@ public class User {
   @Column(nullable = true, length = 2000)
   private String img_url;
 
+  @Column(nullable=true)
+  private Boolean ageVerified;
+
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
   private List<Order> orders;
 
@@ -75,11 +78,12 @@ public class User {
     this.password = password;
   }
 
-  public User(String username, String email, String password, String img_url) {
+  public User(String username, String email, String password, String img_url, Boolean ageVerified) {
     this.username = username;
     this.email = email;
     this.password = password;
     this.img_url = img_url;
+    this.ageVerified = ageVerified;
   }
 
   public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String password, String phone_number, String dob) {
@@ -97,7 +101,10 @@ public class User {
     this.dob = dob;
   }
 
-  public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String password, String phone_number, String dob, String img_url) {
+  public User(String first_name, String last_name, String address1,
+              String address2, String city, String state, String postalCode,
+              String email, String username, String password, String phone_number,
+              String dob, String img_url, Boolean ageVerified) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.address1 = address1;
@@ -111,9 +118,12 @@ public class User {
     this.phone_number = phone_number;
     this.dob = dob;
     this.img_url = img_url;
+    this.ageVerified = ageVerified;
   }
 
-  public User(String first_name, String last_name, String address1, String address2, String city, String state, String postalCode, String email, String username, String phone_number, String dob) {
+  public User(String first_name, String last_name, String address1,
+              String address2, String city, String state, String postalCode,
+              String email, String username, String phone_number, String dob) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.address1 = address1;
@@ -244,5 +254,13 @@ public class User {
 
   public void setImg_url(String img_url) {
     this.img_url = img_url;
+  }
+
+  public Boolean getAgeVerified() {
+    return ageVerified;
+  }
+
+  public void setAgeVerified(Boolean ageVerified) {
+    this.ageVerified = ageVerified;
   }
 }
