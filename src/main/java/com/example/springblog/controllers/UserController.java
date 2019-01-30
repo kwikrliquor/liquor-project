@@ -86,26 +86,23 @@ public class UserController {
   }
 
   @GetMapping("/profile")
-  public String userProfile(Model model){
+  public String userProfile(@ModelAttribute User thisUser, Model model){
     User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     User userC = usersRepository.findOne(user.getId());
     User userInfo = usersRepository.findOne(user.getId());
-    User userAge = usersRepository.findOne(user.getId());
-//    if (user.getImg_url() != null) {
-      userAge.setAgeVerified(false);
-      usersRepository.save(userAge);
-//    }
     model.addAttribute("user", userC);
     model.addAttribute("userInfo", userInfo);
+
     return "users/profile";
   }
 
   @PostMapping("/profile")
   public String idUpdate(@RequestParam("upload_url") String idFile) {
     User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    User userC = usersRepository.findOne(user.getId());
-    userC.setImg_url(idFile);
-    usersRepository.save(userC);
+    User userDetails = usersRepository.findOne(user.getId());
+    userDetails.setImg_url(idFile);
+    userDetails.setAgeVerified(false);
+    usersRepository.save(userDetails);
     return "redirect:/profile";
   }
 

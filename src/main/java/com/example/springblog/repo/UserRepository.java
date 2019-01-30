@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+  @Query("from User a where a.ageVerified=check")
+  boolean verificationTrue(boolean check);
 
   User findById(long id);
   User findByUsername(String username);
