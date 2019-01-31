@@ -33,18 +33,18 @@
                 <h2 class="" th:inline="text">Total in cart: $[[${total}]]</h2>
                 <br />
                 <form th:action="@{'/shoppingCart/checkout'}" method="GET">
-                <input class="uk-input uk-border-rounded uk-width-medium checkout-box" id="checkout_address" name="checkout_address" type="text" />
-                        <script
-                                th:method="POST"
-                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
-                                th:attr="data-amount=${total_stripe}"
-                                data-name="KWIKRLIQUOR"
-                                data-description='Alcohol Delivery'
-                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                data-locale="auto"
-                                data-zip-code="true">
-                        </script>
+                    <input class="uk-input uk-border-rounded uk-width-medium checkout-box" id="checkout_address" name="checkout_address" type="text" />
+                    <script
+                            th:method="POST"
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+                            th:attr="data-amount=${total_stripe}"
+                            data-name="KWIKRLIQUOR"
+                            data-description='Alcohol Delivery'
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-locale="auto"
+                            data-zip-code="true">
+                    </script>
                 </form>
             </div>
         </div>

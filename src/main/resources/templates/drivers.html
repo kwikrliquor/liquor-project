@@ -20,7 +20,7 @@
                             <h5 class="uk-card-title remove-bottom-margin"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
                             <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
-                            <p class="uk-margin-remove"><strong>Created on: </strong><br/> <em><span th:text="${order.date}"></span></em></p>
+                            <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
                             <form th:action="@{/drivers/assign}" method="post">
                                 <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
                                 <button type="submit" class="" th:value="${order.getOrderStatusId().getId()}">Assign</button>
@@ -42,8 +42,9 @@
                     <div class="uk-padding-remove" th:each="order : ${assignedOrders}">
 
                         <div class="uk-card uk-card-hover uk-card-body uk-margin-small-bottom uk-border-rounded">
-                            <h5 class="uk-card-title uk-margin-bottom-remove"><a th:href="'/order_details/' + ${order.id}"><span
+                            <h5 class="uk-card-title remove-bottom-margin"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
+                            <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
                             <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
                             <div class="uk-inline" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/unassign}" method="post">
@@ -52,7 +53,7 @@
                                 </form>
                                 <form th:action="@{/drivers/delivery}" method="post">
                                     <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
-                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Out for Delivery</button>
+                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Delivery</button>
                                 </form>
                             </div>
 
@@ -83,6 +84,7 @@
                         <div class="uk-card uk-card-hover uk-card-body uk-margin-small-bottom uk-border-rounded">
                             <h5 class="uk-card-title uk-margin-bottom-remove"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
+                            <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
                             <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
                             <div class="" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/prepare}" method="post">
@@ -122,18 +124,8 @@
                         <div class="uk-card uk-card-hover uk-card-body uk-margin-small-bottom uk-border-rounded">
                             <h5 class="uk-card-title uk-margin-bottom-remove"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
+                            <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
                             <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
-                            <div class="" th:if="${order.getOrderStatusId().id} > 1">
-                                <form th:action="@{/drivers/prepare}" method="post">
-                                    <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
-                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Preparing</button>
-                                </form>
-                                <form th:action="@{/drivers/delivered}" method="post">
-                                    <input type="hidden" name="orderWithStatus4" th:value="${order.id}"/>
-                                    <button type="submit" th:value="${order.getOrderStatusId().getId()}">Delivered</button>
-                                </form>
-                            </div>
-
                             <div th:if="${order.getOrderStatusId().id} == 2">
                                 <span>Preparing</span>
                                 <progress class="uk-progress" value="50" max="100"></progress>
