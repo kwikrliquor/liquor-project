@@ -42,7 +42,7 @@ public class AdminController {
 
         model.addAttribute("user", userRepository.findById(id));
         model.addAttribute("id", id);
-        return "users/profile";
+        return "users/profile-edit";
 
     }
 
