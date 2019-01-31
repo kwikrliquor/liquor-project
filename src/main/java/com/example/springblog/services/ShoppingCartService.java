@@ -1,6 +1,5 @@
 package com.example.springblog.services;
 
-
 import com.example.springblog.exception.NotEnoughProductsInStockException;
 import com.example.springblog.models.Order;
 import com.example.springblog.models.Product;

@@ -9,7 +9,7 @@
 <!--</div>-->
 <head th:fragment="head(title)">
     <meta charset="UTF-8"/>
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
@@ -19,6 +19,9 @@
     <style>
         .uk-card>p {
             word-wrap: break-word;
+        }
+        .circle-radius {
+            border-radius: 50%;
         }
         .checkout-box {
             padding: 10px;
@@ -168,6 +171,7 @@
             <li><a href="/products/beer"><div>Beer</div></a></li>
             <li><a href="/products/wine"><div>Wine</div></a></li>
             <li><a href="/products/liquor"><div>Liquor</div></a></li>
+            <li><a href="/about"><div>About</div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
@@ -209,6 +213,7 @@
             <li><a href="/products/beer"><div>Beer</div></a></li>
             <li><a href="/products/wine"><div>Wine</div></a></li>
             <li><a href="/products/liquor"><div>Liquor</div></a></li>
+            <li><a href="/about"><div>About</div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
@@ -240,6 +245,7 @@
             <li><a href="/products"><div>All Products</div></a></li>
             <li><a href="/products/create">Create Product</a></li>
             <li><a href="/admin-dashboard">Admin Dashboard</a></li>
+            <li><a href="/about"><div>About</div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
@@ -266,6 +272,7 @@
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
             <li><a href="/products"><div>All Products</div></a></li>
             <li><a href="/driver_dashboard"><div>Dashboard</div></a></li>
+            <li><a href="/about"><div>About</div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
