@@ -23,7 +23,7 @@
                     <hr class="uk-divider-icon remove-bottom-margin" />
                     <div th:inline="text" class=""><em>Price: $[[${product.getKey().price}]]</em></div>
                     <div th:inline="text" class="">Quantity: [[${product.getValue()}]]</div>
-                    <a th:href="@{'/shoppingCart/removeProduct/' + ${product.getKey().id}}" class="">
+                    <a th:href="@{'/shoppingCart/removeProduct/{id}'(id=${product.getKey().id})}" class="">
                         <button type="button" class="uk-button uk-button-default uk-button-small uk-border-rounded uk-margin-small-top" th:text="Remove">Remove</button>
                     </a>
                 </div>

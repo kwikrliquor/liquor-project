@@ -45,7 +45,7 @@ public class User {
   private String postalCode;
 
 //  @NotBlank(message = "Email can not be blank")
-  @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Email must be formatted correctly")
+  @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Email not formatted correctly")
   @Column(nullable = false, length = 100, unique = true)
   private String email;
 
@@ -54,7 +54,7 @@ public class User {
 
   @NotBlank(message = "Password can not be blank")
   @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$",
-      message = "Password must have one uppercase letter, one number, and one special "
+      message = "Must have one uppercase letter, one number, and one special "
           + "character")
   @Size(min = 8, message = "Password must be at least 8 characters")
   @Column(nullable = false, length = 100)
