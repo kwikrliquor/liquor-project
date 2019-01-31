@@ -120,4 +120,5 @@ public class ShoppingCartService {
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
     }
+
 }

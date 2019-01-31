@@ -1,20 +1,18 @@
 package com.example.springblog.services;
 
+import com.example.springblog.models.User;
 import com.example.springblog.models.UserWithRoles;
-import com.example.springblog.repo.RoleRepository;
 import com.example.springblog.repo.UserRepository;
+import java.util.Collections;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import com.example.springblog.models.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.List;
 
 @Service("usersSvc")
 public class UserService {

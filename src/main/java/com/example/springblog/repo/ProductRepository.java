@@ -1,14 +1,10 @@
 package com.example.springblog.repo;
 
 import com.example.springblog.models.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
   @Query("from Product a where a.user=?1")
@@ -22,4 +18,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
   @Query("from Product a where a.category=3")
   List<Product> findLiquor();
   Optional<Product> findById(Long id);
+
 }
