@@ -1,13 +1,19 @@
 package com.example.springblog.components;
 
-import com.example.springblog.models.*;
-import com.example.springblog.repo.*;
-
+import com.example.springblog.models.Category;
+import com.example.springblog.models.OrderStatus;
+import com.example.springblog.models.Product;
+import com.example.springblog.models.User;
+import com.example.springblog.models.UserRole;
+import com.example.springblog.repo.CategoryRepository;
+import com.example.springblog.repo.OrderStatusRepository;
+import com.example.springblog.repo.ProductRepository;
+import com.example.springblog.repo.UserRepository;
+import com.example.springblog.repo.UserRoleRepository;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -68,9 +74,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     private void seedUsers() {
       User users[] = {
-          new User("admin", "admin@gmail.com", passwordEncoder.encode("password123")),
-          new User("driver", "driver@gmail.com", passwordEncoder.encode("password123")),
-          new User("customer", "customer@gmail.com", passwordEncoder.encode("password123"))
+          new User("admin", "admin@gmail.com", passwordEncoder.encode("Password123!")),
+          new User("driver", "driver@gmail.com", passwordEncoder.encode("Password123!")),
+          new User("customer", "customer@gmail.com", passwordEncoder.encode("Password123!"))
       };
       userRepo.save(Arrays.asList(users));
     }
