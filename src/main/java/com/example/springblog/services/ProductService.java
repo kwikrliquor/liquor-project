@@ -4,20 +4,17 @@ import com.example.springblog.models.Category;
 import com.example.springblog.models.Product;
 import com.example.springblog.repo.CategoryRepository;
 import com.example.springblog.repo.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
 
   private final ProductRepository productRepository;
   private final CategoryRepository catRepo;
-
 
   public ProductService(ProductRepository productRepository, CategoryRepository catRepo) {
     this.productRepository = productRepository;
