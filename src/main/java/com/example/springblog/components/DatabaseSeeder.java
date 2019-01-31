@@ -68,10 +68,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     private void seedUsers() {
       User users[] = {
-          new User("admin", "admin@gmail.com", passwordEncoder.encode("password")),
-          new User("driver", "driver@gmail.com", passwordEncoder.encode("password")),
-          new User("customer", "customer@gmail.com", passwordEncoder.encode("password"),
-                  "https://cdn.filestackcontent.com/WOXbjMvSXeAajllT4qdg", false)
+          new User("admin", "admin@gmail.com", passwordEncoder.encode("password123")),
+          new User("driver", "driver@gmail.com", passwordEncoder.encode("password123")),
+          new User("customer", "customer@gmail.com", passwordEncoder.encode("password123"))
       };
       userRepo.save(Arrays.asList(users));
     }
