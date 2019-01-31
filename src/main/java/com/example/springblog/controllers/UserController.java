@@ -112,7 +112,7 @@ public class UserController {
       User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       editedUser.setId(sessionUser.getId());
       usersRepository.save(editedUser);
-      return "redirect:/profile/edit";
+      return "redirect:/profile";
     }
 
   // Edit controls are being showed up if the user is logged in and it's the same user viewing the file
