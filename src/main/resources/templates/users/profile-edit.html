@@ -10,34 +10,79 @@
         <form class="uk-form-width-medium" th:action="@{/profile/edit}" method="POST" th:object="${user}">
             <h1>Edit Profile</h1>
             Username:
-            <input class="uk-input uk-border-rounded" th:field="*{username}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{username}" />
             <br />
             Email:
-            <input class="uk-input uk-border-rounded" th:field="*{email}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{email}" />
             <br />
+            <input type="hidden" class="uk-input uk-border-rounded" th:field="*{password}" />
             First Name:
-            <input class="uk-input uk-border-rounded" th:field="*{first_name}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{first_name}" />
             <br />
             Last Name:
-            <input class="uk-input uk-border-rounded" th:field="*{last_name}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{last_name}" />
             <br />
             Address 1:
-            <input class="uk-input uk-border-rounded" th:field="*{address1}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{address1}" />
             <br />
             Address 2:
-            <input class="uk-input uk-border-rounded" th:field="*{address2}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{address2}" />
             <br />
             City:
-            <input class="uk-input uk-border-rounded" th:field="*{city}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{city}" />
             <br />
             State:
-            <input class="uk-input uk-border-rounded" th:field="*{state}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{state}" />
             <br />
             Zip Code:
-            <input class="uk-input uk-border-rounded" th:field="*{postalCode}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{postalCode}" />
             <br />
             Phone Number:
-            <input class="uk-input uk-border-rounded" th:field="*{phone_number}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{phone_number}" />
+            <br />
+            DOB:
+            <input type="date" class="uk-input uk-border-rounded" th:field="*{dob}" />
+            <br />
+            <br />
+            <div class="mt-1">
+                <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Edit Profile" />
+            </div>
+        </form>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_DRIVER')">
+        <form class="uk-form-width-medium" th:action="@{/profile/edit}" method="POST" th:object="${user}">
+            <h1>Edit Profile</h1>
+            Username:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{username}" />
+            <br />
+            Email:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{email}" />
+            <br />
+            <input type="hidden" class="uk-input uk-border-rounded" th:field="*{password}" />
+            First Name:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{first_name}" />
+            <br />
+            Last Name:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{last_name}" />
+            <br />
+            Address 1:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{address1}" />
+            <br />
+            Address 2:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{address2}" />
+            <br />
+            City:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{city}" />
+            <br />
+            State:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{state}" />
+            <br />
+            Zip Code:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{postalCode}" />
+            <br />
+            Phone Number:
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{phone_number}" />
             <br />
             DOB:
             <input type="date" class="uk-input uk-border-rounded" th:field="*{dob}" />
@@ -53,34 +98,35 @@
         <form class="uk-form-width-medium" th:action="@{/profile/edit}" method="POST" th:object="${user}">
             <h1>Edit Profile</h1>
             Username:
-            <input class="uk-input uk-border-rounded" th:field="*{username}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{username}" />
             <br />
             Email:
-            <input class="uk-input uk-border-rounded" th:field="*{email}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{email}" />
             <br />
+            <input type="hidden" class="uk-input uk-border-rounded" th:field="*{password}" />
             First Name:
-            <input class="uk-input uk-border-rounded" th:field="*{first_name}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{first_name}" />
             <br />
             Last Name:
-            <input class="uk-input uk-border-rounded" th:field="*{last_name}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{last_name}" />
             <br />
             Address 1:
-            <input class="uk-input uk-border-rounded" th:field="*{address1}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{address1}" />
             <br />
             Address 2:
-            <input class="uk-input uk-border-rounded" th:field="*{address2}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{address2}" />
             <br />
             City:
-            <input class="uk-input uk-border-rounded" th:field="*{city}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{city}" />
             <br />
             State:
-            <input class="uk-input uk-border-rounded" th:field="*{state}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{state}" />
             <br />
             Zip Code:
-            <input class="uk-input uk-border-rounded" th:field="*{postalCode}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{postalCode}" />
             <br />
             Phone Number:
-            <input class="uk-input uk-border-rounded" th:field="*{phone_number}" />
+            <input type="text" class="uk-input uk-border-rounded" th:field="*{phone_number}" />
             <br />
             DOB:
             <input type="date" class="uk-input uk-border-rounded" th:field="*{dob}" />
