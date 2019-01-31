@@ -1,6 +1,5 @@
 package com.example.springblog.controllers;
 
-import com.example.springblog.models.Order;
 import com.example.springblog.models.User;
 import com.example.springblog.repo.OrderRepository;
 import com.example.springblog.repo.OrderStatusRepository;
