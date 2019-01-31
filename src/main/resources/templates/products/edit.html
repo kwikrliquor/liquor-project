@@ -28,13 +28,14 @@
         Description:
         <textarea class="uk-textarea uk-border-rounded" rows="3" th:field="*{description}" />
         <br />
+        <input type="hidden" class="uk-input uk-border-rounded" th:field="*{imgUrl}" />
         <div class="mt-1">
             <input class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" value="Edit Product" />
         </div>
     </form>
 
 </main><!-- /.container -->
-    <div th:replace="partials::footer"></div>
+<div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>
 
 </body>

@@ -34,7 +34,7 @@
             <div th:each="user : ${unverifiedUsers}">
                 <hr/>
                 <div>
-                    <h5 class="uk-margin-remove">Username: <a th:href="'/order_details/' + ${user.id}"><span
+                    <h5 class="uk-margin-remove">Username: <a th:href="'/user-details/' + ${user.id}"><span
                             th:text="${user.username}"></span></a></h5>
                     <p><a th:href="${user.img_url}">View Customer's ID</a></p>
                     <!--<p><a th:href="" th:value="${user.userId.img_url}" onclick="window.open(this.value)">View Customer's ID</a></p>-->

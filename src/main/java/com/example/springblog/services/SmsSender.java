@@ -3,15 +3,20 @@ package com.example.springblog.services;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SmsSender {
+//    @Value("${twilio_sid}")
+//    private String SID;
+//    @Value("${twilio_token}")
+//    private String uploadPath;
     // Find your Account Sid and Auth Token at twilio.com/console
     public static final String ACCOUNT_SID =
-            "AC8f08bef3fa916dafd635be14e5df21e3";
+            "AC482f078e90585c8ef6a184c90889a9b4";
     public static final String AUTH_TOKEN =
-            "dae561f1ad2ac06899f21fcb3b118875";
+            "a2a9ca70b5d50d98c7835144f9c56998";
 
     //    public static void main(String[] args) {
     public void sendTextDelivery(){
@@ -19,7 +24,7 @@ public class SmsSender {
 
         Message message = Message
                 .creator(new PhoneNumber("+12105162093"), // to
-                        new PhoneNumber("+18302660946"), // from
+                        new PhoneNumber("+12108803863"), // from
                         "Your Order is Out for Delivery!")
                 .create();
 
@@ -31,7 +36,7 @@ public class SmsSender {
 
         Message message = Message
                 .creator(new PhoneNumber("+12105162093"), // to
-                        new PhoneNumber("+18302660946"), // from
+                        new PhoneNumber("+12108803863"), // from
                         "Your Order is Delivered")
                 .create();
 
