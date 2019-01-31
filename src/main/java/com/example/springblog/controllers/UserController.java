@@ -108,14 +108,11 @@ public class UserController {
   }
 
     @PostMapping("/profile/edit")
-    public String editUser(User editedUser, Errors validation, Model m){
+    public String editUser(User editedUser){
       User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        editedUser.setId(sessionUser.getId());
-            m.addAttribute("errors", validation);
-            m.addAttribute("user", editedUser);
-            m.addAttribute("showEditControls", checkEditAuth(editedUser));
-        usersRepository.save(editedUser);
-        return "redirect:/profile";
+      editedUser.setId(sessionUser.getId());
+      usersRepository.save(editedUser);
+      return "redirect:/profile/edit";
     }
 
   // Edit controls are being showed up if the user is logged in and it's the same user viewing the file

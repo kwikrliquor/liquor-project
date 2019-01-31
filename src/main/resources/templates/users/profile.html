@@ -6,68 +6,56 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
-    <div class="uk-grid-small uk-child-width-expand@s uk-grid" sec:authorize="hasRole('ROLE_CUSTOMER')">
+    <div class="uk-grid-small uk-child-width-expand@s uk-grid">
         <div>
-            <div sec:authorize="hasRole('ROLE_CUSTOMER')">
-                <!--<div class="uk-form-width-medium" th:object="${user}">-->
                 <h1>Profile</h1>
                 Username:
-                <label class="uk-label" th:text="${#authentication.principal.username}" />
+                <label class="uk-label" th:text="${user.getUsername()}" />
                 <br />
                 Email:
-                <label class="uk-label" th:text="${#authentication.principal.email}" />
+                <label class="uk-label" th:text="${user.getEmail()}" />
                 <br />
                 First Name:
-                <label class="uk-label" th:text="${#authentication.principal.first_name}" />
+                <label class="uk-label" th:text="${user.getFirst_name()}" />
                 <br />
                 Last Name:
-                <label class="uk-label" th:text="${#authentication.principal.last_name}" />
+                <label class="uk-label" th:text="${user.getLast_name()}" />
                 <br />
                 Address 1:
-                <label class="uk-label" th:text="${#authentication.principal.address1}" />
+                <label class="uk-label" th:text="${user.getAddress1()}" />
                 <br />
                 Address 2:
-                <label class="uk-label" th:text="${#authentication.principal.address2}" />
+                <label class="uk-label" th:text="${user.getAddress2()}" />
                 <br />
                 City:
-                <label class="uk-label" th:text="${#authentication.principal.city}" />
+                <label class="uk-label" th:text="${user.getCity()}" />
                 <br />
                 State:
-                <label class="uk-label" th:text="${#authentication.principal.state}" />
+                <label class="uk-label" th:text="${user.getState()}" />
                 <br />
                 Zip Code:
-                <label class="uk-label" th:text="${#authentication.principal.postalCode}" />
+                <label class="uk-label" th:text="${user.getPostalCode()}" />
                 <br />
                 Phone Number:
-                <label class="uk-label" th:text="${#authentication.principal.phone_number}" />
+                <label class="uk-label" th:text="${user.getPhone_number()}" />
                 <br />
                 DOB:
-                <label type="date" class="uk-label" th:text="${#authentication.principal.dob}" />
-                <br />
-            </div>
-
-            <div sec:authorize="hasRole('ROLE_ADMIN')">
-                <!--<div class="uk-form-width-medium" th:object="${user}">-->
-                <h1>Profile</h1>
-                Username:
-                <label class="uk-label" th:text="${#authentication.principal.username}" />
+                <label type="date" class="uk-label" th:text="${user.getDob()}" />
                 <br />
 
-            </div>
-
-            <a href="/profile/edit"><input type="button" class="uk-button-small uk-border-rounded uk-align-center" value="Edit Profile" /></a>
+                <a href="/profile/edit"><input type="button" class="uk-button-small uk-border-rounded uk-align-center" value="Edit Profile" /></a>
         </div>
 
-        <div>
-            <div class="uk-align-right">
-                <img th:src="${userInfo.img_url}" style="width: 150px; height: 100px;" alt="" />
-                <form th:action="@{/profile}" method="POST">
-                    <input type="hidden" class="uk-input uk-border-rounded" id="upload_url" name="upload_url" />
-                    <input type="button" name="upload_id" id="upload_id" value="Upload ID" onclick="openPick()" />
-                    <input type="submit" value="Submit ID" />
-                </form>
+            <div>
+                <div class="uk-align-right">
+                    <img th:src="${userInfo.img_url}" style="width: 150px; height: 100px;" alt="" />
+                    <form th:action="@{/profile}" method="POST">
+                        <input type="hidden" class="uk-input uk-border-rounded" id="upload_url" name="upload_url" />
+                        <input type="button" name="upload_id" id="upload_id" value="Upload ID" onclick="openPick()" />
+                        <input type="submit" value="Submit ID" />
+                    </form>
+                </div>
             </div>
-        </div>
     </div>
 </main><!-- /.container -->
 <div th:replace="partials::footer"></div>
