@@ -28,4 +28,9 @@ public class HomeController {
     return "Page not Found!";
   }
 
+  @GetMapping("/about")
+  public String check() {
+    return "about";
+  }
+
 }
