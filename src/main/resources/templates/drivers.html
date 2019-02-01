@@ -14,13 +14,13 @@
         <div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-grid">
             <div>
                 <h4 class="remove-bottom-margin">New Orders</h4>
-                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-2@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
+                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-1@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
                     <div class="uk-padding-remove" th:each="order : ${unassignedOrders}">
                         <div class="uk-card uk-card-hover uk-card-body uk-margin-small-bottom uk-border-rounded">
                             <h5 class="uk-card-title remove-bottom-margin"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
                             <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
-                            <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
+                            <p class="uk-margin-remove">Created on: <br/><em><span th:text="${order.date}"></span></em></p>
                             <form th:action="@{/drivers/assign}" method="post">
                                 <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
                                 <button type="submit" class="" th:value="${order.getOrderStatusId().getId()}">Assign</button>
@@ -37,7 +37,7 @@
             <div>
 
                 <h4 class="uk-text-center remove-bottom-margin"><span class="uk-text-capitalize" sec:authentication="name"></span>'s Accepted Orders</h4>
-                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-2@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
+                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-1@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
 
                     <div class="uk-padding-remove" th:each="order : ${assignedOrders}">
 
@@ -45,7 +45,7 @@
                             <h5 class="uk-card-title remove-bottom-margin"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
                             <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
-                            <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
+                            <p class="uk-margin-remove">Created on: <br/><em><span th:text="${order.date}"></span></em></p>
                             <div class="uk-inline" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/unassign}" method="post">
                                     <input type="hidden" name="orderWithStatus2" th:value="${order.id}"/>
@@ -77,7 +77,7 @@
             <div>
 
                 <h4 class="uk-text-center remove-bottom-margin"><span class="uk-text-capitalize" sec:authentication="name"></span>'s Deliveries</h4>
-                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-2@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
+                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-1@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
 
                     <div class="uk-padding-remove" th:each="order : ${outForDelivery}">
 
@@ -85,7 +85,7 @@
                             <h5 class="uk-card-title uk-margin-bottom-remove"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
                             <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
-                            <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
+                            <p class="uk-margin-remove">Created on: <br/><em><span th:text="${order.date}"></span></em></p>
                             <div class="" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/prepare}" method="post">
                                     <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
@@ -116,8 +116,8 @@
 
             <div>
 
-                <h4 class="uk-text-center remove-bottom-margin"><span class="uk-text-capitalize" sec:authentication="name"></span>'s Completed Deliveries</h4>
-                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-2@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
+                <h4 class="uk-text-center remove-bottom-margin"><span class="uk-text-capitalize" sec:authentication="name"></span>'s Completed</h4>
+                <div tabindex="0" class="uk-child-width-1-1@s uk-child-width-1-1@m uk-grid uk-grid-small driver-card uk-text-center uk-border-rounded">
 
                     <div class="uk-padding-remove" th:each="order : ${delivered}">
 
@@ -125,7 +125,7 @@
                             <h5 class="uk-card-title uk-margin-bottom-remove"><a th:href="'/order_details/' + ${order.id}"><span
                                     th:text="'Order #' + ${order.id}"></span></a></h5>
                             <p class="uk-margin-remove"><em><span th:text="${order.tempAddress}"></span></em></p>
-                            <p class="uk-margin-remove">Created on: <em><span th:text="${order.date}"></span></em></p>
+                            <p class="uk-margin-remove">Created on: <br/><em><span th:text="${order.date}"></span></em></p>
                             <div th:if="${order.getOrderStatusId().id} == 2">
                                 <span>Preparing</span>
                                 <progress class="uk-progress" value="50" max="100"></progress>

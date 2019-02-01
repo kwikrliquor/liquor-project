@@ -108,7 +108,7 @@ public class ShoppingCartService {
         String timeStamp = new SimpleDateFormat("MM/dd/yyyy" + "\n" + "HH:mm:ss").format(new Date());
         Order order[] = {
                 //NEED TO GRAB THE temp_address from the shoppingCart.html input field, google autofill works
-                new Order(timeStamp, address, orderStatusRepo.findStatusOrderPendingVerification(), userRepo.findById(sessionUser.getId()))
+                new Order(timeStamp, address, orderStatusRepo.findStatusOrderPlaced(), userRepo.findById(sessionUser.getId()))
         };
         orderRepo.save(Arrays.asList(order));
     }

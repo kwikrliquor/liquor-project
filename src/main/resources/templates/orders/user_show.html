@@ -21,10 +21,10 @@
                     <td><p th:text="${order.id}"></p></td>
                     <td><p th:text="${order.date}"></p></td>
                     <th:block th:if="${order.orderStatusId.id} == 1">
-                        <td><p>Preparing Order</p></td>
+                        <td><p>Order Placed</p></td>
                     </th:block>
                     <th:block th:if="${order.orderStatusId.id} == 2">
-                        <td><p>Ready for Delivery</p></td>
+                        <td><p>Preparing Order</p></td>
                     </th:block>
                     <th:block th:if="${order.orderStatusId.id} == 3">
                         <td><p>Out for Delivery</p></td>
