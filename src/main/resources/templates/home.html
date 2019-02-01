@@ -73,7 +73,7 @@
                             th:text="${product.name}"></span></a></h5>
                     <hr class="uk-divider-icon remove-margin" />
                     <em><p class="remove-margin" th:text="${product.type}"></p></em>
-                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <p class="remove-margin"><strong class="list-font">$<span th:text="${product.price}"></span></strong></p>
                     <div class="remove-margin">
                         <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
                     </div>
@@ -94,7 +94,7 @@
                             th:text="${product.name}"></span></a></h5>
                     <hr class="uk-divider-icon remove-margin" />
                     <em><p class="remove-margin" th:text="${product.type}"></p></em>
-                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <p class="remove-margin"><strong class="list-font">$<span th:text="${product.price}"></span></strong></p>
                     <div class="remove-margin">
                         <form method="POST" th:action="@{'/shoppingCart/addProduct/' + ${product.id}}">
                             <input type="submit" value="ADD TO CART" class="uk-button uk-button-default uk-button-small uk-border-rounded" />
@@ -116,7 +116,7 @@
                             th:text="${product.name}"></span></a></h5>
                     <hr class="uk-divider-icon remove-margin" />
                     <em><p class="remove-margin" th:text="${product.type}"></p></em>
-                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <p class="remove-margin"><strong class="list-font">$<span th:text="${product.price}"></span></strong></p>
                     <!--<div class="remove-margin">-->
                     <!--<form method="POST" th:action="@{'/shoppingCart/addProduct/' + ${product.id}}">-->
                     <!--<input type="submit" value="ADD TO CART" class="uk-button uk-button-default uk-button-small uk-border-rounded" />-->
@@ -137,7 +137,7 @@
                             th:text="${product.name}"></span></a></h5>
                     <hr class="uk-divider-icon remove-margin" />
                     <em><p class="remove-margin" th:text="${product.type}"></p></em>
-                    <p class="remove-margin"><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <p class="remove-margin"><strong class="list-font">$<span th:text="${product.price}"></span></strong></p>
                     <div class="remove-margin">
                         <a th:href="@{'/products/' + ${product.getId()} + '/edit'}" class="uk-button uk-button-default uk-button-small uk-border-rounded">Edit</a>
                         <a th:href="@{'/products/' + ${product.getId()} + '/delete'}" class="uk-button uk-button-default uk-button-small uk-border-rounded">Delete</a>
