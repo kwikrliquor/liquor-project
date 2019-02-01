@@ -21,12 +21,39 @@
         .uk-card>p {
             word-wrap: break-word;
         }
-        .block {
-            display: block;
+        .h5-liner {
+            height: 33px;
+            overflow: hidden;
+        }
+        .opacity-85 {
+            opacity: 0.85;
+            filter: alpha(opacity=85);
+        }
+        .opacity-55 {
+            opacity: 0.55;
+            filter: alpha(opacity=55);
+        }
+        .login-up {
+            top: 260px;
+        }
+        .sign-up {
+            top: 320px;
+        }
+        .list-font {
+            font-size: 22px;
+        }
+        .list-font-nav {
+            font-size: 18px;
         }
         .indie {
             font-family: 'Indie Flower';
             font-size: 42px;
+            color: #0f7ae5;
+            text-shadow: 2px 2px #444444;
+        }
+        .indie-small {
+            font-family: 'Indie Flower';
+            font-size: 38px;
             color: #0f7ae5;
             text-shadow: 2px 2px #444444;
         }
@@ -177,11 +204,11 @@
 
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div>All Products</div></a></li>
-            <li><a href="/products/beer"><div>Beer</div></a></li>
-            <li><a href="/products/wine"><div>Wine</div></a></li>
-            <li><a href="/products/liquor"><div>Liquor</div></a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
+            <li><a href="/products/beer"><div><span class="list-font-nav">Beer</span></div></a></li>
+            <li><a href="/products/wine"><div><span class="list-font-nav">Wine</span></div></a></li>
+            <li><a href="/products/liquor"><div><span class="list-font-nav">Liquor</span></div></a></li>
+            <li><a href="/about"><div><span class="list-font-nav">About</span></div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
@@ -249,11 +276,11 @@
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div>All Products</div></a></li>
-            <li><a href="/products/beer"><div>Beer</div></a></li>
-            <li><a href="/products/wine"><div>Wine</div></a></li>
-            <li><a href="/products/liquor"><div>Liquor</div></a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
+            <li><a href="/products/beer"><div><span class="list-font-nav">Beer</span></div></a></li>
+            <li><a href="/products/wine"><div><span class="list-font-nav">Wine</span></div></a></li>
+            <li><a href="/products/liquor"><div><span class="list-font-nav">Liquor</span></div></a></li>
+            <li><a href="/about"><div><span class="list-font-nav">About</span></div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
@@ -261,8 +288,8 @@
             <li class="uk-inline">
                 <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
-                    <li><a th:href="@{'/my-orders'}">My Orders</a></li>
-                    <li><a th:href="@{'/profile'}">Profile</a></li>
+                    <li><a th:href="@{'/my-orders'}"><span class="list-font">My Orders</span></a></li>
+                    <li><a th:href="@{'/profile'}"><span class="list-font">Profile</span></a></li>
                     <li class="uk-nav-divider"></li>
                     <li>
                         <form th:action="@{/logout}" th:method="POST">
@@ -315,10 +342,10 @@
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div>All Products</div></a></li>
-            <li><a href="/products/create">Create Product</a></li>
-            <li><a href="/admin-dashboard">Admin Dashboard</a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
+            <li><a href="/products/create"><span class="list-font-nav">Create Product</span></a></li>
+            <li><a href="/admin-dashboard"><span class="list-font-nav">Admin Dashboard</span></a></li>
+            <li><a href="/about"><div><span class="list-font-nav">About</span></div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
@@ -326,7 +353,7 @@
             <li class="uk-inline">
                 <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
-                    <li><a th:href="@{'/profile'}">Profile</a></li>
+                    <li><a th:href="@{'/profile'}"><span class="list-font">Profile</span></a></li>
                     <li class="uk-nav-divider"></li>
                     <li>
                         <form th:action="@{/logout}" th:method="POST">
@@ -374,9 +401,9 @@
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div>All Products</div></a></li>
-            <li><a href="/driver_dashboard"><div>Driver Dashboard</div></a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
+            <li><a href="/driver_dashboard"><div><span class="list-font-nav">Driver Dashboard</span></div></a></li>
+            <li><a href="/about"><div><span class="list-font-nav">About</span></div></a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
@@ -384,7 +411,7 @@
             <li class="uk-inline">
                 <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
                 <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
-                    <li><a th:href="@{'/profile'}">Profile</a></li>
+                    <li><a th:href="@{'/profile'}"><span class="list-font">Profile</span></a></li>
                     <li class="uk-nav-divider"></li>
                     <li>
                         <form th:action="@{/logout}" th:method="POST">

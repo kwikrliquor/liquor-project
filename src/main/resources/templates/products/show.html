@@ -8,25 +8,25 @@
 <main role="main" class="uk-container">
     <div sec:authorize="!isAuthenticated()">
         <h1>Product Details</h1>
-        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
-            <div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-grid">
-                <div>
-                <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
-                <hr class="uk-divider-icon" />
-                <h5><em>Type</em></h5>
-                <p class=""><strong><span th:text="${product.type}"></span></strong></p>
-                <hr class="uk-divider-icon" />
-                <h5><em>Description</em></h5>
-                <p class=""><span th:text="${product.description}"></span> </p>
-                <hr class="uk-divider-icon" />
-                <h5><em>Price</em></h5>
-                <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
-                <div class="mt-1">
-                    <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
+        <div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-grid">
+            <div class="uk-card uk-card-hover uk-card-body uk-text-center uk-border-rounded product-card-color product-card">
+                <div class="uk-width-auto@m">
+                    <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
+                    <hr class="uk-divider-icon" />
+                    <h5><em>Type</em></h5>
+                    <p class=""><strong><span th:text="${product.type}"></span></strong></p>
+                    <hr class="uk-divider-icon" />
+                    <h5><em>Description</em></h5>
+                    <p class=""><span th:text="${product.description}"></span> </p>
+                    <hr class="uk-divider-icon" />
+                    <h5><em>Price</em></h5>
+                    <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
+                    <div class="mt-1">
+                        <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
+                    </div>
                 </div>
-                </div>
-                <div class="uk-width-1-4">
-                <img th:src="${product.imgUrl}" alt="" />
+                <div class="uk-width-1-4@m">
+                    <img th:src="${product.imgUrl}" alt="" />
                 </div>
             </div>
         </div>
@@ -34,8 +34,8 @@
 
     <div sec:authorize="hasRole('ROLE_CUSTOMER')">
         <h1>Product Details</h1>
-        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
             <div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-grid">
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center uk-border-rounded product-card-color product-card">
                 <div>
                     <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
                     <hr class="uk-divider-icon" />
@@ -56,14 +56,14 @@
                 <div class="uk-width-1-4">
                     <img th:src="${product.imgUrl}" alt="" />
                 </div>
-            </div>
         </div>
+            </div>
     </div>
 
     <div sec:authorize="hasRole('ROLE_DRIVER')">
         <h1>Product Details</h1>
-        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
             <div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-grid">
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center uk-border-rounded product-card-color product-card">
                 <div>
                     <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
                     <hr class="uk-divider-icon" />
@@ -79,14 +79,14 @@
                 <div class="uk-width-1-4">
                     <img th:src="${product.imgUrl}" alt="" />
                 </div>
-            </div>
         </div>
+            </div>
     </div>
 
     <div sec:authorize="hasRole('ROLE_ADMIN')">
         <h1>Product Details</h1>
-        <div class="uk-card uk-card-hover uk-card-body uk-text-center">
             <div class="uk-grid-small uk-child-width-expand@s uk-text-center uk-grid">
+        <div class="uk-card uk-card-hover uk-card-body uk-text-center uk-border-rounded product-card-color product-card">
                 <div>
                     <h5 class="uk-card-title"><span th:text="${product.name}"></span></h5>
                     <hr class="uk-divider-icon" />
@@ -106,8 +106,8 @@
                 <div class="uk-width-1-4">
                     <img th:src="${product.imgUrl}" alt="" />
                 </div>
-            </div>
         </div>
+            </div>
     </div>
 </main><!-- /.container -->
 <div th:replace="partials::footer"></div>
