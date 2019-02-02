@@ -63,7 +63,7 @@
 </div>
 <main role="main" class="uk-container">
     <div sec:authorize="!isAuthenticated()">
-        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
+        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center uk-margin-small-top" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
                 <div class="uk-card uk-card-hover uk-card-body uk-padding-small uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <a th:href="'/products/' + ${product.id}"><img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" /></a>
@@ -84,7 +84,7 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_CUSTOMER')">
-        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
+        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center uk-margin-small-top" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
                 <div class="uk-card uk-card-hover uk-card-body uk-padding-small uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <a th:href="'/products/' + ${product.id}"><img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" /></a>
@@ -106,7 +106,7 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_DRIVER')">
-        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
+        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center uk-margin-small-top" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
                 <div class="uk-card uk-card-hover uk-card-body uk-padding-small uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <a th:href="'/products/' + ${product.id}"><img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" /></a>
@@ -128,7 +128,7 @@
     </div>
 
     <div sec:authorize="hasRole('ROLE_ADMIN')">
-        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
+        <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center uk-margin-small-top" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 35; repeat: true">
             <div th:each="product : ${products}">
                 <div class="uk-card uk-card-hover uk-card-body uk-padding-small uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <a th:href="'/products/' + ${product.id}"><img th:src="${product.imgUrl}" style="width: 66px; height: 200px;" alt="" /></a>
