@@ -259,4 +259,5 @@ public class User {
   public void setAgeVerified(Boolean ageVerified) {
     this.ageVerified = ageVerified;
   }
+
 }

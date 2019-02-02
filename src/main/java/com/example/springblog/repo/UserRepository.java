@@ -17,6 +17,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
   @Query("from User a where a.ageVerified=false")
   List <User> findUnverifiedUsers();
 
-
-
 }

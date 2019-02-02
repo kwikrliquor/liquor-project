@@ -15,43 +15,44 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController {
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    @Autowired
-    private UserService userService;
+  @Autowired
+  private UserService userService;
 
-    @Autowired
-    private OrderRepository orderRepository;
+  @Autowired
+  private OrderRepository orderRepository;
 
-    @Autowired
-    private OrderStatusRepository orderStatusRepository;
+  @Autowired
+  private OrderStatusRepository orderStatusRepository;
 
-    @GetMapping("/admin-dashboard")
-    public String showAdminPage(Model model){
+  @GetMapping("/admin-dashboard")
+  public String showAdminPage(Model model){
 
-        model.addAttribute("existingUsers", userService.getAll());
-        model.addAttribute("unverifiedUsers", userRepository.findUnverifiedUsers());
+    model.addAttribute("existingUsers", userService.getAll());
+    model.addAttribute("unverifiedUsers", userRepository.findUnverifiedUsers());
 
-        return "admin";
-    }
+    return "admin";
+  }
 
-    @GetMapping("/user-details/{id}")
-    public String showUserDetails(@PathVariable long id, Model model){
+  @GetMapping("/user-details/{id}")
+  public String showUserDetails(@PathVariable long id, Model model){
 
-        model.addAttribute("user", userRepository.findById(id));
-        model.addAttribute("id", id);
-        return "users/profile-edit";
+    model.addAttribute("user", userRepository.findById(id));
+    model.addAttribute("id", id);
+    return "users/profile-edit";
 
-    }
+  }
 
-    @PostMapping("admin-dashboard/verify")
-    public String setToPrepare(@RequestParam("unverifiedUser") Long unverifiedUser) {
+  @PostMapping("admin-dashboard/verify")
+  public String setToPrepare(@RequestParam("unverifiedUser") Long unverifiedUser) {
 
-        User verifiedUser = userRepository.findOne(unverifiedUser);
-        verifiedUser.setAgeVerified(true);
-        userRepository.save(verifiedUser);
+    User verifiedUser = userRepository.findOne(unverifiedUser);
+    verifiedUser.setAgeVerified(true);
+    userRepository.save(verifiedUser);
 
-        return "redirect:/admin-dashboard";
-    }
+    return "redirect:/admin-dashboard";
+  }
+
 }

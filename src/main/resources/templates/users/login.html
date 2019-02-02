@@ -7,10 +7,10 @@
 <main role="main" class="uk-container uk-text-center">
     <div class="uk-position-center login-up">
         <h1>Log In</h1>
-        <div class="alert alert-danger" th:if="${param.error}">
+        <div class="uk-alert-danger" th:if="${param.error}">
             Invalid Username and Password.
         </div>
-        <div class="alert alert-info" th:if="${param.logout}">
+        <div class="uk-alert-primary" th:if="${param.logout}">
             You have been logged out.
         </div>
 

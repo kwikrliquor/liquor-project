@@ -18,5 +18,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
   @Query("from Product a where a.category=3")
   List<Product> findLiquor();
   Optional<Product> findById(Long id);
-
 }
