@@ -156,49 +156,6 @@
     </header>
 </div>
 
-<!--<nav class="uk-navbar-container uk-navbar">-->
-    <!--<div class="uk-navbar-left">-->
-
-        <!--<ul class="uk-navbar-nav">-->
-            <!--<li class="uk-active"><a href="#">Active</a></li>-->
-            <!--<li>-->
-                <!--<a href="#">Parent</a>-->
-                <!--<div class="uk-navbar-dropdown">-->
-                    <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
-                        <!--<li class="uk-active"><a href="#">Active</a></li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                        <!--<li class="uk-nav-header">Header</li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                        <!--<li class="uk-nav-divider"></li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li><a href="#">Item</a></li>-->
-        <!--</ul>-->
-
-    <!--</div>-->
-    <!--<div class="uk-navbar-right">-->
-
-        <!--<ul class="uk-navbar-nav">-->
-            <!--<li>-->
-                <!--<a href="#">Parent</a>-->
-                <!--<div class="uk-navbar-dropdown">-->
-                    <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
-                        <!--<li class="uk-active"><a href="#">Active</a></li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                        <!--<li class="uk-nav-header">Header</li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                        <!--<li class="uk-nav-divider"></li>-->
-                        <!--<li><a href="#">Item</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</div>-->
-<!--</nav>-->
 <nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="!isAuthenticated()">
     <div class="uk-navbar-left">
 
@@ -234,7 +191,7 @@
     </div>
     <div class="uk-navbar-right">
         <a href="#"><div class="uk-text-large margin-right-10"><i class="fas fa-bars"></i></div></a>
-        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
             <li><a href="/products"><div>All Products</div></a></li>
             <li><a href="/products/beer"><div>Beer</div></a></li>
             <li><a href="/products/wine"><div>Wine</div></a></li>
@@ -287,7 +244,7 @@
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li class="uk-inline">
                 <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
-                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
                     <li><a th:href="@{'/my-orders'}"><span class="list-font">My Orders</span></a></li>
                     <li><a th:href="@{'/profile'}"><span class="list-font">Profile</span></a></li>
                     <li class="uk-nav-divider"></li>
@@ -313,7 +270,7 @@
     </div>
     <div class="uk-navbar-right">
         <a href="#"><div class="uk-text-large margin-right-10"><i class="fas fa-bars"></i></div></a>
-        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
             <li><a th:href="@{'/my-orders'}">My Orders</a></li>
             <li><a th:href="@{'/profile'}">Profile</a></li>
             <li><a href="/products"><div>All Products</div></a></li>
@@ -355,7 +312,7 @@
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li class="uk-inline">
                 <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
-                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
                     <li><a th:href="@{'/profile'}"><span class="list-font">Profile</span></a></li>
                     <li class="uk-nav-divider"></li>
                     <li>
@@ -377,7 +334,7 @@
     </div>
     <div class="uk-navbar-right">
         <a href="#"><div class="uk-text-large margin-right-10"><i class="fas fa-bars"></i></div></a>
-        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
             <li><a th:href="@{'/profile'}">Profile</a></li>
             <li><a href="/products"><div>All Products</div></a></li>
             <li><a href="/products/create">Create Product</a></li>
@@ -416,7 +373,7 @@
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li class="uk-inline">
                 <a href="#"><div class="uk-text-large" sec:authentication="name"></div></a>
-                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+                <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
                     <li><a th:href="@{'/profile'}"><span class="list-font">Profile</span></a></li>
                     <li class="uk-nav-divider"></li>
                     <li>
@@ -438,7 +395,7 @@
     </div>
     <div class="uk-navbar-right">
         <a href="#"><div class="uk-text-large margin-right-10"><i class="fas fa-bars"></i></div></a>
-        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="mode: click">
+        <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
             <li><a th:href="@{'/profile'}">Profile</a></li>
             <li><a href="/products"><div>All Products</div></a></li>
             <li><a href="/driver_dashboard"><div>Driver Dashboard</div></a></li>
@@ -492,6 +449,8 @@
     <script src="/static/js/components/sticky.min.js"></script>
     <script src="/static/js/core/nav.js"></script>
     <script src="/static/js/core/nav.min.js"></script>
+    <script src="/static/js/core/dropdown.js"></script>
+    <script src="/static/js/core/dropdown.min.js"></script>
 
     <script src="https://js.stripe.com/v3/"></script>
 
