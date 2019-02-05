@@ -66,7 +66,7 @@ public class ShoppingCartService {
     if (products.containsKey(product)) {
       if (products.get(product) > 1)
         products.replace(product, products.get(product) - 1);
-      else if (products.get(product) == 1) {
+      if (products.get(product) == 1) {
         products.remove(product);
       }
     }

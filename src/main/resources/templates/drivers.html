@@ -7,6 +7,7 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
+<div class="custom-card uk-border-rounded uk-margin-medium-top">
 
     <h2 class="uk-text-center remove-bottom-margin">Driver Dashboard</h2>
     <br/>
@@ -23,7 +24,7 @@
                             <p class="uk-margin-remove">Created on: <br/><em><span th:text="${order.date}"></span></em></p>
                             <form th:action="@{/drivers/assign}" method="post">
                                 <input type="hidden" name="orderWithStatus1" th:value="${order.id}"/>
-                                <button class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Assign</button>
+                                <button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Assign</button>
                             </form>
                                 <span>Order Placed</span><br/>
                                 <span><em>25%</em></span>
@@ -49,11 +50,11 @@
                             <div class="uk-inline" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/unassign}" method="post">
                                     <input type="hidden" name="orderWithStatus2" th:value="${order.id}"/>
-                                    <button class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
+                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
                                 </form>
                                 <form th:action="@{/drivers/delivery}" method="post">
                                     <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
-                                    <button class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Delivery</button>
+                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Delivery</button>
                                 </form>
                             </div>
 
@@ -91,11 +92,11 @@
                             <div class="" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/prepare}" method="post">
                                     <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
-                                    <button class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Preparing</button>
+                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Preparing</button>
                                 </form>
                                 <form th:action="@{/drivers/delivered}" method="post">
                                     <input type="hidden" name="orderWithStatus4" th:value="${order.id}"/>
-                                    <button class="uk-button uk-button-default uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Delivered</button>
+                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Delivered</button>
                                 </form>
                             </div>
 
@@ -152,38 +153,7 @@
             </div>
         </div>
     </div>
-
-
-    <!--<div tabindex="0" class="uk-child-width-1-3@m uk-grid uk-text-center">-->
-    <!--<div th:each="order : ${assignedOrders}">-->
-    <!--<div class="uk-card uk-card-hover uk-card-body uk-margin-medium-bottom">-->
-    <!--<h5 class="uk-card-title">Order# <span th:text="${order.id}"></span></h5>-->
-    <!--<p>Created on: <span th:text="${order.date}"></span></p>-->
-    <!--<button name="unassign">Unassign</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--<div>-->
-    <!--<h2 class="uk-text-center">Driver Dashboard</h2>-->
-
-    <!--<ul class="uk-accordion" data-uk-accordion="{collapse:true}">-->
-    <!--<li class="uk-card uk-card-default uk-card-body">-->
-    <!--<a class="uk-accordion-title uk-text-center" href="#">Open Deliveries</a>-->
-    <!--<div class="uk-accordion-content" th:each="order : ${unassignedOrders}">-->
-    <!--<p>Order# <span th:text="${order.id}"></span></p>-->
-    <!--<p th:text="${order.date}"></p>-->
-    <!--</div>-->
-    <!--</li>-->
-    <!--<li class="uk-card uk-card-default uk-card-body">-->
-    <!--<a class="uk-accordion-title uk-text-center" href="#">My Deliveries</a>-->
-    <!--<div class="uk-accordion-content">-->
-    <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
-    <!--</div>-->
-    <!--</li>-->
-    <!--</ul>-->
-
-    <!--</div>-->
+</div>
 
 </main><!-- /.container -->
 <div th:replace="partials::footer"></div>

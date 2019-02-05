@@ -46,7 +46,7 @@ public class ShoppingCartController {
         return shoppingCart();
     }
 
-    @GetMapping("/shoppingCart/removeProduct/{productId}")
+    @PostMapping("/shoppingCart/removeProduct/{productId}")
     public ModelAndView removeProductFromCart(@PathVariable("productId") Long productId) {
         productService.findById(productId).ifPresent(shoppingCartService::removeProduct);
         return shoppingCart();

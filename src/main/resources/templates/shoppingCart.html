@@ -7,11 +7,11 @@
 <div th:replace="partials::navbar"></div>
 <main role="main" class="container">
 
-    <div sec:authorize="!isAuthenticated()">
-        <a href="/login"><h1 class="uk-text-large"> Please Login to View your Cart</h1></a>
+    <div class="custom-card uk-border-rounded" sec:authorize="!isAuthenticated()">
+        <a href="/login"><h1 class="uk-text-large uk-text-center uk-margin-remove"> Please Login to View your Cart</h1></a>
     </div>
 
-    <div sec:authorize="isAuthenticated()">
+    <div class="uk-margin-medium-top" sec:authorize="isAuthenticated()">
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
             <div th:each="product : ${products.entrySet()}">
                 <div class="uk-card uk-card-hover uk-card-body remove-top-padding remove-margin uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
@@ -28,7 +28,7 @@
                     </form>
                 </div>
             </div>
-            <div class="uk-grid uk-width-large-1-1 uk-visible-large uk-align-center remove-margin">
+            <div class="uk-grid uk-width-large-1-1 uk-visible-large uk-align-center remove-margin custom-card uk-border-rounded">
                 <!--<input type="hidden" name="temp_address" th:value="${temp_address}"/>-->
                 <h2 class="" th:inline="text">Total in cart: $[[${total}]]</h2>
                 <br />

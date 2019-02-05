@@ -13,9 +13,9 @@ public class SmsSender {
 //    private String uploadPath;
   // Find your Account Sid and Auth Token at twilio.com/console
   public static final String ACCOUNT_SID =
-      "AC482f078e90585c8ef6a184c90889a9b4";
+      "AC95f06456c38e57fceb13a2631038ef81";
   public static final String AUTH_TOKEN =
-      "a2a9ca70b5d50d98c7835144f9c56998";
+      "8f85f905e2bc5241757fe606830c6b99";
 
   //    public static void main(String[] args) {
   public void sendTextDelivery(){
@@ -23,7 +23,7 @@ public class SmsSender {
 
     Message message = Message
         .creator(new PhoneNumber("+12105162093"), // to
-            new PhoneNumber("+12108803863"), // from
+            new PhoneNumber("+12109411901"), // from
             "Your Order is Out for Delivery!")
         .create();
 
@@ -35,7 +35,7 @@ public class SmsSender {
 
     Message message = Message
         .creator(new PhoneNumber("+12105162093"), // to
-            new PhoneNumber("+12108803863"), // from
+            new PhoneNumber("+12109411901"), // from
             "Your Order is Delivered")
         .create();
 

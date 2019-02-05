@@ -20,12 +20,6 @@ public class ProductController {
     this.productService = ps;
   }
 
-  @GetMapping("/products")
-  public String show(Model model) {
-    model.addAttribute("products", productService.getAll());
-    return "products/index";
-  }
-
 //  @GetMapping("/cart")
 //  public String cart(Model model) {
 //    model.addAttribute()
@@ -34,19 +28,19 @@ public class ProductController {
   @GetMapping("/products/beer")
   public String beer(Model model) {
     model.addAttribute("products", productService.beer());
-    return "products/index";
+    return "home";
   }
 
   @GetMapping("/products/wine")
   public String wine(Model model) {
     model.addAttribute("products", productService.wine());
-    return "products/index";
+    return "home";
   }
 
   @GetMapping("/products/liquor")
   public String liquor(Model model) {
     model.addAttribute("products", productService.liquor());
-    return "products/index";
+    return "home";
   }
 
   @GetMapping("/products/{id}")
@@ -67,7 +61,7 @@ public class ProductController {
     User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     product.setUser(user);
     productService.create(product);
-    return "redirect:/products";
+    return "redirect:/home";
   }
 
   @GetMapping("/products/{id}/edit")
@@ -80,13 +74,13 @@ public class ProductController {
   public String delete(@PathVariable int id, Model model) {
     model.addAttribute("product", productService.findOne(id));
     productService.delete(productService.findOne(id));
-    return "redirect:/products";
+    return "redirect:/home";
   }
 
   @PostMapping("/products/{id}/edit")
   public String edit(@ModelAttribute Product product) {
     productService.edit(product);
-    return "redirect:/products";
+    return "redirect:/home";
   }
 
   @GetMapping("/google")
