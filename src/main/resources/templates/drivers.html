@@ -50,7 +50,7 @@
                             <div class="uk-inline" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/unassign}" method="post">
                                     <input type="hidden" name="orderWithStatus2" th:value="${order.id}"/>
-                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
+                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded uk-margin-small-bottom" type="submit" th:value="${order.getOrderStatusId().getId()}">Unassign</button>
                                 </form>
                                 <form th:action="@{/drivers/delivery}" method="post">
                                     <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
@@ -92,7 +92,7 @@
                             <div class="" th:if="${order.getOrderStatusId().id} > 1">
                                 <form th:action="@{/drivers/prepare}" method="post">
                                     <input type="hidden" name="orderWithStatus3" th:value="${order.id}"/>
-                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded" type="submit" th:value="${order.getOrderStatusId().getId()}">Preparing</button>
+                                    <button class="uk-button uk-button-primary uk-button-small uk-border-rounded uk-margin-small-bottom" type="submit" th:value="${order.getOrderStatusId().getId()}">Preparing</button>
                                 </form>
                                 <form th:action="@{/drivers/delivered}" method="post">
                                     <input type="hidden" name="orderWithStatus4" th:value="${order.id}"/>
