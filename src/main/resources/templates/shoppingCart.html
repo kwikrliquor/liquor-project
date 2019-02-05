@@ -14,7 +14,7 @@
     <div sec:authorize="isAuthenticated()">
         <div tabindex="0" class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 50; repeat: true">
             <div th:each="product : ${products.entrySet()}">
-                <div class="uk-card uk-card-hover uk-card-body remove-top-padding uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
+                <div class="uk-card uk-card-hover uk-card-body remove-top-padding remove-margin uk-margin-medium-bottom uk-border-rounded product-card-color product-card">
                     <img th:src="${product.getKey().imgUrl}" style="width: 66px; height: 200px;" alt="" />
                     <h1 class="uk-card-title remove-margin"><a th:text="${product.getKey().name}" th:href="@{'/products/' + ${product.getKey().id}}">Title</a></h1>
                     <hr class="uk-divider-icon remove-bottom-margin" />
@@ -23,28 +23,32 @@
                     <hr class="uk-divider-icon remove-bottom-margin" />
                     <div th:inline="text" class=""><em>Price: $[[${product.getKey().price}]]</em></div>
                     <div th:inline="text" class="">Quantity: [[${product.getValue()}]]</div>
-                    <a th:href="@{'/shoppingCart/removeProduct/{id}'(id=${product.getKey().id})}" class="">
+                    <form method="POST" th:action="@{'/shoppingCart/removeProduct/' + ${product.getKey().id}}" class="">
                         <button type="button" class="uk-button uk-button-default uk-button-small uk-border-rounded uk-margin-small-top" th:text="Remove">Remove</button>
-                    </a>
+                    </form>
                 </div>
             </div>
-            <div class="uk-grid uk-width-large-1-1 uk-visible-large uk-align-center">
+            <div class="uk-grid uk-width-large-1-1 uk-visible-large uk-align-center remove-margin">
                 <!--<input type="hidden" name="temp_address" th:value="${temp_address}"/>-->
                 <h2 class="" th:inline="text">Total in cart: $[[${total}]]</h2>
                 <br />
-                <form th:action="@{'/shoppingCart/checkout'}" method="GET">
-                    <input class="uk-input uk-border-rounded uk-width-medium checkout-box" id="checkout_address" name="checkout_address" type="text" />
-                    <script
-                            th:method="POST"
-                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
-                            th:attr="data-amount=${total_stripe}"
-                            data-name="KWIKRLIQUOR"
-                            data-description='Alcohol Delivery'
-                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                            data-locale="auto"
-                            data-zip-code="true">
-                    </script>
+                <form class="uk-align-center remove-margin" th:action="@{'/shoppingCart/checkout'}" method="GET">
+                    <h4 class="remove-margin">Delivery Address</h4>
+                    <input class="uk-input uk-border-rounded uk-width-medium checkout-box uk-margin-small-bottom" id="checkout_address" name="checkout_address" type="text" />
+                    <br/>
+                    <div class="uk-margin-small-bottom">
+                        <script
+                                th:method="POST"
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+                                th:attr="data-amount=${total_stripe}"
+                                data-name="KWIKRLIQUOR"
+                                data-description='Alcohol Delivery'
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-locale="auto"
+                                data-zip-code="true">
+                        </script>
+                    </div>
                 </form>
             </div>
         </div>
