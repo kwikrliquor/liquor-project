@@ -6,9 +6,35 @@
     <div th:replace="partials::navbar"></div>
 
 <main role="main" class="uk-container uk-text-center">
-    <div class="uk-position-center sign-up custom-card uk-border-rounded uk-margin-medium-top">
+    <div class="uk-position-center login-up custom-card uk-border-rounded uk-margin-medium-top">
         <h1>Create an account</h1>
-        <form class="uk-form-width-large" th:action="@{/sign-up}" method="POST" th:object="${user}">
+        <form class="uk-form-width-large uk-visible@m" th:action="@{/sign-up}" method="POST" th:object="${user}">
+
+            <label class="uk-text-large" for="username">Username</label>
+            <input class="uk-input uk-border-rounded" id="username" th:field="*{username}" />
+            <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                   class="uk-alert-danger"></label>
+            <br />
+
+            <label class="uk-text-large" for="email">Email</label>
+            <input class="uk-input uk-border-rounded" id="email" th:field="*{email}" />
+            <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                   class="uk-alert-danger"></label>
+            <br />
+
+            <label class="uk-text-large" for="password">Password</label>
+            <input class="uk-input uk-border-rounded" id="password" type="password" th:field="*{password}" />
+            <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                   class="uk-alert-danger"></label>
+            <br />
+
+            <div class="mt-1">
+                <input class="uk-button uk-button-primary uk-button-small uk-border-rounded" value="Sign me up!" type="submit" />
+                <a class="uk-button uk-button-primary uk-button-small uk-border-rounded" th:href="@{/login}">Back to Login</a>
+            </div>
+        </form>
+
+        <form class="uk-form-width-medium uk-hidden@m" th:action="@{/sign-up}" method="POST" th:object="${user}">
 
             <label class="uk-text-large" for="username">Username</label>
             <input class="uk-input uk-border-rounded" id="username" th:field="*{username}" />
