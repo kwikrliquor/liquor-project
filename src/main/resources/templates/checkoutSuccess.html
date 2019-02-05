@@ -5,9 +5,10 @@
 <div th:replace="partials::header"></div>
 <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
-    <h1 class="uk-text-center"><span class="uk-text-capitalize" th:text ="${#authentication.principal.username}"></span>, Thank you for you Order!</h1>
-    <h3 class="uk-text-center">Your Order Number is: #<span th:text="${order_num}"></span></h3>
-    <h3></h3>
+    <div class="custom-card uk-border-rounded uk-margin-medium-top">
+        <h1 class="uk-text-center"><span class="uk-text-capitalize" th:text ="${#authentication.principal.username}"></span>, Thank you for you Order!</h1>
+        <h3 class="uk-text-center">Your Order Number is: #<span th:text="${order_num}"></span></h3>
+    </div>
 </main><!-- /.container -->
 <div th:replace="partials::footer"></div>
 <div th:replace="partials::scripts"></div>

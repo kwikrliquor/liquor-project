@@ -25,6 +25,37 @@
             height: 33px;
             overflow: hidden;
         }
+        .custom-card {
+            padding: 30px;
+            background-color: whitesmoke;
+
+        }
+        .about-icon {
+            color: black;
+        }
+        .about-icon:hover {
+            color: silver;
+        }
+        .nav-color {
+            opacity: .98;
+            background-color: maroon !important;
+
+        }
+        nav>div>ul>li>a>div>span {
+            color: whitesmoke;
+        }
+        nav>div>ul>li>a>span {
+            color: whitesmoke;
+        }
+        nav>div>ul>li>a>div {
+            color: whitesmoke;
+        }
+        nav>div>ul>li>form>button>span {
+            color: whitesmoke;
+        }
+        nav>div>ul>li>a>i {
+            color: whitesmoke;
+        }
         .opacity-85 {
             opacity: 0.85;
             filter: alpha(opacity=85);
@@ -46,10 +77,10 @@
             font-size: 18px;
         }
         .indie {
-            font-family: 'Indie Flower';
+            font-family: "Arial Narrow";
             font-size: 42px;
-            color: #0f7ae5;
-            text-shadow: 2px 2px #444444;
+            color: black;
+            text-shadow: 2px 2px silver;
         }
         .indie-small {
             font-family: 'Indie Flower';
@@ -86,11 +117,11 @@
         }
         .driver-card {
             border: 1px solid lightgray;
-            background-color: #d8f5ff;
+            background-color: white;
 
         }
         .product-card-color {
-            background-color: #d8f5ff;
+            background-color: whitesmoke;
         }
         .product-card {
             background-repeat: no-repeat;
@@ -113,9 +144,10 @@
             background-color: dodgerblue;
         }
         body, html {
-            /*background-image: url("https://www.lucialighting.com/wp-content/uploads/2018/02/contemporary.jpg");*/
+            background-image: url("https://cdn.discordapp.com/attachments/178547154908872704/542412452688560138/blackandwhitebackground.jpg");
             background-color: rgb(244,247,249);
             background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         .slideshow-img {
             !important;
@@ -156,12 +188,11 @@
     </header>
 </div>
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="!isAuthenticated()">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="!isAuthenticated()">
     <div class="uk-navbar-left">
 
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
             <li><a href="/products/beer"><div><span class="list-font-nav">Beer</span></div></a></li>
             <li><a href="/products/wine"><div><span class="list-font-nav">Wine</span></div></a></li>
             <li><a href="/products/liquor"><div><span class="list-font-nav">Liquor</span></div></a></li>
@@ -172,7 +203,7 @@
         <ul class="uk-navbar-nav">
             <li>
                 <form th:action="@{/login}" th:method="GET">
-                    <input class="uk-button uk-button-default uk-button-small login-logout" type="submit" value="Login"/>
+                    <button class="uk-button uk-button-default uk-button-small login-logout" type="submit"><span>Login</span></button>
                 </form>
             </li>
             <li>
@@ -182,7 +213,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="!isAuthenticated()">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="!isAuthenticated()">
     <div class="uk-navbar-left">
 
         <ul class="uk-navbar-nav uk-nav-parent-icon">
@@ -192,11 +223,10 @@
     <div class="uk-navbar-right">
         <a href="#"><div class="uk-text-large margin-right-10"><i class="fas fa-bars"></i></div></a>
         <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
-            <li><a href="/products"><div>All Products</div></a></li>
-            <li><a href="/products/beer"><div>Beer</div></a></li>
-            <li><a href="/products/wine"><div>Wine</div></a></li>
-            <li><a href="/products/liquor"><div>Liquor</div></a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/products/beer"><label>Beer</label></a></li>
+            <li><a href="/products/wine"><label>Wine</label></a></li>
+            <li><a href="/products/liquor"><label>Liquor</label></a></li>
+            <li><a href="/about"><label>About</label></a></li>
             <li class="uk-nav-divider"></li>
             <li>
                 <div class="uk-grid">
@@ -229,11 +259,10 @@
         <!--</ul>-->
 
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_CUSTOMER')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_CUSTOMER')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
             <li><a href="/products/beer"><div><span class="list-font-nav">Beer</span></div></a></li>
             <li><a href="/products/wine"><div><span class="list-font-nav">Wine</span></div></a></li>
             <li><a href="/products/liquor"><div><span class="list-font-nav">Liquor</span></div></a></li>
@@ -262,7 +291,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_CUSTOMER')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_CUSTOMER')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
@@ -273,11 +302,10 @@
         <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
             <li><a th:href="@{'/my-orders'}">My Orders</a></li>
             <li><a th:href="@{'/profile'}">Profile</a></li>
-            <li><a href="/products"><div>All Products</div></a></li>
-            <li><a href="/products/beer"><div>Beer</div></a></li>
-            <li><a href="/products/wine"><div>Wine</div></a></li>
-            <li><a href="/products/liquor"><div>Liquor</div></a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/products/beer"><label>Beer</label></a></li>
+            <li><a href="/products/wine"><label>Wine</label></a></li>
+            <li><a href="/products/liquor"><label>Liquor</label></a></li>
+            <li><a href="/about"><label>About</label></a></li>
             <li class="uk-nav-divider"></li>
             <li>
                 <span class="uk-text-large uk-text-capitalize" sec:authentication="name"></span>
@@ -298,11 +326,10 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_ADMIN')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_ADMIN')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
             <li><a href="/products/create"><span class="list-font-nav">Create Product</span></a></li>
             <li><a href="/admin-dashboard"><span class="list-font-nav">Admin Dashboard</span></a></li>
             <li><a href="/about"><div><span class="list-font-nav">About</span></div></a></li>
@@ -326,7 +353,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_ADMIN')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_ADMIN')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
@@ -336,10 +363,9 @@
         <a href="#"><div class="uk-text-large margin-right-10"><i class="fas fa-bars"></i></div></a>
         <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
             <li><a th:href="@{'/profile'}">Profile</a></li>
-            <li><a href="/products"><div>All Products</div></a></li>
             <li><a href="/products/create">Create Product</a></li>
             <li><a href="/admin-dashboard">Admin Dashboard</a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/about"><label>About</label></a></li>
             <li class="uk-nav-divider"></li>
             <li>
                 <span class="uk-text-large uk-text-capitalize" sec:authentication="name"></span>
@@ -360,11 +386,10 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_DRIVER')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-visible@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_DRIVER')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
-            <li><a href="/products"><div><span class="list-font-nav">All Products</span></div></a></li>
             <li><a href="/driver_dashboard"><div><span class="list-font-nav">Driver Dashboard</span></div></a></li>
             <li><a href="/about"><div><span class="list-font-nav">About</span></div></a></li>
         </ul>
@@ -387,7 +412,7 @@
     </div>
 </nav>
 
-<nav th:fragment="navbar" class="uk-navbar uk-navbar-container uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_DRIVER')">
+<nav th:fragment="navbar" class="uk-navbar uk-navbar-container nav-color uk-hidden@m" style="z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up" sec:authorize="hasRole('ROLE_DRIVER')">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav uk-nav-parent-icon">
             <li><a href="/"><img class="logo-size" src="https://cdn.discordapp.com/attachments/178547154908872704/536720432661921819/kwikr-logo.png" alt="kwikrLogo"/></a></li>
@@ -397,9 +422,8 @@
         <a href="#"><div class="uk-text-large margin-right-10"><i class="fas fa-bars"></i></div></a>
         <ul class="uk-nav uk-navbar-dropdown-nav" uk-dropdown="pos:left-bottom">
             <li><a th:href="@{'/profile'}">Profile</a></li>
-            <li><a href="/products"><div>All Products</div></a></li>
-            <li><a href="/driver_dashboard"><div>Driver Dashboard</div></a></li>
-            <li><a href="/about"><div>About</div></a></li>
+            <li><a href="/driver_dashboard"><label>Driver Dashboard</label></a></li>
+            <li><a href="/about"><label>About</label></a></li>
             <li class="uk-nav-divider"></li>
             <li>
                 <span class="uk-text-large uk-text-capitalize" sec:authentication="name"></span>

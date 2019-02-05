@@ -7,7 +7,9 @@
     <div th:replace="partials::navbar"></div>
 <main role="main" class="uk-container">
     <div sec:authorize="!isAuthenticated()">
-        <h1>Product Details</h1>
+        <div class="custom-card uk-border-rounded uk-padding-remove uk-margin-small-bottom uk-margin-medium-top">
+            <h1 class="uk-margin-bottom-remove uk-text-center">Product Details</h1>
+        </div>
         <div class="uk-card uk-card-hover uk-card-body uk-text-center uk-border-rounded product-card-color product-card">
             <div class="uk-grid-small uk-text-center uk-grid">
                 <div class="uk-width-3-4">
@@ -22,7 +24,7 @@
                     <h5><em>Price</em></h5>
                     <p class=""><strong class="list-font">$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
-                        <a href="/login" class="uk-button uk-button-default uk-button-small uk-border-rounded">Add to cart</a>
+                        <a href="/login" class="uk-button uk-button-primary uk-button-small uk-border-rounded">Add to cart</a>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
@@ -49,7 +51,7 @@
                     <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
                         <form method="POST" th:action="@{'/shoppingCart/addProduct/' + ${product.id}}">
-                            <input type="submit" value="ADD TO CART" class="uk-button uk-button-default uk-button-small uk-border-rounded" />
+                            <input type="submit" value="ADD TO CART" class="uk-button uk-button-primary uk-button-small uk-border-rounded" />
                         </form>
                     </div>
                 </div>
@@ -99,8 +101,8 @@
                     <h5><em>Price</em></h5>
                     <p class=""><strong>$<span th:text="${product.price}"></span></strong></p>
                     <div class="mt-1">
-                        <a th:href="${product.id} + '/edit'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Edit</a>
-                        <a th:href="${product.id} + '/delete'" class="uk-button uk-button-default uk-button-small uk-border-rounded">Delete</a>
+                        <a th:href="${product.id} + '/edit'" class="uk-button uk-button-primary uk-button-small uk-border-rounded">Edit</a>
+                        <a th:href="${product.id} + '/delete'" class="uk-button uk-button-primary uk-button-small uk-border-rounded">Delete</a>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
