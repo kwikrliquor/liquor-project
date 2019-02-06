@@ -14,7 +14,7 @@
             You have been logged out.
         </div>
 
-        <form class="uk-form-width-large uk-visible@m" th:action="@{/login}" method="POST">
+        <form class="uk-form-width-large uk-visible@m uk-text-center uk-align-center" th:action="@{/login}" method="POST">
             <label class="uk-text-large" for="username">Username</label>
             <input class="uk-input uk-border-rounded" id="username" name="username" type="text" />
             <label class="uk-text-large" for="password">Password</label>
@@ -25,7 +25,7 @@
             </div>
         </form>
 
-        <form class="uk-form-width-medium uk-hidden@m" th:action="@{/login}" method="POST">
+        <form class="uk-form-width-medium uk-hidden@m uk-text-center uk-align-center uk-margin-medium-top" th:action="@{/login}" method="POST">
             <label class="uk-text-large" for="username">Username</label>
             <input class="uk-input uk-border-rounded" id="username2" name="username" type="text" />
             <label class="uk-text-large" for="password">Password</label>
